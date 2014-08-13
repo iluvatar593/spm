@@ -1,0 +1,53 @@
+//N = matrix size
+// n = number of workers
+W[i]::
+    receive(partitioner, A[i], B[i]);
+    int curcol = i;
+    int count = 0;
+    while(count < n) {
+        int end = N/n;
+        count++;
+        for(int k = 0; k < end; k++) {
+            for(j = 0; j < N/n; j++) {
+                int curc = 0;
+                for (h =  0; h < N; h++){
+                    curc += (A[i])[k][h]*(B[curcol])[j][h]
+                } //h for
+                write(curc, k+A[i].start, curcol*(N/n) + j);
+            } //j for
+            on receive(steal, W[(i+1)%n]) {
+                Possiamo inviare le righe con indice tra k+1 e end
+                send(part, W[(i+1) % n]);
+                end -= part.size;
+            }  
+        } //k for  
+        //finita moltiplicazione di quello che doveva fare.
+        send(B[curcol], W[(i+1)%n]);
+        curcol = (curcol-1)%n;
+        stealed[];
+        while(!received) {
+            receive(B[curcol], W[(i-1)%n]) or error =1;
+            if(error) { //l'altro non mi ha mandato una sega
+                send(stateRequest,W[(i-1)%n])
+                receive(state, W[(i-1)%n])
+                if (state < threshold) { //steal job
+                    send(steal, W[(i-1)%n]);
+                    receive(part, W[(i-1)%n])
+                    stealed.append(part);
+                } 
+            } else break;
+            sleep pollingtime;
+        }
+        if(!stealed.empty()) {
+            foreach(k in [0, stealed.count]) {
+                for(j = 0; j < N/n; j++) {
+                    int curc = 0;
+                    for (h =  0; h < N; h++){
+                        curc += stealed.[k][h]*(B[curcol])[j][h]
+                    } //h for
+                    write(curc, k+stealed.start, curcol*(N/n) + j);
+                } //j for 
+            }
+        }        
+    }
+    
