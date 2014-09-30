@@ -20,7 +20,7 @@ template <typename NUM>
 class Emitter: public ff_node {
 public:
     Emitter(long ntasks, unsigned int msize):ntasks(ntasks), msize(msize) {
-    A = B = C = nullptr;
+    	A = B = C = nullptr;
     }
 
     void* svc(void*) {
