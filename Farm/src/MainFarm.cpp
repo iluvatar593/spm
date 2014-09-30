@@ -11,6 +11,8 @@
 #include "Worker.hpp"
 #include "Emitter.hpp"
 #include "DoubleEmitter.h"
+#include "IntegerEmitter.h"
+#include "LongEmitter.h"
 
 /**
  * Arguments are:

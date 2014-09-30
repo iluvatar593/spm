@@ -26,14 +26,14 @@ public:
 				for(register unsigned int k = 0; k < size; k++) {
 					c += A[i*size+k] * B[j*size+k];
 				}
-				std::cout << c;
-				if(j == size-1) std::cout << "\n";
-				else std::cout << " ";
+				//std::cout << c;
+				//if(j == size-1) std::cout << "\n";
+				//else std::cout << " ";
 				t->set(i, j, c);
 			}
 		}
-		std::cout << "\n";
-		std::cout << "\n";
+		//std::cout << "\n";
+		//std::cout << "\n";
 		delete t;
 		return GO_ON;
 	}
