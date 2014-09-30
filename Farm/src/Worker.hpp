@@ -7,14 +7,14 @@
 
 #ifndef OURFARM_H_
 #define OURFARM_H_
-#include "Worker.hpp"
+#include "Task.hpp"
 #include <ff/node.hpp>
 using namespace ff;
 
 template <typename NUM>
 class Worker: public ff_node {
 	void *svc(void * task) {
-		FarmTask<NUM> *t =(FarmTask<NUM> *) task;
+		FarmTask<NUM> *t = (FarmTask<NUM> *) task;
 		NUM *A = t->getFirst();
 		NUM *B = t->getSecond();
 		register unsigned int size = t->getSize();

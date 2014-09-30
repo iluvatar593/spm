@@ -9,6 +9,7 @@
 #define TASK_HPP_
 
 #include <stdexcept>
+using namespace ff;
 
 template <typename NUM>
 class FarmTask {

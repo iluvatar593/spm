@@ -19,7 +19,9 @@ using namespace ff;
 template <typename NUM>
 class Emitter: public ff_node {
 public:
-    Emitter(long ntasks, unsigned int msize):ntasks(ntasks), msize(msize) {
+    Emitter(long ntasks, unsigned int msize){
+    	this->ntasks = ntasks;
+    	this->msize = msize;
     	A = B = C = nullptr;
     }
 
@@ -28,20 +30,19 @@ public:
         	A = (NUM*)calloc(msize*msize, sizeof(NUM));
     		B = (NUM*)calloc(msize*msize, sizeof(NUM));
     		C = (NUM*)calloc(msize*msize, sizeof(NUM));
+    		this->initialize();
     		FarmTask<NUM> *t = new FarmTask<NUM>(A, B, C, msize);
     		ff_send_out((void*) t);
     	}
     	return NULL;
     }
     ~Emitter();
-
-protected:
-    virtual void init() = 0;
-    NUM* A, B, C;
-
+    virtual void initialize() = 0;
+    NUM * A, *B, *C;
+    unsigned int msize;
 private:
     long ntasks;
-    unsigned int msize;
+
 
 };
 

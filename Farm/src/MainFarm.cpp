@@ -10,6 +10,7 @@
 #include <ff/farm.hpp>
 #include "Worker.hpp"
 #include "Emitter.hpp"
+#include "DoubleEmitter.h"
 
 /**
  * Arguments are:
@@ -30,7 +31,7 @@ int main(int argc, char* argv[]) {
 	unsigned int matrixSize = atoi(argv[1]);
 	int numWorkers = atoi(argv[2]);
 	if(streamLength <= 0 || matrixSize <= 0 || numWorkers <= 0) { printUsage(); return 1;}
-	Emitter *e = new Emitter(streamLength, matrixSize);
+	DoubleEmitter *e = new DoubleEmitter(streamLength, matrixSize);
 	ff_farm<> farm(true, matrixSize*matrixSize+numWorkers);
 	farm.add_emitter(e);
 	std::vector<ff_node *> w;
