@@ -13,20 +13,27 @@ using namespace ff;
 
 template <typename NUM>
 class Worker: public ff_node {
+public:
+	Worker():ff_node(){}
 	void *svc(void * task) {
 		FarmTask<NUM> *t = (FarmTask<NUM> *) task;
 		NUM *A = t->getFirst();
 		NUM *B = t->getSecond();
-		register unsigned int size = t->getSize();
+		unsigned int size = t->getSize();
 		for(register unsigned int i = 0; i < size; i++) {
 			for(register unsigned int j = 0; j < size; j++) {
 				NUM c = 0;
-				for(register unsigned int k = 0; j < size; k++) {
+				for(register unsigned int k = 0; k < size; k++) {
 					c += A[i*size+k] * B[j*size+k];
 				}
+				std::cout << c;
+				if(j == size-1) std::cout << "\n";
+				else std::cout << " ";
 				t->set(i, j, c);
 			}
 		}
+		std::cout << "\n";
+		std::cout << "\n";
 		delete t;
 		return GO_ON;
 	}

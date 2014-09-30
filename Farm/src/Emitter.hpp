@@ -23,8 +23,8 @@ public:
     	this->ntasks = ntasks;
     	this->msize = msize;
     	A = B = C = nullptr;
-    }
 
+    }
     void* svc(void*) {
     	for(long i=1;i<=ntasks;++i){
         	A = (NUM*)calloc(msize*msize, sizeof(NUM));
@@ -36,8 +36,8 @@ public:
     	}
     	return NULL;
     }
-    ~Emitter();
-    virtual void initialize() = 0;
+    ~Emitter(){}
+    virtual void initialize()=0;
     NUM * A, *B, *C;
     unsigned int msize;
 private:

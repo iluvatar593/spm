@@ -26,20 +26,26 @@ static inline void printUsage() {
 
 int main(int argc, char* argv[]) {
 	/** Check parameters */
-	if(argc < 3) { printUsage(); return 1;}
-	long streamLength = atoi(argv[0]);
-	unsigned int matrixSize = atoi(argv[1]);
-	int numWorkers = atoi(argv[2]);
-	if(streamLength <= 0 || matrixSize <= 0 || numWorkers <= 0) { printUsage(); return 1;}
-	DoubleEmitter *e = new DoubleEmitter(streamLength, matrixSize);
-	ff_farm<> farm(true, matrixSize*matrixSize+numWorkers);
-	farm.add_emitter(e);
+	if(argc < 3) { printUsage(); return 1;};
+	long streamLength = atol(argv[1]);
+	int matrixSize = atoi(argv[2]);
+	int numWorkers = atoi(argv[3]);
+	for(int i = 0; i < argc; i++) {
+		printf("%d --> %s\n",i, argv[i]);
+	}
+	if(streamLength <= 0 || matrixSize <= 0 || numWorkers <= 0) {
+		printUsage();
+		return 1;
+	}
+
+	ff_farm<> farm;
+	DoubleEmitter E(streamLength, matrixSize);
+	farm.add_emitter(&E);
 	std::vector<ff_node *> w;
-	Worker<int> worker();
-	for(int i=0;i<numWorkers;++i) w.push_back(new Worker<int>());
+	for(int i=0;i<numWorkers;++i) w.push_back(new Worker<double>());
 	farm.add_workers(w);
-	    // Now run the accelator asynchronusly
-	    farm.run_then_freeze();
+	farm.run_and_wait_end();
+	std::cout << "Finished\n";
 }
 
 

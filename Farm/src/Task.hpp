@@ -9,6 +9,7 @@
 #define TASK_HPP_
 
 #include <stdexcept>
+#include <stdio.h>
 using namespace ff;
 
 template <typename NUM>
@@ -34,7 +35,10 @@ public:
 	}
 
 	void set(const unsigned int i,const unsigned int j, NUM value) {
-		if(i >= matrixSize || j >= matrixSize) throw std::out_of_range{"Cannot access specified position."};
+		if(i >= matrixSize || j >= matrixSize) {
+			printf("%d,%d size is %d\n", i, j, matrixSize);
+			throw std::out_of_range{"Cannot access specified position."};
+		}
 		C[i*matrixSize+j] = value;
 	}
 
