@@ -1,18 +1,18 @@
 /*
- * Emitter.cpp
+ * IntEmitter.cpp
  *
  *  Created on: 30/set/2014
  *      Author: atzoril
  */
 
-#include "Emitter.hpp"
+#include "IntEmitter.h"
 
-//Emitter::Emitter() {
+IntEmitter::IntEmitter() {
 	// TODO Auto-generated constructor stub
 
-//}
+}
 
-Emitter::~Emitter() {
+IntEmitter::~IntEmitter() {
 	// TODO Auto-generated destructor stub
 }
 
