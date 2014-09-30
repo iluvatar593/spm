@@ -14,13 +14,14 @@ template <typename NUM>
 class FarmTask {
 public:
 	FarmTask(NUM* First, NUM*Second, NUM*Result, const unsigned int size) {
+		if(First == nullptr || Second == nullptr || Result == nullptr || size == 0) throw std::invalid_argument{"Invalid Task initialization."};
 		A = First; B = Second; C = Result;
 		matrixSize = size;
 	}
 	~FarmTask() {
 		delete A;
 		delete B;
-		delete C;
+		//delete C; //TODO: check if it makes sense.
 	}
 
 	NUM& getFirst() {
@@ -34,6 +35,10 @@ public:
 	void set(const unsigned int i,const unsigned int j, NUM value) {
 		if(i >= matrixSize || j >= matrixSize) throw std::out_of_range{"Cannot access specified position."};
 		C[i*matrixSize+j] = value;
+	}
+
+	unsigned int getSize() {
+		return matrixSize;
 	}
 private:
 	NUM *A;
