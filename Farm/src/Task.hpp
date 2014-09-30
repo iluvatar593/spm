@@ -24,11 +24,11 @@ public:
 		//delete C; //TODO: check if it makes sense.
 	}
 
-	NUM& getFirst() {
+	NUM* getFirst() {
 		return A;
 	}
 
-	NUM& getSecond() {
+	NUM* getSecond() {
 		return B;
 	}
 

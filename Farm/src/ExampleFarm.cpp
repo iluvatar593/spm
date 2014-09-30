@@ -119,7 +119,7 @@ public:
     }
 };
 
-int main(int argc,
+int main2(int argc,
          char * argv[]) {
 
     bool check=false;
