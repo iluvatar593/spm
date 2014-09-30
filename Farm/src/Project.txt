@@ -1,0 +1,15 @@
+Ora, più o meno funge..! 
+1. Sistemare i makefile
+2. Vedere cosa fare dell'output che abbiamo calcolato
+3. Creare una procedura per fare le matrici da moltiplicare
+	- in main, si chiama la procedura; ci restituisce una roba tipo [(A1, B1), (A2, B2), .... ]
+	- prendiamo il tempo con ff
+	- avviamo l'emitter, che prende il vettore e lo scandisce
+	- worker inizializza la memoria per i risultati
+	- aggiungiamo un collector che si prende i risultati inviati fuori dai worker con ff_out. 
+	- il collector semplicemente li mette in un altro vettore.
+	- prende i tempi, sputa fuori.
+	- quando termina se specificato verifica i risultati (ma quando mai)
+4.  Vedere se funziona la vettorizzazione; aggiungere i mapping dall'esempio che c'è su FF e aggiungere i pragma.
+5. Verificare scalabilità
+6. ripetere 1-5 con map e stencil
