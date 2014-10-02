@@ -15,15 +15,14 @@ using namespace ff;
 template <typename NUM>
 class FarmTask {
 public:
-	FarmTask(NUM* First, NUM*Second, NUM*Result, const unsigned int size) {
-		if(First == nullptr || Second == nullptr || Result == nullptr || size == 0) throw std::invalid_argument{"Invalid Task initialization."};
-		A = First; B = Second; C = Result;
+	FarmTask(NUM* First, NUM*Second, const unsigned int size) {
+		if(First == nullptr || Second == nullptr || size == 0) return;//throw std::invalid_argument{"Invalid Task initialization."};
+		A = First; B = Second;
 		matrixSize = size;
 	}
 	~FarmTask() {
 		delete A;
 		delete B;
-		//delete C; //TODO: check if it makes sense.
 	}
 
 	NUM* getFirst() {
@@ -34,21 +33,12 @@ public:
 		return B;
 	}
 
-	void set(const unsigned int i,const unsigned int j, NUM value) {
-		if(i >= matrixSize || j >= matrixSize) {
-			printf("%d,%d size is %d\n", i, j, matrixSize);
-			throw std::out_of_range{"Cannot access specified position."};
-		}
-		C[i*matrixSize+j] = value;
-	}
-
 	unsigned int getSize() {
 		return matrixSize;
 	}
 private:
 	NUM *A;
 	NUM *B;
-	NUM *C;
 	unsigned int matrixSize;
 };
 
