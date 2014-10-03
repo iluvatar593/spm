@@ -16,6 +16,8 @@ public:
 	matrix(unsigned int rows, unsigned int cols): rows(rows), cols(cols){}
 	inline unsigned int getRows() {return rows;}
 	inline unsigned int getCols(){return cols;}
+	NUM* operator[](int rows) {return NULL;}
+	~matrix() {}
 private:
 	unsigned int rows;
 	unsigned int cols;

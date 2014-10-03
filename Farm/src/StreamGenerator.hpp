@@ -21,8 +21,8 @@ public:
 	void* svc(void * task) {
 		if(current < this->streamLength) {
 			current++;
-			A = (NUM *) calloc(matrixSize*matrixSize, sizeof(NUM));
-			B = (NUM *) calloc(matrixSize*matrixSize, sizeof(NUM));
+			matrix<NUM> *A = new simple_matrix<NUM>(matrixSize,matrixSize);
+			matrix<NUM> *B = new simple_matrix<NUM>(matrixSize,matrixSize);
 			auto start = std::chrono::high_resolution_clock::now();
 			//printf("Generating matrix %d\n", current);
 			this->initialize();

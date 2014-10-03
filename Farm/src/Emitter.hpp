@@ -10,7 +10,6 @@
 #include <cstdlib>
 #include <ff/node.hpp>
 #include "Utils.h"
-#include "Task.hpp"
 
 using namespace ff;
 
