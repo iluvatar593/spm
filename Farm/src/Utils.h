@@ -16,7 +16,7 @@
 #define elapsed_time(STRING) \
 	auto elapsed = std::chrono::high_resolution_clock::now() - start; \
 	long long microseconds = std::chrono::duration_cast<std::chrono::microseconds>(elapsed).count(); \
-	printf(""#STRING:""%lld\n", microseconds);
+	printf("#STRING:%lld\n", microseconds);
 
 
 typedef struct {

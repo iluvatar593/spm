@@ -20,7 +20,7 @@ class Worker: public ff_node {
 public:
 	Worker():ff_node(){}
 	void *svc(void * task) {
-
+		start_time();
 		FarmTask<NUM> *t = (FarmTask<NUM> *) task;
 		matrix<NUM> *A = t->getFirst();
 		matrix<NUM> *B = t->getSecond();
@@ -36,7 +36,7 @@ public:
 
 		delete t;
 		delete C;
-
+		elapsed_time("Worker");
 
 		return GO_ON;
 	}
