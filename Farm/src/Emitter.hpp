@@ -10,19 +10,22 @@
 #include <cstdlib>
 #include <ff/node.hpp>
 #include "Utils.h"
-
+#include "buffers/stream.hpp"
 using namespace ff;
 
 #ifndef EMITTER_HPP_
 #define EMITTER_HPP_
-
+template<typename NUM>
 class Emitter: public ff_node {
 public:
-    Emitter():ff_node() {}
-    void* svc(void* task) {
-    	return task;
+    Emitter(stream<NUM>* input_stream):ff_node(),asd(input_stream) {}
+    void* svc(void*) {
+    	printf("Collector received\n");
+    	return (void*) asd->getNext();
     }
     ~Emitter(){}
+private:
+	stream<NUM> *asd;
 };
 
 #endif /* EMITTER_HPP_ */

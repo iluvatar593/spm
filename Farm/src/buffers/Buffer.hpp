@@ -41,7 +41,7 @@ public:
 	}
 
 	simple_matrix<NUM>* get(unsigned int index) {
-		return (buffer+index);
+		return buffer[index];
 	}
 
 private:

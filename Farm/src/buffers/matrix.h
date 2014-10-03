@@ -47,8 +47,9 @@ public:
 		M = nullptr;
 		return m;
 	}
+
+
 	~simple_matrix() {
-		printf("Ciao\n");
 		for(unsigned int i = 0; i < this->getRows(); i++) delete[] M[i];
 		delete[] M;
 	}

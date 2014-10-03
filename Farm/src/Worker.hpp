@@ -20,18 +20,23 @@ class Worker: public ff_node {
 public:
 	Worker():ff_node(){}
 	void *svc(void * task) {
+		printf("Worker received\n");
 		start_time();
 		FarmTask<NUM> *t = (FarmTask<NUM> *) task;
-		matrix<NUM> *A = t->getFirst();
-		matrix<NUM> *B = t->getSecond();
-		unsigned int size = t->getSize();
-		matrix<NUM> *C = new simple_matrix<NUM>(size,size);
+		simple_matrix<NUM> *A = (simple_matrix<NUM>*)t->getFirst();
+		simple_matrix<NUM> *B = (simple_matrix<NUM>*)t->getSecond();
+		unsigned int size = A->getRows(); //TODO: Fix
+		simple_matrix<NUM> *C = new simple_matrix<NUM>(size,size);
+
 		for(register unsigned int i = 0; i < size; i++) {
 			for(register unsigned int k = 0; k < size; k++) {
 				for(register unsigned int j = 0; j < size; j++) {
+					printf("Ready for sum %d\n", i);
 					(*C)[i][j] += (*A)[i][k] * (*B)[j][k];
+					printf("Ended sum");
 				}
-		}
+			}
+
 		}
 
 		delete t;

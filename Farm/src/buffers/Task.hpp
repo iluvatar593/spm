@@ -16,17 +16,15 @@ using namespace ff;
 template <typename NUM>
 class FarmTask {
 public:
-	FarmTask(matrix<NUM>* First, matrix<NUM>*Second, const unsigned int size) {
-		if(First == nullptr || Second == nullptr || size == 0) return;//throw std::invalid_argument{"Invalid Task initialization."};
+	FarmTask(matrix<NUM>* First, matrix<NUM>*Second) {
+		if(First == nullptr || Second == nullptr) return;//throw std::invalid_argument{"Invalid Task initialization."};
 		A = First; B = Second;
-		matrixSize = size;
 	}
 
 	FarmTask(NUM** First, NUM** Second, const unsigned int size) {
 		if(First == nullptr || Second == nullptr || size == 0) return;
 		A = new simple_matrix<NUM>(size, size, First);
 		B = new simple_matrix<NUM>(size, size, Second);
-		matrixSize = size;
 	}
 	~FarmTask() {
 		delete A;
