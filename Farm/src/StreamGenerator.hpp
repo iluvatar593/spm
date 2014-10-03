@@ -9,6 +9,7 @@
 #define STREAMGENERATOR_HPP_
 #include "Utils.h"
 #include <ff/node.hpp>
+#include <chrono>
 
 using namespace ff;
 
@@ -22,9 +23,13 @@ public:
 			current++;
 			A = (NUM *) calloc(matrixSize*matrixSize, sizeof(NUM));
 			B = (NUM *) calloc(matrixSize*matrixSize, sizeof(NUM));
-			printf("Generating matrix %d\n", current);
+			auto start = std::chrono::high_resolution_clock::now();
+			//printf("Generating matrix %d\n", current);
 			this->initialize();
 			FarmTask<NUM> *t = new FarmTask<NUM>(A, B, matrixSize);
+			auto elapsed = std::chrono::high_resolution_clock::now() - start;
+			long long microseconds = std::chrono::duration_cast<std::chrono::microseconds>(elapsed).count();
+			printf("Generation time (no malloc): %lld\n", microseconds);
 			return (void*) t;
 		}
 		return NULL;
