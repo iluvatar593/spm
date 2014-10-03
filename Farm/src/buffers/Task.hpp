@@ -26,10 +26,7 @@ public:
 		A = new simple_matrix<NUM>(size, size, First);
 		B = new simple_matrix<NUM>(size, size, Second);
 	}
-	~FarmTask() {
-		delete A;
-		delete B;
-	}
+	~FarmTask() {}
 
 	matrix<NUM>* getFirst() {
 		return A;
