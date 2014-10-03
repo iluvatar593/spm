@@ -20,6 +20,7 @@ class Worker: public ff_node {
 public:
 	Worker():ff_node(){}
 	void *svc(void * task) {
+		if(task == NULL) return NULL;
 		printf("Worker received\n");
 		start_time();
 		FarmTask<NUM> *t = (FarmTask<NUM> *) task;
@@ -31,19 +32,18 @@ public:
 		for(register unsigned int i = 0; i < size; i++) {
 			for(register unsigned int k = 0; k < size; k++) {
 				for(register unsigned int j = 0; j < size; j++) {
-					printf("Ready for sum %d\n", i);
+					//printf("Ready for sum %d\n", i);
 					(*C)[i][j] += (*A)[i][k] * (*B)[j][k];
-					printf("Ended sum");
+					//printf("Ended sum");
 				}
 			}
 
 		}
 
 		delete t;
-		delete C;
 		elapsed_time("Worker");
 
-		return GO_ON;
+		return C;
 	}
 };
 #endif /* OURFARM_H_ */

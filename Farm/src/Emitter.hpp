@@ -20,7 +20,7 @@ class Emitter: public ff_node {
 public:
     Emitter(stream<NUM>* input_stream):ff_node(),asd(input_stream) {}
     void* svc(void*) {
-    	printf("Collector received\n");
+    	printf("Emitter received\n");
     	return (void*) asd->getNext();
     }
     ~Emitter(){}

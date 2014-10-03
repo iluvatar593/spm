@@ -12,7 +12,7 @@ template<typename NUM>
 class Collector: public ff_node {
 public:
 	void *svc(void* m) {
-
+		printf("Iter: %d \n", ++ciao);
 		if(m == NULL) return NULL;
 		simple_matrix<NUM> * matrix = (simple_matrix<NUM>*) m;
 		//Check if it is the identity
@@ -21,6 +21,9 @@ public:
 		delete matrix;
 		return GO_ON;
 	}
+
+private:
+	int ciao = 0;
 };
 
 
