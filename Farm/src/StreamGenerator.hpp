@@ -10,6 +10,7 @@
 #include "Utils.h"
 #include <ff/node.hpp>
 #include <chrono>
+#define CHRONO
 
 using namespace ff;
 
