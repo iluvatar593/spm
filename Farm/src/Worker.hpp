@@ -18,32 +18,36 @@ using namespace ff;
 template <typename NUM>
 class Worker: public ff_node {
 public:
-	Worker():ff_node(){}
+	Worker():ff_node(){
+		C = (NUM*) calloc(1024*1024, sizeof(NUM*));
+		//for(int c = 0; c < 1024;c++) C[c] = (NUM*) calloc(1024, sizeof(NUM));
+	}
 	void *svc(void * task) {
 		if(task == NULL) return NULL;
-		printf("Worker received\n");
-		start_time();
-		FarmTask<NUM> *t = (FarmTask<NUM> *) task;
-		simple_matrix<NUM> *A = (simple_matrix<NUM>*)t->getFirst();
-		simple_matrix<NUM> *B = (simple_matrix<NUM>*)t->getSecond();
-		unsigned int size = A->getRows(); //TODO: Fix
-		simple_matrix<NUM> *C = new simple_matrix<NUM>(size,size);
 
+		simple_task<NUM> *t = (simple_task<NUM> *) task;
+		NUM** A = t->getFirst();
+		NUM** B = t->getSecond();
+		unsigned int size = t->getRows();
+		//start_time();
 		for(register unsigned int i = 0; i < size; i++) {
-			for(register unsigned int k = 0; k < size; k++) {
-				for(register unsigned int j = 0; j < size; j++) {
+			for(register unsigned int j = 0; j < size; j++) {
+				#pragma ivdep
+				for(register unsigned int k = 0; k < size; k++) {
 					//printf("Ready for sum %d\n", i);
-					(*C)[i][j] += (*A)[i][k] * (*B)[j][k];
+					C[i*size+j] += A[i][k] * B[k][j];
 					//printf("Ended sum");
 				}
 			}
 
 		}
-
+		//printf("Terminated \n");
 		delete t;
-		elapsed_time("Worker");
+		//elapsed_time("Worker");
 
-		return C;
+		return GO_ON;
 	}
+private:
+	NUM * C;
 };
 #endif /* OURFARM_H_ */

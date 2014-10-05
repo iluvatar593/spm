@@ -14,10 +14,13 @@ public:
 	void *svc(void* m) {
 		printf("Iter: %d \n", ++ciao);
 		if(m == NULL) return NULL;
+		//delete m;
+		return GO_ON;
 		simple_matrix<NUM> * matrix = (simple_matrix<NUM>*) m;
 		//Check if it is the identity
 		for(unsigned int i = 0; i < matrix->getRows(); i++)
-			if((*matrix)[i][i] != 1) printf("ERROR!\n");
+			if((*matrix)[i][i] != 1) {printf("ERROR!\n"); return GO_ON;}
+		printf("Correct\n");
 		delete matrix;
 		return GO_ON;
 	}

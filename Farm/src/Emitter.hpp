@@ -18,14 +18,13 @@ using namespace ff;
 template<typename NUM>
 class Emitter: public ff_node {
 public:
-    Emitter(stream<NUM>* input_stream):ff_node(),asd(input_stream) {}
+    Emitter(plain_stream<NUM>* input_stream):ff_node(),asd(input_stream) {}
     void* svc(void*) {
-    	printf("Emitter received\n");
     	return (void*) asd->getNext();
     }
     ~Emitter(){}
 private:
-	stream<NUM> *asd;
+	plain_stream<NUM> *asd;
 };
 
 #endif /* EMITTER_HPP_ */

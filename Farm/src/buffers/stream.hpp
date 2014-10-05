@@ -12,7 +12,7 @@
 template<typename NUM>
 class stream: public matrix_buffer<NUM> {
 public:
-	stream(unsigned int streamLength, unsigned int size, unsigned int rows, unsigned int cols):matrix_buffer<NUM>(size, rows, cols), start(0),streamLength(streamLength),offset(2),size(size){};
+	stream(unsigned int streamLength, unsigned int size, unsigned int rows, unsigned int cols, unsigned int offset=2):matrix_buffer<NUM>(size, rows, cols), start(0),streamLength(streamLength),offset(offset),size(size){};
 	~stream(){};
 	FarmTask<NUM>* getNext() {
 		if(produced == streamLength) return NULL;
@@ -25,6 +25,29 @@ public:
 	void add(NUM** matrix) {matrix_buffer<NUM>::add(matrix);}
 private:
 	unsigned int start, streamLength,offset,size,produced=0;
+};
+template<typename NUM>
+class plain_stream: public plain_buffer<NUM> {
+public:
+	plain_stream(unsigned int streamLength, unsigned int size, unsigned int rows, unsigned int cols, unsigned int offset=2):plain_buffer<NUM>(size, rows, cols), start(0),streamLength(streamLength),offset(offset),size(size),rows(rows),cols(cols){};
+	~plain_stream(){};
+	void add(NUM** m) {
+		if(m == NULL) printf("Cannot add null matrix");
+		plain_buffer<NUM>::add(m);
+	}
+	simple_task<NUM>* getNext() {
+		if(produced == streamLength) return NULL;
+		NUM**A = plain_buffer<NUM>::get(start%size);
+		NUM**B = plain_buffer<NUM>::get((start+offset)%size);
+		simple_task<NUM> * next = new simple_task<NUM>(A,B, rows, cols);
+		start++;
+		produced++;
+		if(produced % size == 0) offset++;
+		return next;
+	}
+
+private:
+	unsigned int start, streamLength, offset, size, rows, cols,produced=0;
 };
 
 //class returning tasks.

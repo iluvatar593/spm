@@ -42,17 +42,15 @@ public:
 		return M[row];
 	}
 
-	std::unique_ptr<NUM**> getMatrix() {
-		NUM **m = M;
-		M = nullptr;
-		return m;
+	NUM** getMatrix() {
+		return M;
 	}
 
 
-	~simple_matrix() {
-		for(unsigned int i = 0; i < this->getRows(); i++) delete[] M[i];
-		delete[] M;
-	}
+//	~simple_matrix() {
+//		for(unsigned int i = 0; i < this->getRows(); i++) delete[] M[i];
+//		delete[] M;
+//	}
 private:
 	NUM** M;
 };
