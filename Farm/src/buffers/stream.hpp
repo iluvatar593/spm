@@ -39,6 +39,7 @@ public:
 		if(produced == streamLength) return NULL;
 		NUM**A = plain_buffer<NUM>::get(start%size);
 		NUM**B = plain_buffer<NUM>::get((start+offset)%size);
+		printf("s %d o %d\n", start%size, (start+offset)%size);
 		simple_task<NUM> * next = new simple_task<NUM>(A,B, rows, cols);
 		start++;
 		produced++;
