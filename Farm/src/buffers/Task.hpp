@@ -13,8 +13,18 @@
 #include "matrix.h"
 using namespace ff;
 
+template<typename NUM>
+class taskInterface {
+public:
+	virtual void* getFirst()=0;
+	virtual void* getSecond()=0;
+	virtual unsigned int getSize()=0;
+	~taskInterface(){}
+};
+
+
 template <typename NUM>
-class FarmTask {
+class FarmTask:public taskInterface<NUM> {
 public:
 	FarmTask(matrix<NUM>* First, matrix<NUM>*Second) {
 		if(First == nullptr || First == NULL || Second == NULL || Second == nullptr) {
@@ -52,7 +62,7 @@ private:
 };
 
 template<typename NUM>
-class simple_task {
+class simple_task: public taskInterface<NUM>{
 public:
 	simple_task(NUM** first, NUM ** second, unsigned int rows, unsigned int cols):rows(rows),cols(cols) {
 		A = first; B = second;
@@ -62,6 +72,7 @@ public:
 	inline unsigned int getCols(){return cols;}
 	inline NUM** getFirst(){return A;}
 	inline NUM** getSecond(){return B;}
+	inline unsigned int getSize(){return cols;}
 private:
 	unsigned int rows, cols;
 	NUM **A, **B;
@@ -69,7 +80,7 @@ private:
 
 
 template<typename NUM>
-class simple_linear_task {
+class simple_linear_task: public taskInterface<NUM> {
 public:
 	simple_linear_task(NUM* first, NUM * second, unsigned int rows, unsigned int cols):rows(rows),cols(cols) {
 		A = first; B = second;
@@ -79,6 +90,7 @@ public:
 	inline unsigned int getCols(){return cols;}
 	inline NUM* getFirst(){return A;}
 	inline NUM* getSecond(){return B;}
+	inline unsigned int getSize(){return cols;}
 private:
 	unsigned int rows, cols;
 	NUM *A, *B;

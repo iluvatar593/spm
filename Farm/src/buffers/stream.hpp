@@ -9,6 +9,14 @@
 #define STREAM_HPP_
 
 #include "Buffer.hpp"
+
+template<typename NUM>
+class streamInterface {
+public:
+	virtual void* getNext()=0;
+	~streamInterface(){};
+};
+
 template<typename NUM>
 class stream: public matrix_buffer<NUM> {
 public:
@@ -27,7 +35,7 @@ private:
 	unsigned int start, streamLength,offset,size,produced=0;
 };
 template<typename NUM>
-class plain_stream: public plain_buffer<NUM> {
+class plain_stream: public plain_buffer<NUM>,public streamInterface<NUM> {
 public:
 	plain_stream(unsigned int streamLength, unsigned int size, unsigned int rows, unsigned int cols, unsigned int offset=2):plain_buffer<NUM>(size, rows, cols), start(0),streamLength(streamLength),offset(offset),size(size),rows(rows),cols(cols){};
 	~plain_stream(){};
@@ -53,13 +61,13 @@ private:
 
 
 template<typename NUM>
-class linearized_stream: public plain_buffer<NUM> {
+class linearized_stream: public linearized_buffer<NUM>,public streamInterface<NUM> {
 public:
-	linearized_stream(unsigned int streamLength, unsigned int size, unsigned int rows, unsigned int cols, unsigned int offset=2):plain_buffer<NUM>(size, rows, cols), start(0),streamLength(streamLength),offset(offset),size(size),rows(rows),cols(cols){};
+	linearized_stream(unsigned int streamLength, unsigned int size, unsigned int rows, unsigned int cols, unsigned int offset=2):linearized_buffer<NUM>(size, rows, cols), start(0),streamLength(streamLength),offset(offset),size(size),rows(rows),cols(cols){};
 	~linearized_stream(){};
-	void add(NUM** m) {
+	void add(NUM* m) {
 		if(m == NULL) printf("Cannot add null matrix");
-		plain_buffer<NUM>::add(m);
+		linearized_buffer<NUM>::add(m);
 	}
 	simple_linear_task<NUM>* getNext() {
 		if(produced == streamLength) return NULL;

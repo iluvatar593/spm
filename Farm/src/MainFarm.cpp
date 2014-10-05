@@ -87,6 +87,31 @@ int main(int argc, char* argv[]) {
     printf("BufferSize is %ld\n",inbufferSize);
 
 
+	linearized_stream<int> *lstream = new linearized_stream<int>(streamLength, inbufferSize, matrixSize, matrixSize, 8);
+	for(unsigned int i = 0; i < inbufferSize; i++) {
+	    	int* m = new int[matrixSize*matrixSize]();
+	    	for(register unsigned int k = 0; k < matrixSize; k++) {
+	    		for(register unsigned int j = 0; j < matrixSize; j++) {
+	    			if(k == j) {
+	    				m[k*matrixSize+j] = rand() % 100;
+	    			} else {
+	    				m[k*matrixSize+j] = rand() % 100;
+	    			}
+	    		}
+	    	}
+	    	lstream->add(m);
+	 }
+	Emitter<int> E2(lstream);
+	ff_farm<> * farm2 = new ff_farm<>(false, 0, numWorkers, true, 100, true);
+	farm2->add_emitter(&E2);
+	std::vector<ff_node *> w2;
+	for(int i=0;i<numWorkers;++i) w2.push_back(new LinearWorker<int>());
+	farm2->add_workers(w2);
+	farm2->run_and_wait_end();
+	delete lstream;
+	std::cout << "Total time (with linearized): ";
+	std::cout << farm2->ffTime();
+
     //plain_stream<int> *input_stream = new plain_stream<int>(streamLength, inbufferSize, matrixSize, matrixSize, (inbufferSize == 2*streamLength) ? 1 : 2);
     plain_stream<int> *input_stream = new plain_stream<int>(streamLength, inbufferSize, matrixSize, matrixSize, 8);
 
@@ -114,17 +139,11 @@ int main(int argc, char* argv[]) {
 	for(int i=0;i<numWorkers;++i) w.push_back(new Worker<int>());
 
 	farm->add_workers(w);
-
-	//farm->add_collector(new Collector<int>(),false);
-	//while(!farm->run_then_freeze(numWorkers)){sleep(1);}
 	farm->run_and_wait_end();
-	//farm->offload(&w);
-	//stream->add_stage(&farm);
-	//stream->run_and_wait_end();
 	delete input_stream;
-	std::cout << "Total time: ";
+	std::cout << "Total time (with matrix): ";
 	std::cout << farm->ffTime();
-	std::cout << "\nFinished\n";
+
 }
 
 
