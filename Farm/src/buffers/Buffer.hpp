@@ -39,6 +39,33 @@ private:
 	}
 };
 
+template<typename NUM>
+class linearized_buffer {
+public:
+	linearized_buffer(unsigned int size, unsigned int rows, unsigned int cols): size(size), rows(rows), cols(cols),next(0) {
+		buffer = new NUM*[size]();
+	}
+	~linearized_buffer() {
+		for(int i = 0; i < size; i++) delete[] buffer[i];
+		delete[] buffer;
+	}
+	void add(NUM* matrix) {
+		if(next >= size) return;
+		buffer[next] = matrix;
+		next++;
+	}
+	NUM* get(unsigned int offset) {
+		if(offset >= next) return nullptr;
+		return buffer[offset];
+	}
+private:
+	NUM** buffer;
+	unsigned int size, rows, cols,next;
+	void delete_matrix(NUM** m) {
+		for(unsigned int i = 0; i < rows; i++) delete[] m[i];
+		delete[] m;
+	}
+};
 
 template<typename NUM>
 class matrix_buffer {

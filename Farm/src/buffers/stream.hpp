@@ -51,6 +51,32 @@ private:
 	unsigned int start, streamLength, offset, size, rows, cols,produced=0;
 };
 
+
+template<typename NUM>
+class linearized_stream: public plain_buffer<NUM> {
+public:
+	linearized_stream(unsigned int streamLength, unsigned int size, unsigned int rows, unsigned int cols, unsigned int offset=2):plain_buffer<NUM>(size, rows, cols), start(0),streamLength(streamLength),offset(offset),size(size),rows(rows),cols(cols){};
+	~linearized_stream(){};
+	void add(NUM** m) {
+		if(m == NULL) printf("Cannot add null matrix");
+		plain_buffer<NUM>::add(m);
+	}
+	simple_linear_task<NUM>* getNext() {
+		if(produced == streamLength) return NULL;
+		NUM*A = linearized_buffer<NUM>::get(start%size);
+		NUM*B = linearized_buffer<NUM>::get((start+offset)%size);
+		printf("s %d o %d\n", start%size, (start+offset)%size);
+		simple_linear_task<NUM> * next = new simple_linear_task<NUM>(A,B, rows, cols);
+		start++;
+		produced++;
+		if(produced % size == 0) offset++;
+		return next;
+	}
+
+private:
+	unsigned int start, streamLength, offset, size, rows, cols,produced=0;
+};
+
 //class returning tasks.
 
 

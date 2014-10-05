@@ -68,5 +68,21 @@ private:
 };
 
 
+template<typename NUM>
+class simple_linear_task {
+public:
+	simple_linear_task(NUM* first, NUM * second, unsigned int rows, unsigned int cols):rows(rows),cols(cols) {
+		A = first; B = second;
+	}
+	~simple_linear_task(){}
+	inline unsigned int getRows(){return rows;}
+	inline unsigned int getCols(){return cols;}
+	inline NUM* getFirst(){return A;}
+	inline NUM* getSecond(){return B;}
+private:
+	unsigned int rows, cols;
+	NUM *A, *B;
+};
+
 
 #endif /* TASK_HPP_ */
