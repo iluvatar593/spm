@@ -1,0 +1,963 @@
+<;-1:-1;IPO UNREFERENCED VAR REMOVING;_ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz;0>
+UNREFERENCED VAR REMOVAL:ROUTINE SYMTAB (_ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz):
+  UNREF VAR REMOVAL ROUTINE-SYMTAB (_ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz):VARS(1),PACKS (1)
+<;-1:-1;IPO UNREFERENCED VAR REMOVING;__sti___ZN26_INTERNAL_9_Farm2_cpp_mainSt8__ioinitE;0>
+UNREFERENCED VAR REMOVAL:ROUTINE SYMTAB (__sti___ZN26_INTERNAL_9_Farm2_cpp_mainSt8__ioinitE):
+  VAR  _ZZN26_INTERNAL_9_Farm2_cpp_main2ff6ffTimeEibE8tv_start_V$124
+  PACK _ZZN26_INTERNAL_9_Farm2_cpp_main2ff6ffTimeEibE8tv_start
+  VAR  _ZZN26_INTERNAL_9_Farm2_cpp_main2ff6ffTimeEibE7tv_stop_V$125
+  PACK _ZZN26_INTERNAL_9_Farm2_cpp_main2ff6ffTimeEibE7tv_stop
+  VAR  _ZZN26_INTERNAL_9_Farm2_cpp_main2ff6ffTimeEibE1L_V$12b
+  PACK _ZZN26_INTERNAL_9_Farm2_cpp_main2ff6ffTimeEibE1L
+  VAR  _ZN26_INTERNAL_9_Farm2_cpp_mainSt19piecewise_constructE_V$211
+  PACK _ZN26_INTERNAL_9_Farm2_cpp_mainSt19piecewise_constructE
+  VAR  _ZN26_INTERNAL_9_Farm2_cpp_mainSt13allocator_argE_V$212
+  PACK _ZN26_INTERNAL_9_Farm2_cpp_mainSt13allocator_argE
+  VAR  _ZN26_INTERNAL_9_Farm2_cpp_mainSt6ignoreE_V$231
+  PACK _ZN26_INTERNAL_9_Farm2_cpp_mainSt6ignoreE
+  VAR  _ZN26_INTERNAL_9_Farm2_cpp_main2ff6FF_EOSE_V$232
+  PACK _ZN26_INTERNAL_9_Farm2_cpp_main2ff6FF_EOSE
+  VAR  _ZN26_INTERNAL_9_Farm2_cpp_main2ff15FF_EOS_NOFREEZEE_V$233
+  PACK _ZN26_INTERNAL_9_Farm2_cpp_main2ff15FF_EOS_NOFREEZEE
+  VAR  _ZN26_INTERNAL_9_Farm2_cpp_main2ff8FF_GO_ONE_V$234
+  PACK _ZN26_INTERNAL_9_Farm2_cpp_main2ff8FF_GO_ONE
+  VAR  _ZN26_INTERNAL_9_Farm2_cpp_main2ff9FF_GO_OUTE_V$235
+  PACK _ZN26_INTERNAL_9_Farm2_cpp_main2ff9FF_GO_OUTE
+  VAR  _ZN26_INTERNAL_9_Farm2_cpp_main2ff14longxCacheLineE_V$236
+  PACK _ZN26_INTERNAL_9_Farm2_cpp_main2ff14longxCacheLineE
+  REMOVED VAR  _ZZN26_INTERNAL_9_Farm2_cpp_main2ff6ffTimeEibE8tv_start_V$124
+  REMOVED PACK _ZZN26_INTERNAL_9_Farm2_cpp_main2ff6ffTimeEibE8tv_start
+  REMOVED VAR  _ZZN26_INTERNAL_9_Farm2_cpp_main2ff6ffTimeEibE7tv_stop_V$125
+  REMOVED PACK _ZZN26_INTERNAL_9_Farm2_cpp_main2ff6ffTimeEibE7tv_stop
+  REMOVED VAR  _ZZN26_INTERNAL_9_Farm2_cpp_main2ff6ffTimeEibE1L_V$12b
+  REMOVED PACK _ZZN26_INTERNAL_9_Farm2_cpp_main2ff6ffTimeEibE1L
+  REMOVED VAR  _ZN26_INTERNAL_9_Farm2_cpp_mainSt19piecewise_constructE_V$211
+  REMOVED PACK _ZN26_INTERNAL_9_Farm2_cpp_mainSt19piecewise_constructE
+  REMOVED VAR  _ZN26_INTERNAL_9_Farm2_cpp_mainSt13allocator_argE_V$212
+  REMOVED PACK _ZN26_INTERNAL_9_Farm2_cpp_mainSt13allocator_argE
+  REMOVED VAR  _ZN26_INTERNAL_9_Farm2_cpp_mainSt6ignoreE_V$231
+  REMOVED PACK _ZN26_INTERNAL_9_Farm2_cpp_mainSt6ignoreE
+  REMOVED VAR  _ZN26_INTERNAL_9_Farm2_cpp_main2ff6FF_EOSE_V$232
+  REMOVED PACK _ZN26_INTERNAL_9_Farm2_cpp_main2ff6FF_EOSE
+  REMOVED VAR  _ZN26_INTERNAL_9_Farm2_cpp_main2ff15FF_EOS_NOFREEZEE_V$233
+  REMOVED PACK _ZN26_INTERNAL_9_Farm2_cpp_main2ff15FF_EOS_NOFREEZEE
+  REMOVED VAR  _ZN26_INTERNAL_9_Farm2_cpp_main2ff8FF_GO_ONE_V$234
+  REMOVED PACK _ZN26_INTERNAL_9_Farm2_cpp_main2ff8FF_GO_ONE
+  REMOVED VAR  _ZN26_INTERNAL_9_Farm2_cpp_main2ff9FF_GO_OUTE_V$235
+  REMOVED PACK _ZN26_INTERNAL_9_Farm2_cpp_main2ff9FF_GO_OUTE
+  REMOVED VAR  _ZN26_INTERNAL_9_Farm2_cpp_main2ff14longxCacheLineE_V$236
+  REMOVED PACK _ZN26_INTERNAL_9_Farm2_cpp_main2ff14longxCacheLineE
+<;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;__sti___ZN26_INTERNAL_9_Farm2_cpp_mainSt8__ioinitE;0>
+BEFORE    __sti___ZN26_INTERNAL_9_Farm2_cpp_mainSt8__ioinitE: E-SE
+<../../mc-fastflow-code/ff/node.hpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main2ff20proxy_thread_routineEPv;0>
+BEFORE    _ZN26_INTERNAL_9_Farm2_cpp_main2ff20proxy_thread_routineEPv: E-SE
+<Farm2.cpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;main;0>
+<../../mc-fastflow-code/ff/node.hpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main2ff20init_thread_affinityEP14pthread_attr_ti;0>
+BEFORE    _ZN26_INTERNAL_9_Farm2_cpp_main2ff20init_thread_affinityEP14pthread_attr_ti: E-SEE-DSE
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main2ff12nextPowerOf2Em;0>
+BEFORE    _ZN26_INTERNAL_9_Farm2_cpp_main2ff12nextPowerOf2Em: E-SE
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main2ff10isPowerOf2Ej;0>
+BEFORE    _ZN26_INTERNAL_9_Farm2_cpp_main2ff10isPowerOf2Ej: E-AR
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval;0>
+BEFORE    _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval: E-SEE-DSEE-AR
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_compareER7timevalS2_;0>
+BEFORE    _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_compareER7timevalS2_: E-AR
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main2ff8diffmsecERK7timevalS3_;0>
+BEFORE    _ZN26_INTERNAL_9_Farm2_cpp_main2ff8diffmsecERK7timevalS3_: E-AR
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz;0>
+BEFORE    _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz: E-SEE-DSE
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main2ff10ticks_waitEy;0>
+BEFORE    _ZN26_INTERNAL_9_Farm2_cpp_main2ff10ticks_waitEy: E-SE
+<../../mc-fastflow-code/ff/spin-lock.hpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE;0>
+BEFORE    _ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE: E-AR
+<Farm2.cpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN6WorkerIiE3svcEPv;0>
+<Farm2.cpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN6WorkerIiED0Ev;0>
+<Farm2.cpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN6WorkerIiED1Ev;0>
+<Farm2.cpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN6WorkerIiEC1Ejj;0>
+<Farm2.cpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN7EmitterIiE3svcEPv;0>
+<Farm2.cpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN7EmitterIiED0Ev;0>
+<Farm2.cpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN7EmitterIiED1Ev;0>
+<Farm2.cpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN7EmitterIiEC1Ejj;0>
+<Farm2.cpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main10printUsageEv;0>
+BEFORE    _ZN26_INTERNAL_9_Farm2_cpp_main10printUsageEv: E-SE
+<../../mc-fastflow-code/ff/mapping_utils.hpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main11ff_numCoresEv;0>
+BEFORE    _ZN26_INTERNAL_9_Farm2_cpp_main11ff_numCoresEv: E-SEE-AR
+<../../mc-fastflow-code/ff/atomic/atomic.h;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main22atomic_long_inc_returnEP10atomic64_t;0>
+BEFORE    _ZN26_INTERNAL_9_Farm2_cpp_main22atomic_long_inc_returnEP10atomic64_t: E-SE
+<../../mc-fastflow-code/ff/atomic/atomic.h;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main15atomic_long_setEP10atomic64_tl;0>
+BEFORE    _ZN26_INTERNAL_9_Farm2_cpp_main15atomic_long_setEP10atomic64_tl: E-SEE-DSEE-AR
+<../../mc-fastflow-code/ff/atomic/atomic.h;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main16atomic_long_readEP10atomic64_t;0>
+BEFORE    _ZN26_INTERNAL_9_Farm2_cpp_main16atomic_long_readEP10atomic64_t: E-SEE-DSEE-AR
+<../../mc-fastflow-code/ff/atomic/atomic-x86_64.h;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main19atomic64_add_returnEmP10atomic64_t;0>
+BEFORE    _ZN26_INTERNAL_9_Farm2_cpp_main19atomic64_add_returnEmP10atomic64_t: E-SEE-DSEE-AR
+<../../mc-fastflow-code/ff/sysdep.h;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv;0>
+BEFORE    _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv: E-SEE-AR
+<../../mc-fastflow-code/ff/sysdep.h;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm;0>
+BEFORE    _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm: E-SE
+<../../mc-fastflow-code/ff/cycle.h;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main8getticksEv;0>
+BEFORE    _ZN26_INTERNAL_9_Farm2_cpp_main8getticksEv: E-SEE-DSEE-AR
+<;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;__sti___ZN26_INTERNAL_9_Farm2_cpp_mainSt8__ioinitE;0>
+AFTER    __sti___ZN26_INTERNAL_9_Farm2_cpp_mainSt8__ioinitE: E-SE
+<../../mc-fastflow-code/ff/node.hpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main2ff20proxy_thread_routineEPv;0>
+AFTER    _ZN26_INTERNAL_9_Farm2_cpp_main2ff20proxy_thread_routineEPv: E-SE
+<Farm2.cpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;main;0>
+<../../mc-fastflow-code/ff/node.hpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main2ff20init_thread_affinityEP14pthread_attr_ti;0>
+AFTER    _ZN26_INTERNAL_9_Farm2_cpp_main2ff20init_thread_affinityEP14pthread_attr_ti: E-SEE-DSE
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main2ff12nextPowerOf2Em;0>
+AFTER    _ZN26_INTERNAL_9_Farm2_cpp_main2ff12nextPowerOf2Em: E-SE
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main2ff10isPowerOf2Ej;0>
+AFTER    _ZN26_INTERNAL_9_Farm2_cpp_main2ff10isPowerOf2Ej: R-NSER-ARE-AR
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval;0>
+AFTER    _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval: R-ARE-SEE-DSEE-AR
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_compareER7timevalS2_;0>
+AFTER    _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_compareER7timevalS2_: R-NSER-ARE-AR
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main2ff8diffmsecERK7timevalS3_;0>
+AFTER    _ZN26_INTERNAL_9_Farm2_cpp_main2ff8diffmsecERK7timevalS3_: R-NSER-ARE-AR
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz;0>
+AFTER    _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz: E-SEE-DSE
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main2ff10ticks_waitEy;0>
+AFTER    _ZN26_INTERNAL_9_Farm2_cpp_main2ff10ticks_waitEy: R-ARE-SEE-AR
+<../../mc-fastflow-code/ff/spin-lock.hpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE;0>
+AFTER    _ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE: R-NSER-ARE-AR
+<Farm2.cpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN6WorkerIiE3svcEPv;0>
+<Farm2.cpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN6WorkerIiED0Ev;0>
+<Farm2.cpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN6WorkerIiED1Ev;0>
+<Farm2.cpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN6WorkerIiEC1Ejj;0>
+<Farm2.cpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN7EmitterIiE3svcEPv;0>
+<Farm2.cpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN7EmitterIiED0Ev;0>
+<Farm2.cpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN7EmitterIiED1Ev;0>
+<Farm2.cpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN7EmitterIiEC1Ejj;0>
+<Farm2.cpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main10printUsageEv;0>
+AFTER    _ZN26_INTERNAL_9_Farm2_cpp_main10printUsageEv: E-SE
+<../../mc-fastflow-code/ff/mapping_utils.hpp;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main11ff_numCoresEv;0>
+AFTER    _ZN26_INTERNAL_9_Farm2_cpp_main11ff_numCoresEv: R-ARE-SEE-AR
+<../../mc-fastflow-code/ff/atomic/atomic.h;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main22atomic_long_inc_returnEP10atomic64_t;0>
+AFTER    _ZN26_INTERNAL_9_Farm2_cpp_main22atomic_long_inc_returnEP10atomic64_t: R-ARE-SEE-AR
+<../../mc-fastflow-code/ff/atomic/atomic.h;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main15atomic_long_setEP10atomic64_tl;0>
+AFTER    _ZN26_INTERNAL_9_Farm2_cpp_main15atomic_long_setEP10atomic64_tl: R-ARE-SEE-DSEE-AR
+<../../mc-fastflow-code/ff/atomic/atomic.h;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main16atomic_long_readEP10atomic64_t;0>
+AFTER    _ZN26_INTERNAL_9_Farm2_cpp_main16atomic_long_readEP10atomic64_t: R-ARE-SEE-DSEE-AR
+<../../mc-fastflow-code/ff/atomic/atomic-x86_64.h;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main19atomic64_add_returnEmP10atomic64_t;0>
+AFTER    _ZN26_INTERNAL_9_Farm2_cpp_main19atomic64_add_returnEmP10atomic64_t: R-ARE-SEE-DSEE-AR
+<../../mc-fastflow-code/ff/sysdep.h;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv;0>
+AFTER    _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv: R-ARE-SEE-AR
+<../../mc-fastflow-code/ff/sysdep.h;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm;0>
+AFTER    _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm: E-SE
+<../../mc-fastflow-code/ff/cycle.h;-1:-1;IPO ROUTINE ATTRIBUTES PROPAGATION;_ZN26_INTERNAL_9_Farm2_cpp_main8getticksEv;0>
+AFTER    _ZN26_INTERNAL_9_Farm2_cpp_main8getticksEv: R-ARE-SEE-DSEE-AR
+<;-1:-1;IPO MODREF;__sti___ZN26_INTERNAL_9_Farm2_cpp_mainSt8__ioinitE;0>
+  CI-MOD(__sti___ZN26_INTERNAL_9_Farm2_cpp_mainSt8__ioinitE):
+<../../mc-fastflow-code/ff/node.hpp;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main2ff20proxy_thread_routineEPv;0>
+  CI-MOD(_ZN26_INTERNAL_9_Farm2_cpp_main2ff20proxy_thread_routineEPv):
+<Farm2.cpp;-1:-1;IPO MODREF;main;0>
+<../../mc-fastflow-code/ff/node.hpp;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main2ff20init_thread_affinityEP14pthread_attr_ti;0>
+  CI-MOD(_ZN26_INTERNAL_9_Farm2_cpp_main2ff20init_thread_affinityEP14pthread_attr_ti):
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main2ff12nextPowerOf2Em;0>
+  CI-MOD(_ZN26_INTERNAL_9_Farm2_cpp_main2ff12nextPowerOf2Em):
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main2ff10isPowerOf2Ej;0>
+  CI-MOD(_ZN26_INTERNAL_9_Farm2_cpp_main2ff10isPowerOf2Ej):
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval;0>
+  CI-MOD(_ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval):
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_compareER7timevalS2_;0>
+  CI-MOD(_ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_compareER7timevalS2_):
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main2ff8diffmsecERK7timevalS3_;0>
+  CI-MOD(_ZN26_INTERNAL_9_Farm2_cpp_main2ff8diffmsecERK7timevalS3_):
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz;0>
+  CI-MOD(_ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz):
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main2ff10ticks_waitEy;0>
+  CI-MOD(_ZN26_INTERNAL_9_Farm2_cpp_main2ff10ticks_waitEy):
+<../../mc-fastflow-code/ff/spin-lock.hpp;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE;0>
+  CI-MOD(_ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE):
+<Farm2.cpp;-1:-1;IPO MODREF;_ZN6WorkerIiE3svcEPv;0>
+<Farm2.cpp;-1:-1;IPO MODREF;_ZN6WorkerIiED0Ev;0>
+<Farm2.cpp;-1:-1;IPO MODREF;_ZN6WorkerIiED1Ev;0>
+<Farm2.cpp;-1:-1;IPO MODREF;_ZN6WorkerIiEC1Ejj;0>
+<Farm2.cpp;-1:-1;IPO MODREF;_ZN7EmitterIiE3svcEPv;0>
+<Farm2.cpp;-1:-1;IPO MODREF;_ZN7EmitterIiED0Ev;0>
+<Farm2.cpp;-1:-1;IPO MODREF;_ZN7EmitterIiED1Ev;0>
+<Farm2.cpp;-1:-1;IPO MODREF;_ZN7EmitterIiEC1Ejj;0>
+<Farm2.cpp;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main10printUsageEv;0>
+  CI-MOD(_ZN26_INTERNAL_9_Farm2_cpp_main10printUsageEv):
+<../../mc-fastflow-code/ff/mapping_utils.hpp;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main11ff_numCoresEv;0>
+  CI-MOD(_ZN26_INTERNAL_9_Farm2_cpp_main11ff_numCoresEv):
+<../../mc-fastflow-code/ff/atomic/atomic.h;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main22atomic_long_inc_returnEP10atomic64_t;0>
+  CI-MOD(_ZN26_INTERNAL_9_Farm2_cpp_main22atomic_long_inc_returnEP10atomic64_t):
+<../../mc-fastflow-code/ff/atomic/atomic.h;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main15atomic_long_setEP10atomic64_tl;0>
+  CI-MOD(_ZN26_INTERNAL_9_Farm2_cpp_main15atomic_long_setEP10atomic64_tl):
+<../../mc-fastflow-code/ff/atomic/atomic.h;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main16atomic_long_readEP10atomic64_t;0>
+  CI-MOD(_ZN26_INTERNAL_9_Farm2_cpp_main16atomic_long_readEP10atomic64_t):
+<../../mc-fastflow-code/ff/atomic/atomic-x86_64.h;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main19atomic64_add_returnEmP10atomic64_t;0>
+  CI-MOD(_ZN26_INTERNAL_9_Farm2_cpp_main19atomic64_add_returnEmP10atomic64_t):
+<../../mc-fastflow-code/ff/sysdep.h;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv;0>
+  CI-MOD(_ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv):
+<../../mc-fastflow-code/ff/sysdep.h;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm;0>
+  CI-MOD(_ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm):
+<../../mc-fastflow-code/ff/cycle.h;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main8getticksEv;0>
+  CI-MOD(_ZN26_INTERNAL_9_Farm2_cpp_main8getticksEv):
+<;-1:-1;IPO MODREF;__sti___ZN26_INTERNAL_9_Farm2_cpp_mainSt8__ioinitE;0>
+  CI-REF(__sti___ZN26_INTERNAL_9_Farm2_cpp_mainSt8__ioinitE):
+<../../mc-fastflow-code/ff/node.hpp;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main2ff20proxy_thread_routineEPv;0>
+  CI-REF(_ZN26_INTERNAL_9_Farm2_cpp_main2ff20proxy_thread_routineEPv):
+<Farm2.cpp;-1:-1;IPO MODREF;main;0>
+<../../mc-fastflow-code/ff/node.hpp;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main2ff20init_thread_affinityEP14pthread_attr_ti;0>
+  CI-REF(_ZN26_INTERNAL_9_Farm2_cpp_main2ff20init_thread_affinityEP14pthread_attr_ti):
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main2ff12nextPowerOf2Em;0>
+  CI-REF(_ZN26_INTERNAL_9_Farm2_cpp_main2ff12nextPowerOf2Em):
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main2ff10isPowerOf2Ej;0>
+  CI-REF(_ZN26_INTERNAL_9_Farm2_cpp_main2ff10isPowerOf2Ej):
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval;0>
+  CI-REF(_ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval):
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_compareER7timevalS2_;0>
+  CI-REF(_ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_compareER7timevalS2_):
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main2ff8diffmsecERK7timevalS3_;0>
+  CI-REF(_ZN26_INTERNAL_9_Farm2_cpp_main2ff8diffmsecERK7timevalS3_):
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz;0>
+  CI-REF(_ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz):
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main2ff10ticks_waitEy;0>
+  CI-REF(_ZN26_INTERNAL_9_Farm2_cpp_main2ff10ticks_waitEy):
+<../../mc-fastflow-code/ff/spin-lock.hpp;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE;0>
+  CI-REF(_ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE):
+<Farm2.cpp;-1:-1;IPO MODREF;_ZN6WorkerIiE3svcEPv;0>
+<Farm2.cpp;-1:-1;IPO MODREF;_ZN6WorkerIiED0Ev;0>
+<Farm2.cpp;-1:-1;IPO MODREF;_ZN6WorkerIiED1Ev;0>
+<Farm2.cpp;-1:-1;IPO MODREF;_ZN6WorkerIiEC1Ejj;0>
+<Farm2.cpp;-1:-1;IPO MODREF;_ZN7EmitterIiE3svcEPv;0>
+<Farm2.cpp;-1:-1;IPO MODREF;_ZN7EmitterIiED0Ev;0>
+<Farm2.cpp;-1:-1;IPO MODREF;_ZN7EmitterIiED1Ev;0>
+<Farm2.cpp;-1:-1;IPO MODREF;_ZN7EmitterIiEC1Ejj;0>
+<Farm2.cpp;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main10printUsageEv;0>
+  CI-REF(_ZN26_INTERNAL_9_Farm2_cpp_main10printUsageEv):
+<../../mc-fastflow-code/ff/mapping_utils.hpp;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main11ff_numCoresEv;0>
+  CI-REF(_ZN26_INTERNAL_9_Farm2_cpp_main11ff_numCoresEv):
+<../../mc-fastflow-code/ff/atomic/atomic.h;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main22atomic_long_inc_returnEP10atomic64_t;0>
+  CI-REF(_ZN26_INTERNAL_9_Farm2_cpp_main22atomic_long_inc_returnEP10atomic64_t):
+<../../mc-fastflow-code/ff/atomic/atomic.h;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main15atomic_long_setEP10atomic64_tl;0>
+  CI-REF(_ZN26_INTERNAL_9_Farm2_cpp_main15atomic_long_setEP10atomic64_tl):
+<../../mc-fastflow-code/ff/atomic/atomic.h;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main16atomic_long_readEP10atomic64_t;0>
+  CI-REF(_ZN26_INTERNAL_9_Farm2_cpp_main16atomic_long_readEP10atomic64_t):
+<../../mc-fastflow-code/ff/atomic/atomic-x86_64.h;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main19atomic64_add_returnEmP10atomic64_t;0>
+  CI-REF(_ZN26_INTERNAL_9_Farm2_cpp_main19atomic64_add_returnEmP10atomic64_t):
+<../../mc-fastflow-code/ff/sysdep.h;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv;0>
+  CI-REF(_ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv):
+<../../mc-fastflow-code/ff/sysdep.h;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm;0>
+  CI-REF(_ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm):
+<../../mc-fastflow-code/ff/cycle.h;-1:-1;IPO MODREF;_ZN26_INTERNAL_9_Farm2_cpp_main8getticksEv;0>
+  CI-REF(_ZN26_INTERNAL_9_Farm2_cpp_main8getticksEv):
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO ALIGN;_ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz;0>
+ In _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz: ALIGN(04,00) for P64 formal(12)
+<../../mc-fastflow-code/ff/atomic/atomic.h;-1:-1;IPO ALIGN;_ZN26_INTERNAL_9_Farm2_cpp_main15atomic_long_setEP10atomic64_tl;0>
+ In _ZN26_INTERNAL_9_Farm2_cpp_main15atomic_long_setEP10atomic64_tl: ALIGN(128,00) for SI64 formal(818)
+<../../mc-fastflow-code/ff/atomic/atomic-x86_64.h;-1:-1;IPO ALIGN;_ZN26_INTERNAL_9_Farm2_cpp_main19atomic64_add_returnEmP10atomic64_t;0>
+ In _ZN26_INTERNAL_9_Farm2_cpp_main19atomic64_add_returnEmP10atomic64_t: ALIGN(128,01) for I64 formal(820)
+<Farm2.cpp;113:156;IPO INLINING;main;0>
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(2380) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4732) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4727) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4725) (isz = 2) (sz = 7 (4+3))
+                -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4723) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(2377) (isz = 2) (sz = 7 (4+3))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval(2153) (isz = 2) (sz = 7 (4+3))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval(2152) (isz = 2) (sz = 7 (4+3))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval(2151) (isz = 2) (sz = 7 (4+3))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval(2150) (isz = 2) (sz = 7 (4+3))
+    -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+    -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+    -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+    -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+      -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval(2167) (isz = 2) (sz = 7 (4+3))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval(2166) (isz = 2) (sz = 7 (4+3))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval(2165) (isz = 2) (sz = 7 (4+3))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval(2164) (isz = 2) (sz = 7 (4+3))
+      -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main11ff_numCoresEv(3288) (isz = 23) (sz = 29 (10+19))
+      -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+      -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff10isPowerOf2Ej(3287) (isz = 9) (sz = 16 (8+8))
+      -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12nextPowerOf2Em(3285) (isz = 36) (sz = 43 (20+23))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff10isPowerOf2Ej(3286) (isz = 9) (sz = 16 (8+8))
+  -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main10printUsageEv(1025) (isz = 11) (sz = 14 (4+10))
+  -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main10printUsageEv(1026) (isz = 11) (sz = 14 (4+10))
+<Farm2.cpp;113:156;IPO FORWARD SUBSTITUTION;main;0>
+<Farm2.cpp;-1:-1;hlo;main;0>
+<Farm2.cpp;-1:-1;hpo_vectorization;main;0>
+Farm2.cpp(120:3-120:3):VEC:main:  vectorization support: call to function printf cannot be vectorized
+Farm2.cpp(119): (col. 2) remark: loop was not vectorized: existence of vector dependence.
+Farm2.cpp(119:2-119:2):VEC:main:  loop was not vectorized: existence of vector dependence
+Farm2.cpp(133:32-133:32):VEC:main:  vectorization support: call to function _Znam cannot be vectorized
+Farm2.cpp(134:32-134:32):VEC:main:  vectorization support: call to function _Znam cannot be vectorized
+Farm2.cpp(132): (col. 3) remark: loop was not vectorized: existence of vector dependence.
+Farm2.cpp(132:3-132:3):VEC:main:  loop was not vectorized: existence of vector dependence
+Farm2.cpp(129): (col. 2) remark: loop was not vectorized: not inner loop.
+Farm2.cpp(129:2-129:2):VEC:main:  loop was not vectorized: not inner loop
+Farm2.cpp(140:76-140:76):VEC:main:  vectorization support: call to function _Znam cannot be vectorized
+Farm2.cpp(140): (col. 3) remark: loop was not vectorized: existence of vector dependence.
+Farm2.cpp(140:3-140:3):VEC:main:  loop was not vectorized: existence of vector dependence
+Farm2.cpp(138): (col. 2) remark: loop was not vectorized: not inner loop.
+Farm2.cpp(138:2-138:2):VEC:main:  loop was not vectorized: not inner loop
+Farm2.cpp(144): (col. 6) remark: loop was not vectorized: unsupported loop structure.
+Farm2.cpp(144:6-144:6):VEC:main:  loop was not vectorized: unsupported loop structure
+Farm2.cpp(144): (col. 6) remark: loop was not vectorized: existence of vector dependence.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between  line 144 and len line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between len line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between  line 144 and cap line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between cap line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between  line 144 and chunk line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between chunk line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between  line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between  line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between  line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between first line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between  line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between first line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between  line 144 and cap line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between cap line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between  line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between  line 144 and len line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between len line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between len line 144 and len line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between len line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between  line 144 and len line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between  line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between cap line 144 and cap line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between cap line 144 and cap line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between cap line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between  line 144 and cap line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between first line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between  line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between first line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between  line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between  line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between  line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between chunk line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between  line 144 and chunk line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between cap line 144 and cap line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between cap line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between  line 144 and cap line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between len line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between  line 144 and len line 144.
+Farm2.cpp(144): (col. 6) remark: loop was not vectorized: existence of vector dependence.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between  line 144 and len line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between len line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between  line 144 and cap line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between cap line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between  line 144 and chunk line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between chunk line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between  line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between  line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between  line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between first line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between  line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between first line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between  line 144 and cap line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between cap line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between  line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between  line 144 and len line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between len line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between len line 144 and len line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between len line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between  line 144 and len line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between  line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between cap line 144 and cap line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between cap line 144 and cap line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between cap line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between  line 144 and cap line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between first line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between  line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between first line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed OUTPUT dependence between  line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between  line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between first line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between  line 144 and first line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between chunk line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between  line 144 and chunk line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between cap line 144 and cap line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between cap line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between  line 144 and cap line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed ANTI dependence between len line 144 and  line 144.
+Farm2.cpp(144): (col. 6) remark: vector dependence: assumed FLOW dependence between  line 144 and len line 144.
+Farm2.cpp(150): (col. 2) remark: loop was not vectorized: unsupported loop structure.
+Farm2.cpp(150:2-150:2):VEC:main:  loop was not vectorized: unsupported loop structure
+Farm2.cpp(152): (col. 8) remark: loop was not vectorized: unsupported loop structure.
+Farm2.cpp(152:8-152:8):VEC:main:  loop was not vectorized: unsupported loop structure
+Farm2.cpp(156): (col. 2) remark: loop was not vectorized: nonstandard loop is not a vectorization candidate.
+Farm2.cpp(156:2-156:2):VEC:main:  loop was not vectorized: nonstandard loop is not a vectorization candidate
+Farm2.cpp(156): (col. 2) remark: loop was not vectorized: nonstandard loop is not a vectorization candidate.
+Farm2.cpp(156): (col. 2) remark: loop was not vectorized: nonstandard loop is not a vectorization candidate.
+Farm2.cpp(156): (col. 2) remark: loop was not vectorized: nonstandard loop is not a vectorization candidate.
+<Farm2.cpp;152:152;hlo_scalar_replacement;in main;0>
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7svectorIiED1Ev;0>
+  -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff10isPowerOf2Ej(1075) (isz = 9) (sz = 16 (8+8))
+  -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12nextPowerOf2Em(1804) (isz = 36) (sz = 43 (20+23))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff10isPowerOf2Ej(1805) (isz = 9) (sz = 16 (8+8))
+  -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+  -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff12threadMapper14setMappingListEPKc;0>
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4355) (isz = 2) (sz = 7 (4+3))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4350) (isz = 2) (sz = 7 (4+3))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4348) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4346) (isz = 2) (sz = 7 (4+3))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(2324) (isz = 2) (sz = 7 (4+3))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4326) (isz = 2) (sz = 7 (4+3))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4321) (isz = 2) (sz = 7 (4+3))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4319) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4317) (isz = 2) (sz = 7 (4+3))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(2321) (isz = 2) (sz = 7 (4+3))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_nodeD2Ev;0>
+  -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(719) (isz = 2) (sz = 7 (4+3))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(720) (isz = 2) (sz = 7 (4+3))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff8dynqueueD1Ev;0>
+    -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm(3262) (isz = 6) (sz = 16 (5+11))
+        -> DELETED: _ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE(491) (isz = 0) (sz = 3 (2+1))
+        -> DELETED: _ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE(491) (isz = 0) (sz = 3 (2+1))
+            -> DELETED: _ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE(491) (isz = 0) (sz = 3 (2+1))
+            -> DELETED: _ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE(491) (isz = 0) (sz = 3 (2+1))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm(4217) (isz = 6) (sz = 16 (5+11))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm(4206) (isz = 6) (sz = 16 (5+11))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm(4203) (isz = 6) (sz = 16 (5+11))
+  -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+        -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+        -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+        -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval(2822) (isz = 2) (sz = 7 (4+3))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval(2821) (isz = 2) (sz = 7 (4+3))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval(2820) (isz = 2) (sz = 7 (4+3))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval(2819) (isz = 2) (sz = 7 (4+3))
+        -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+        -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+        -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval(2833) (isz = 2) (sz = 7 (4+3))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval(2832) (isz = 2) (sz = 7 (4+3))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval(2831) (isz = 2) (sz = 7 (4+3))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval(2830) (isz = 2) (sz = 7 (4+3))
+      -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval(2143) (isz = 2) (sz = 7 (4+3))
+      -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval(2142) (isz = 2) (sz = 7 (4+3))
+      -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval(2141) (isz = 2) (sz = 7 (4+3))
+      -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval(2140) (isz = 2) (sz = 7 (4+3))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_farmINS_15ff_loadbalancerENS_11ff_gathererEEC1Ebiibib;0>
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7svectorIPNS_7ff_nodeEED1Ev;0>
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7svectorIbED1Ev;0>
+      -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(2743) (isz = 2) (sz = 7 (4+3))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(716) (isz = 2) (sz = 7 (4+3))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(717) (isz = 2) (sz = 7 (4+3))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(718) (isz = 2) (sz = 7 (4+3))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff10BufferPoolD1Ev;0>
+<Farm2.cpp;45:45;IPO INLINING;_ZN7EmitterIiED1Ev;0>
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4529) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4524) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4522) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4520) (isz = 2) (sz = 7 (4+3))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(2352) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4500) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4495) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4493) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4491) (isz = 2) (sz = 7 (4+3))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(2349) (isz = 2) (sz = 7 (4+3))
+<Farm2.cpp;45:45;IPO FORWARD SUBSTITUTION;_ZN7EmitterIiED1Ev;0>
+<Farm2.cpp;-1:-1;hlo;_ZN7EmitterIiED1Ev;0>
+<Farm2.cpp;-1:-1;hpo_vectorization;_ZN7EmitterIiED1Ev;0>
+Farm2.cpp(45): (col. 12) remark: routine skipped: no vectorization candidates.
+Farm2.cpp(45:12-45:12):VEC:_ZN7EmitterIiED1Ev:  routine skipped: no vectorization candidates
+<../../mc-fastflow-code/ff/cycle.h;-1:-1;IPO DEAD STATIC FUNCTION ELIMINATION;_ZN26_INTERNAL_9_Farm2_cpp_main8getticksEv;0>
+  (_ZN26_INTERNAL_9_Farm2_cpp_main8getticksEv)
+<../../mc-fastflow-code/ff/sysdep.h;-1:-1;IPO DEAD STATIC FUNCTION ELIMINATION;_ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm;0>
+  (_ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm)
+<../../mc-fastflow-code/ff/sysdep.h;-1:-1;IPO DEAD STATIC FUNCTION ELIMINATION;_ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv;0>
+  (_ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv)
+<../../mc-fastflow-code/ff/atomic/atomic.h;-1:-1;IPO DEAD STATIC FUNCTION ELIMINATION;_ZN26_INTERNAL_9_Farm2_cpp_main16atomic_long_readEP10atomic64_t;0>
+  (_ZN26_INTERNAL_9_Farm2_cpp_main16atomic_long_readEP10atomic64_t)
+<../../mc-fastflow-code/ff/atomic/atomic.h;-1:-1;IPO DEAD STATIC FUNCTION ELIMINATION;_ZN26_INTERNAL_9_Farm2_cpp_main15atomic_long_setEP10atomic64_tl;0>
+  (_ZN26_INTERNAL_9_Farm2_cpp_main15atomic_long_setEP10atomic64_tl)
+<../../mc-fastflow-code/ff/atomic/atomic.h;-1:-1;IPO DEAD STATIC FUNCTION ELIMINATION;_ZN26_INTERNAL_9_Farm2_cpp_main22atomic_long_inc_returnEP10atomic64_t;0>
+  (_ZN26_INTERNAL_9_Farm2_cpp_main22atomic_long_inc_returnEP10atomic64_t)
+<../../mc-fastflow-code/ff/atomic/atomic-x86_64.h;-1:-1;IPO DEAD STATIC FUNCTION ELIMINATION;_ZN26_INTERNAL_9_Farm2_cpp_main19atomic64_add_returnEmP10atomic64_t;0>
+  (_ZN26_INTERNAL_9_Farm2_cpp_main19atomic64_add_returnEmP10atomic64_t)
+<../../mc-fastflow-code/ff/mapping_utils.hpp;-1:-1;IPO DEAD STATIC FUNCTION ELIMINATION;_ZN26_INTERNAL_9_Farm2_cpp_main11ff_numCoresEv;0>
+  (_ZN26_INTERNAL_9_Farm2_cpp_main11ff_numCoresEv)
+<Farm2.cpp;-1:-1;IPO DEAD STATIC FUNCTION ELIMINATION;_ZN26_INTERNAL_9_Farm2_cpp_main10printUsageEv;0>
+  (_ZN26_INTERNAL_9_Farm2_cpp_main10printUsageEv)
+<Farm2.cpp;-1:-1;IPO DEAD STATIC FUNCTION ELIMINATION;_ZN7EmitterIiEC1Ejj;0>
+<Farm2.cpp;45:45;IPO INLINING;_ZN7EmitterIiED0Ev;0>
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4790) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4785) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4783) (isz = 2) (sz = 7 (4+3))
+                -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4781) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(2387) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4761) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4756) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4754) (isz = 2) (sz = 7 (4+3))
+                -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4752) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(2384) (isz = 2) (sz = 7 (4+3))
+<Farm2.cpp;45:45;IPO FORWARD SUBSTITUTION;_ZN7EmitterIiED0Ev;0>
+<Farm2.cpp;-1:-1;hlo;_ZN7EmitterIiED0Ev;0>
+<Farm2.cpp;-1:-1;hpo_vectorization;_ZN7EmitterIiED0Ev;0>
+Farm2.cpp(45): (col. 2) remark: routine skipped: no vectorization candidates.
+Farm2.cpp(45:2-45:2):VEC:_ZN7EmitterIiED0Ev:  routine skipped: no vectorization candidates
+<Farm2.cpp;46:64;IPO INLINING;_ZN7EmitterIiE3svcEPv;0>
+<Farm2.cpp;-1:-1;hlo;_ZN7EmitterIiE3svcEPv;0>
+<Farm2.cpp;-1:-1;hpo_vectorization;_ZN7EmitterIiE3svcEPv;0>
+Farm2.cpp(47): (col. 3) remark: loop was not vectorized: unsupported loop structure.
+Farm2.cpp(47:3-47:3):VEC:_ZN7EmitterIiE3svcEPv:  loop was not vectorized: unsupported loop structure
+<Farm2.cpp;-1:-1;IPO DEAD STATIC FUNCTION ELIMINATION;_ZN6WorkerIiEC1Ejj;0>
+<Farm2.cpp;76:76;IPO INLINING;_ZN6WorkerIiED1Ev;0>
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4471) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4466) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4464) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4462) (isz = 2) (sz = 7 (4+3))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(2345) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4442) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4437) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4435) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4433) (isz = 2) (sz = 7 (4+3))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(2342) (isz = 2) (sz = 7 (4+3))
+<Farm2.cpp;76:76;IPO FORWARD SUBSTITUTION;_ZN6WorkerIiED1Ev;0>
+<Farm2.cpp;-1:-1;hlo;_ZN6WorkerIiED1Ev;0>
+<Farm2.cpp;-1:-1;hpo_vectorization;_ZN6WorkerIiED1Ev;0>
+Farm2.cpp(76): (col. 11) remark: routine skipped: no vectorization candidates.
+Farm2.cpp(76:11-76:11):VEC:_ZN6WorkerIiED1Ev:  routine skipped: no vectorization candidates
+<Farm2.cpp;76:76;IPO INLINING;_ZN6WorkerIiED0Ev;0>
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4703) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4698) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4696) (isz = 2) (sz = 7 (4+3))
+                -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4694) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(2373) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4674) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4669) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4667) (isz = 2) (sz = 7 (4+3))
+                -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4665) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(2370) (isz = 2) (sz = 7 (4+3))
+<Farm2.cpp;76:76;IPO FORWARD SUBSTITUTION;_ZN6WorkerIiED0Ev;0>
+<Farm2.cpp;-1:-1;hlo;_ZN6WorkerIiED0Ev;0>
+<Farm2.cpp;-1:-1;hpo_vectorization;_ZN6WorkerIiED0Ev;0>
+Farm2.cpp(76): (col. 2) remark: routine skipped: no vectorization candidates.
+Farm2.cpp(76:2-76:2):VEC:_ZN6WorkerIiED0Ev:  routine skipped: no vectorization candidates
+<Farm2.cpp;77:105;IPO INLINING;_ZN6WorkerIiE3svcEPv;0>
+<Farm2.cpp;-1:-1;hlo;_ZN6WorkerIiE3svcEPv;0>
+<Farm2.cpp;-1:-1;hpo_vectorization;_ZN6WorkerIiE3svcEPv;0>
+Farm2.cpp(97): (col. 5) remark: loop was not vectorized: unsupported loop structure.
+Farm2.cpp(97:5-97:5):VEC:_ZN6WorkerIiE3svcEPv:  loop was not vectorized: unsupported loop structure
+Farm2.cpp(97): (col. 5) warning #13379: loop was not vectorized with "simd"
+Farm2.cpp(94): (col. 4) remark: loop was not vectorized: unsupported loop structure.
+Farm2.cpp(94:4-94:4):VEC:_ZN6WorkerIiE3svcEPv:  loop was not vectorized: unsupported loop structure
+Farm2.cpp(93): (col. 3) remark: loop was not vectorized: unsupported loop structure.
+Farm2.cpp(93:3-93:3):VEC:_ZN6WorkerIiE3svcEPv:  loop was not vectorized: unsupported loop structure
+<Farm2.cpp;97:97;hlo_scalar_replacement;in _ZN6WorkerIiE3svcEPv;0>
+<Farm2.cpp;-1:-1;hlo;_ZNSt11_Deque_baseIPN2ff7ff_nodeESaIS2_EE16_M_destroy_nodesEPPS2_S6_;0>
+<Farm2.cpp;-1:-1;hlo;_ZN2ff12threadMapperD1Ev;0>
+  -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main16atomic_long_readEP10atomic64_t(738) (isz = 1) (sz = 8 (4+4))
+  -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main15atomic_long_setEP10atomic64_tl(827) (isz = 2) (sz = 9 (5+4))
+  -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main22atomic_long_inc_returnEP10atomic64_t(859) (isz = 10) (sz = 17 (5+12))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main19atomic64_add_returnEmP10atomic64_t(1106) (isz = 7) (sz = 16 (4+12))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff11spinBarrier9doBarrierEm;0>
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm(2871) (isz = 6) (sz = 16 (5+11))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_node4pushEPv;0>
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(3455) (isz = 2) (sz = 7 (4+3))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_node3popEPPv;0>
+      -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm(2684) (isz = 6) (sz = 16 (5+11))
+        -> DELETED: _ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE(491) (isz = 0) (sz = 3 (2+1))
+        -> DELETED: _ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE(491) (isz = 0) (sz = 3 (2+1))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm(4171) (isz = 6) (sz = 16 (5+11))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm(4160) (isz = 6) (sz = 16 (5+11))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm(4157) (isz = 6) (sz = 16 (5+11))
+    -> DELETED: _ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE(491) (isz = 0) (sz = 3 (2+1))
+    -> DELETED: _ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE(491) (isz = 0) (sz = 3 (2+1))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_node19create_input_bufferEib;0>
+      -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm(2672) (isz = 6) (sz = 16 (5+11))
+        -> DELETED: _ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE(491) (isz = 0) (sz = 3 (2+1))
+        -> DELETED: _ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE(491) (isz = 0) (sz = 3 (2+1))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm(4125) (isz = 6) (sz = 16 (5+11))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm(4114) (isz = 6) (sz = 16 (5+11))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm(4111) (isz = 6) (sz = 16 (5+11))
+    -> DELETED: _ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE(491) (isz = 0) (sz = 3 (2+1))
+    -> DELETED: _ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE(491) (isz = 0) (sz = 3 (2+1))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_node20create_output_bufferEib;0>
+      -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff20init_thread_affinityEP14pthread_attr_ti(2721) (isz = 479) (sz = 489 (176+313))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main11ff_numCoresEv(3358) (isz = 23) (sz = 29 (10+19))
+            -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff10isPowerOf2Ej(3357) (isz = 9) (sz = 16 (8+8))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12nextPowerOf2Em(3355) (isz = 36) (sz = 43 (20+23))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff10isPowerOf2Ej(3356) (isz = 9) (sz = 16 (8+8))
+        -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+        -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+        -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+    IN: 553  55  ( (SI32) t11 ) = pthread_create{ic=PTHREAD_CREATE}( (I64 *)&this_20092_V$48a.0.222.2253->th_handle_V$5c, (pthread_attr_t_R_V$5 *)&this_20092_V$48a.0.222.2253->attr_V$60, (void *)raddr(_ZN26_INTERNAL_9_Farm2_cpp_main2ff20proxy_thread_routineEPv)(P64), (void *)this_20092_V$48a.0.222.2253 );  [UNIX_ABI]
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_node3runEb;0>
+      -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff20init_thread_affinityEP14pthread_attr_ti(2711) (isz = 479) (sz = 489 (176+313))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main11ff_numCoresEv(3330) (isz = 23) (sz = 29 (10+19))
+            -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff10isPowerOf2Ej(3329) (isz = 9) (sz = 16 (8+8))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12nextPowerOf2Em(3327) (isz = 36) (sz = 43 (20+23))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff10isPowerOf2Ej(3328) (isz = 9) (sz = 16 (8+8))
+        -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+        -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+        -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+    IN: 568  56  ( (SI32) t11 ) = pthread_create{ic=PTHREAD_CREATE}( (I64 *)&this_20092_V$48a.0.222.2247->th_handle_V$5c, (pthread_attr_t_R_V$5 *)&this_20092_V$48a.0.222.2247->attr_V$60, (void *)raddr(_ZN26_INTERNAL_9_Farm2_cpp_main2ff20proxy_thread_routineEPv)(P64), (void *)this_20092_V$48a.0.222.2247 );  [UNIX_ABI]
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_node14freeze_and_runEb;0>
+  -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff8diffmsecERK7timevalS3_(1474) (isz = 18) (sz = 27 (7+20))
+  -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff8diffmsecERK7timevalS3_(1473) (isz = 18) (sz = 27 (7+20))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm(2857) (isz = 6) (sz = 16 (5+11))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_node3putEPv;0>
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(3439) (isz = 2) (sz = 7 (4+3))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_node3getEPPv;0>
+  -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff10ticks_waitEy(1497) (isz = 20) (sz = 27 (9+18))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main8getticksEv(1499) (isz = 4) (sz = 9 (3+6))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main8getticksEv(1498) (isz = 4) (sz = 9 (3+6))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_node12losetime_outEv;0>
+  -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff10ticks_waitEy(1494) (isz = 20) (sz = 27 (9+18))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main8getticksEv(1496) (isz = 4) (sz = 9 (3+6))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main8getticksEv(1495) (isz = 4) (sz = 9 (3+6))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_node11losetime_inEv;0>
+  -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff10ticks_waitEy(1491) (isz = 20) (sz = 27 (9+18))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main8getticksEv(1493) (isz = 4) (sz = 9 (3+6))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main8getticksEv(1492) (isz = 4) (sz = 9 (3+6))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_node11ff_send_outEPvjj;0>
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(1827) (isz = 2) (sz = 7 (4+3))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(1831) (isz = 2) (sz = 7 (4+3))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_node5resetEv;0>
+      -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(1209) (isz = 2) (sz = 7 (4+3))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4268) (isz = 2) (sz = 7 (4+3))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4263) (isz = 2) (sz = 7 (4+3))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4261) (isz = 2) (sz = 7 (4+3))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4259) (isz = 2) (sz = 7 (4+3))
+      -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(1212) (isz = 2) (sz = 7 (4+3))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4297) (isz = 2) (sz = 7 (4+3))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4292) (isz = 2) (sz = 7 (4+3))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4290) (isz = 2) (sz = 7 (4+3))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4288) (isz = 2) (sz = 7 (4+3))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_nodeD1Ev;0>
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4413) (isz = 2) (sz = 7 (4+3))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4408) (isz = 2) (sz = 7 (4+3))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4406) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4404) (isz = 2) (sz = 7 (4+3))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(2331) (isz = 2) (sz = 7 (4+3))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4384) (isz = 2) (sz = 7 (4+3))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4379) (isz = 2) (sz = 7 (4+3))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4377) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4375) (isz = 2) (sz = 7 (4+3))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(2328) (isz = 2) (sz = 7 (4+3))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_nodeD0Ev;0>
+  -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff8diffmsecERK7timevalS3_(1472) (isz = 18) (sz = 27 (7+20))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_node8thWorker3svcEPv;0>
+    -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_node8thWorker4waitEv;0>
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_node8thWorker13wait_freezingEv;0>
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4587) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4582) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4580) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4578) (isz = 2) (sz = 7 (4+3))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(2359) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4558) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4553) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4551) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4549) (isz = 2) (sz = 7 (4+3))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(2356) (isz = 2) (sz = 7 (4+3))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff13ff_buffernodeD1Ev;0>
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4645) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4640) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4638) (isz = 2) (sz = 7 (4+3))
+                -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4636) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(2366) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4616) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4611) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4609) (isz = 2) (sz = 7 (4+3))
+                -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4607) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(2363) (isz = 2) (sz = 7 (4+3))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff13ff_buffernodeD0Ev;0>
+  -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff10ticks_waitEy(1488) (isz = 20) (sz = 27 (9+18))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main8getticksEv(1490) (isz = 4) (sz = 9 (3+6))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main8getticksEv(1489) (isz = 4) (sz = 9 (3+6))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff15ff_loadbalancer12losetime_outEv;0>
+  -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff10ticks_waitEy(1485) (isz = 20) (sz = 27 (9+18))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main8getticksEv(1487) (isz = 4) (sz = 9 (3+6))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main8getticksEv(1486) (isz = 4) (sz = 9 (3+6))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff15ff_loadbalancer11losetime_inEv;0>
+<Farm2.cpp;-1:-1;hlo;_ZN2ff15ff_loadbalancer13schedule_taskEPvjj;0>
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(3423) (isz = 2) (sz = 7 (4+3))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff15ff_loadbalancer12collect_taskEPPvRSt5dequeIPNS_7ff_nodeESaIS5_EERSt15_Deque_iteratorIS5_RS5_PS5_E;0>
+<Farm2.cpp;-1:-1;hlo;_ZN2ff15ff_loadbalancerD1Ev;0>
+<Farm2.cpp;-1:-1;hlo;_ZN2ff15ff_loadbalancerD0Ev;0>
+  -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff8diffmsecERK7timevalS3_(1471) (isz = 18) (sz = 27 (7+20))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff15ff_loadbalancer3svcEPv;0>
+      -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(1224) (isz = 2) (sz = 7 (4+3))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff16uSWSR_Ptr_Buffer3popEPPv;0>
+<Farm2.cpp;-1:-1;hlo;_ZNSt5dequeIPN2ff7ff_nodeESaIS2_EE5eraseESt15_Deque_iteratorIS2_RS2_PS2_E;0>
+<Farm2.cpp;-1:-1;hlo;_ZN2ff15ff_loadbalancer8push_eosEb;0>
+<Farm2.cpp;-1:-1;hlo;_ZNSt11_Deque_baseIPN2ff7ff_nodeESaIS2_EED2Ev;0>
+<Farm2.cpp;-1:-1;hlo;_ZNSt5dequeIPN2ff7ff_nodeESaIS2_EED1Ev;0>
+  -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+  -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+  -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff20init_thread_affinityEP14pthread_attr_ti(2706) (isz = 479) (sz = 489 (176+313))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main11ff_numCoresEv(3316) (isz = 23) (sz = 29 (10+19))
+          -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff10isPowerOf2Ej(3315) (isz = 9) (sz = 16 (8+8))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12nextPowerOf2Em(3313) (isz = 36) (sz = 43 (20+23))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff10isPowerOf2Ej(3314) (isz = 9) (sz = 16 (8+8))
+    IN: 808 142  ( (SI32) t18 ) = pthread_create{ic=PTHREAD_CREATE}( (I64 *)&this_20092_V$48a.0.222.2244->th_handle_V$5c, (pthread_attr_t_R_V$5 *)&this_20092_V$48a.0.222.2244->attr_V$60, (void *)raddr(_ZN26_INTERNAL_9_Farm2_cpp_main2ff20proxy_thread_routineEPv)(P64), (void *)this_20092_V$48a.0.222.2244 );  [UNIX_ABI]
+<Farm2.cpp;-1:-1;hlo;_ZN2ff15ff_loadbalancer3runEb;0>
+  -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+  -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+    -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff15ff_loadbalancer4waitEv;0>
+  -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+  -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff15ff_loadbalancer13wait_freezingEv;0>
+<Farm2.cpp;-1:-1;hlo;_ZN2ff15ff_loadbalancer4thawEbl;0>
+  -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff8diffmsecERK7timevalS3_(1470) (isz = 18) (sz = 27 (7+20))
+  -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff8diffmsecERK7timevalS3_(1469) (isz = 18) (sz = 27 (7+20))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff11ff_gatherer12selectworkerEv;0>
+  -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff10ticks_waitEy(1482) (isz = 20) (sz = 27 (9+18))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main8getticksEv(1484) (isz = 4) (sz = 9 (3+6))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main8getticksEv(1483) (isz = 4) (sz = 9 (3+6))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff11ff_gatherer12losetime_outEv;0>
+  -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff10ticks_waitEy(1479) (isz = 20) (sz = 27 (9+18))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main8getticksEv(1481) (isz = 4) (sz = 9 (3+6))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main8getticksEv(1480) (isz = 4) (sz = 9 (3+6))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff11ff_gatherer11losetime_inEv;0>
+<Farm2.cpp;-1:-1;hlo;_ZN2ff11ff_gatherer11gather_taskEPPv;0>
+<Farm2.cpp;-1:-1;hlo;_ZN2ff11ff_gathererD1Ev;0>
+<Farm2.cpp;-1:-1;hlo;_ZN2ff11ff_gathererD0Ev;0>
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm(2899) (isz = 6) (sz = 16 (5+11))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm(2885) (isz = 6) (sz = 16 (5+11))
+  -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff8diffmsecERK7timevalS3_(1468) (isz = 18) (sz = 27 (7+20))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm(2969) (isz = 6) (sz = 16 (5+11))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm(2927) (isz = 6) (sz = 16 (5+11))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff11ff_gatherer3svcEPv;0>
+<Farm2.cpp;-1:-1;hlo;_ZN2ff11ff_gatherer10all_gatherEPvPS1_;0>
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7svectorImED1Ev;0>
+  -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff8diffmsecERK7timevalS3_(1467) (isz = 18) (sz = 27 (7+20))
+  -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff8diffmsecERK7timevalS3_(1466) (isz = 18) (sz = 27 (7+20))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_farmINS_15ff_loadbalancerENS_11ff_gathererEE11cardinalityEPNS_11spinBarrierE;0>
+      -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+      -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_farmINS_15ff_loadbalancerENS_11ff_gathererEE14freeze_and_runEb;0>
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4819) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4814) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4812) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4810) (isz = 2) (sz = 7 (4+3))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(2338) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4877) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4872) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4870) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4868) (isz = 2) (sz = 7 (4+3))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(2335) (isz = 2) (sz = 7 (4+3))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_farmINS_15ff_loadbalancerENS_11ff_gathererEED1Ev;0>
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(3763) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4906) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4901) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4899) (isz = 2) (sz = 7 (4+3))
+                -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4897) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(3760) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4848) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4843) (isz = 2) (sz = 7 (4+3))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4841) (isz = 2) (sz = 7 (4+3))
+                -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(4839) (isz = 2) (sz = 7 (4+3))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_farmINS_15ff_loadbalancerENS_11ff_gathererEED0Ev;0>
+    -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_farmINS_15ff_loadbalancerENS_11ff_gathererEE9set_inputERNS_7svectorIPNS_7ff_nodeEEE;0>
+      -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff20init_thread_affinityEP14pthread_attr_ti(2736) (isz = 479) (sz = 489 (176+313))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main11ff_numCoresEv(3414) (isz = 23) (sz = 29 (10+19))
+            -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff10isPowerOf2Ej(3413) (isz = 9) (sz = 16 (8+8))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12nextPowerOf2Em(3411) (isz = 36) (sz = 43 (20+23))
+              -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff10isPowerOf2Ej(3412) (isz = 9) (sz = 16 (8+8))
+    -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+  -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+  -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main15atomic_long_setEP10atomic64_tl(1944) (isz = 2) (sz = 9 (5+4))
+    -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main15atomic_long_setEP10atomic64_tl(1943) (isz = 2) (sz = 9 (5+4))
+  -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+      -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+      -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+    IN: 551  79  ( (SI32) t16 ) = pthread_create{ic=PTHREAD_CREATE}( (I64 *)&this_20092_V$48a.0.222.2259->th_handle_V$5c, (pthread_attr_t_R_V$5 *)&this_20092_V$48a.0.222.2259->attr_V$60, (void *)raddr(_ZN26_INTERNAL_9_Farm2_cpp_main2ff20proxy_thread_routineEPv)(P64), (void *)this_20092_V$48a.0.222.2259 );  [UNIX_ABI]
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_farmINS_15ff_loadbalancerENS_11ff_gathererEE3runEb;0>
+      -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+      -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_farmINS_15ff_loadbalancerENS_11ff_gathererEE15run_then_freezeEl;0>
+    -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_farmINS_15ff_loadbalancerENS_11ff_gathererEE4waitEv;0>
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_farmINS_15ff_loadbalancerENS_11ff_gathererEE13wait_freezingEv;0>
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_farmINS_15ff_loadbalancerENS_11ff_gathererEE6freezeEv;0>
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval(2177) (isz = 2) (sz = 7 (4+3))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval(2176) (isz = 2) (sz = 7 (4+3))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval(2175) (isz = 2) (sz = 7 (4+3))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval(2174) (isz = 2) (sz = 7 (4+3))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_farmINS_15ff_loadbalancerENS_11ff_gathererEE13get_out_nodesERNS_7svectorIPNS_7ff_nodeEEE;0>
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(1839) (isz = 2) (sz = 7 (4+3))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv(1851) (isz = 2) (sz = 7 (4+3))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_farmINS_15ff_loadbalancerENS_11ff_gathererEE5resetEv;0>
+  -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff8diffmsecERK7timevalS3_(1464) (isz = 18) (sz = 27 (7+20))
+  -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff8diffmsecERK7timevalS3_(1465) (isz = 18) (sz = 27 (7+20))
+          -> DELETED: _ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE(491) (isz = 0) (sz = 3 (2+1))
+          -> DELETED: _ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE(491) (isz = 0) (sz = 3 (2+1))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm(4194) (isz = 6) (sz = 16 (5+11))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm(4183) (isz = 6) (sz = 16 (5+11))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm(4180) (isz = 6) (sz = 16 (5+11))
+      -> DELETED: _ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE(491) (isz = 0) (sz = 3 (2+1))
+      -> DELETED: _ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE(491) (isz = 0) (sz = 3 (2+1))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm(2690) (isz = 6) (sz = 16 (5+11))
+  -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_farmINS_15ff_loadbalancerENS_11ff_gathererEE19create_input_bufferEib;0>
+  -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+          -> DELETED: _ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE(491) (isz = 0) (sz = 3 (2+1))
+          -> DELETED: _ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE(491) (isz = 0) (sz = 3 (2+1))
+            -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm(4148) (isz = 6) (sz = 16 (5+11))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm(4137) (isz = 6) (sz = 16 (5+11))
+          -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm(4134) (isz = 6) (sz = 16 (5+11))
+      -> DELETED: _ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE(491) (isz = 0) (sz = 3 (2+1))
+      -> DELETED: _ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE(491) (isz = 0) (sz = 3 (2+1))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm(2678) (isz = 6) (sz = 16 (5+11))
+  -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_farmINS_15ff_loadbalancerENS_11ff_gathererEE20create_output_bufferEib;0>
+  -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO DEAD STATIC FUNCTION ELIMINATION;_ZN26_INTERNAL_9_Farm2_cpp_main2ff10ticks_waitEy;0>
+  (_ZN26_INTERNAL_9_Farm2_cpp_main2ff10ticks_waitEy)
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO DEAD STATIC FUNCTION ELIMINATION;_ZN26_INTERNAL_9_Farm2_cpp_main2ff8diffmsecERK7timevalS3_;0>
+  (_ZN26_INTERNAL_9_Farm2_cpp_main2ff8diffmsecERK7timevalS3_)
+<../../mc-fastflow-code/ff/utils.hpp;146:149;IPO INLINING;_ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_compareER7timevalS2_;0>
+INLINING REPORT: (_ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_compareER7timevalS2_) [456/502=90.8%]
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO DEAD STATIC FUNCTION ELIMINATION;_ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval;0>
+  (_ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval)
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO DEAD STATIC FUNCTION ELIMINATION;_ZN26_INTERNAL_9_Farm2_cpp_main2ff10isPowerOf2Ej;0>
+  (_ZN26_INTERNAL_9_Farm2_cpp_main2ff10isPowerOf2Ej)
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;IPO DEAD STATIC FUNCTION ELIMINATION;_ZN26_INTERNAL_9_Farm2_cpp_main2ff12nextPowerOf2Em;0>
+  (_ZN26_INTERNAL_9_Farm2_cpp_main2ff12nextPowerOf2Em)
+<../../mc-fastflow-code/ff/node.hpp;357:360;IPO INLINING;_ZN26_INTERNAL_9_Farm2_cpp_main2ff20proxy_thread_routineEPv;0>
+INLINING REPORT: (_ZN26_INTERNAL_9_Farm2_cpp_main2ff20proxy_thread_routineEPv) [460/502=91.6%]
+    -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+    -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+    -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+<../../mc-fastflow-code/ff/node.hpp;357:360;IPO FORWARD SUBSTITUTION;_ZN26_INTERNAL_9_Farm2_cpp_main2ff20proxy_thread_routineEPv;0>
+FORWARD SUBSTITUTION (_ZN26_INTERNAL_9_Farm2_cpp_main2ff20proxy_thread_routineEPv)
+<Farm2.cpp;-1:-1;hlo;_ZN26_INTERNAL_9_Farm2_cpp_main2ff20proxy_thread_routineEPv;0>
+High Level Optimizer Report (_ZN26_INTERNAL_9_Farm2_cpp_main2ff20proxy_thread_routineEPv)
+HPO VECTORIZER REPORT (_ZN26_INTERNAL_9_Farm2_cpp_main2ff20proxy_thread_routineEPv) LOG OPENED ON Mon Oct  6 19:31:39 2014
+<../../mc-fastflow-code/ff/node.hpp;-1:-1;hpo_vectorization;_ZN26_INTERNAL_9_Farm2_cpp_main2ff20proxy_thread_routineEPv;0>
+HPO Vectorizer Report (_ZN26_INTERNAL_9_Farm2_cpp_main2ff20proxy_thread_routineEPv)
+../../mc-fastflow-code/ff/node.hpp(359:9-359:9):VEC:_ZN26_INTERNAL_9_Farm2_cpp_main2ff20proxy_thread_routineEPv:  loop was not vectorized: unsupported loop structure
+<;75:75;IPO INLINING;__sti___ZN26_INTERNAL_9_Farm2_cpp_mainSt8__ioinitE;0>
+INLINING REPORT: (__sti___ZN26_INTERNAL_9_Farm2_cpp_mainSt8__ioinitE) [468/502=93.2%]
+<../../mc-fastflow-code/ff/node.hpp;-1:-1;IPO DEAD STATIC FUNCTION ELIMINATION;_ZN26_INTERNAL_9_Farm2_cpp_main2ff20init_thread_affinityEP14pthread_attr_ti;0>
+  (_ZN26_INTERNAL_9_Farm2_cpp_main2ff20init_thread_affinityEP14pthread_attr_ti)
+<../../mc-fastflow-code/ff/utils.hpp;110:124;IPO INLINING;_ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz;0>
+INLINING REPORT: (_ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz) [470/502=93.6%]
+<../../mc-fastflow-code/ff/spin-lock.hpp;-1:-1;IPO DEAD STATIC FUNCTION ELIMINATION;_ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE;0>
+  (_ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE)
+  -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+  REPLACING:__comp_26991_V$718.0.472.2406    WITH:raddr(_ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_compareER7timevalS2_)(P64)
+  REMOVING: 876 169 __comp_26991_V$718.0.472.2406 = raddr(_ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_compareER7timevalS2_)(P64);
+<Farm2.cpp;-1:-1;hlo;_ZNK2ff7ff_farmINS_15ff_loadbalancerENS_11ff_gathererEE12getwstoptimeEv;0>
+  REPLACING:__comp_26991_V$718.0.472.2420    WITH:raddr(_ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_compareER7timevalS2_)(P64)
+  REMOVING: 843 169 __comp_26991_V$718.0.472.2420 = raddr(_ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_compareER7timevalS2_)(P64);
+<Farm2.cpp;-1:-1;hlo;_ZNK2ff7ff_farmINS_15ff_loadbalancerENS_11ff_gathererEE11getstoptimeEv;0>
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_farmINS_15ff_loadbalancerENS_11ff_gathererEE4stopEv;0>
+<Farm2.cpp;-1:-1;hlo;_ZN2ff11ff_gatherer8svc_initEv;0>
+  -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+      -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main11ff_numCoresEv(3302) (isz = 23) (sz = 29 (10+19))
+      -> _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz(493) (isz = 83) (sz = 88 (24+64))
+      -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff10isPowerOf2Ej(3301) (isz = 9) (sz = 16 (8+8))
+      -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff12nextPowerOf2Em(3299) (isz = 36) (sz = 43 (20+23))
+        -> INLINE (MANUAL): _ZN26_INTERNAL_9_Farm2_cpp_main2ff10isPowerOf2Ej(3300) (isz = 9) (sz = 16 (8+8))
+<Farm2.cpp;-1:-1;hlo;_ZN2ff7ff_node11setAffinityEi;0>
+<;-1:-1;PGO;__sti___ZN26_INTERNAL_9_Farm2_cpp_mainSt8__ioinitE;0>
+  STATIC:                                                                                                      __sti___ZN26_INTERNAL_9_Farm2_cpp_mainSt8__ioinitE
+<../../mc-fastflow-code/ff/node.hpp;-1:-1;PGO;_ZN26_INTERNAL_9_Farm2_cpp_main2ff20proxy_thread_routineEPv;0>
+  STATIC:../../mc-fastflow-code/ff/node.hpp                                                                    _ZN26_INTERNAL_9_Farm2_cpp_main2ff20proxy_thread_routineEPv
+<../../mc-fastflow-code/ff/node.hpp;-1:-1;PGO;_ZN26_INTERNAL_9_Farm2_cpp_main2ff20init_thread_affinityEP14pthread_attr_ti;0>
+  STATIC:../../mc-fastflow-code/ff/node.hpp                                                                    _ZN26_INTERNAL_9_Farm2_cpp_main2ff20init_thread_affinityEP14pthread_attr_ti
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;PGO;_ZN26_INTERNAL_9_Farm2_cpp_main2ff12nextPowerOf2Em;0>
+  STATIC:../../mc-fastflow-code/ff/utils.hpp                                                                   _ZN26_INTERNAL_9_Farm2_cpp_main2ff12nextPowerOf2Em
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;PGO;_ZN26_INTERNAL_9_Farm2_cpp_main2ff10isPowerOf2Ej;0>
+  STATIC:../../mc-fastflow-code/ff/utils.hpp                                                                   _ZN26_INTERNAL_9_Farm2_cpp_main2ff10isPowerOf2Ej
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;PGO;_ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval;0>
+  STATIC:../../mc-fastflow-code/ff/utils.hpp                                                                   _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_setzeroER7timeval
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;PGO;_ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_compareER7timevalS2_;0>
+  STATIC:../../mc-fastflow-code/ff/utils.hpp                                                                   _ZN26_INTERNAL_9_Farm2_cpp_main2ff12time_compareER7timevalS2_
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;PGO;_ZN26_INTERNAL_9_Farm2_cpp_main2ff8diffmsecERK7timevalS3_;0>
+  STATIC:../../mc-fastflow-code/ff/utils.hpp                                                                   _ZN26_INTERNAL_9_Farm2_cpp_main2ff8diffmsecERK7timevalS3_
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;PGO;_ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz;0>
+  STATIC:../../mc-fastflow-code/ff/utils.hpp                                                                   _ZN26_INTERNAL_9_Farm2_cpp_main2ff5errorEPKcz
+<../../mc-fastflow-code/ff/utils.hpp;-1:-1;PGO;_ZN26_INTERNAL_9_Farm2_cpp_main2ff10ticks_waitEy;0>
+  STATIC:../../mc-fastflow-code/ff/utils.hpp                                                                   _ZN26_INTERNAL_9_Farm2_cpp_main2ff10ticks_waitEy
+<../../mc-fastflow-code/ff/spin-lock.hpp;-1:-1;PGO;_ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE;0>
+  STATIC:../../mc-fastflow-code/ff/spin-lock.hpp                                                               _ZN26_INTERNAL_9_Farm2_cpp_main2ff13init_unlockedEPNS0_17AtomicFlagWrapperE
+<Farm2.cpp;-1:-1;PGO;_ZN6WorkerIiE3svcEPv;0>
+  STATIC:Farm2.cpp                                                                                             _ZN6WorkerIiE3svcEPv
+<Farm2.cpp;-1:-1;PGO;_ZN6WorkerIiED0Ev;0>
+  STATIC:Farm2.cpp                                                                                             _ZN6WorkerIiED0Ev
+<Farm2.cpp;-1:-1;PGO;_ZN6WorkerIiED1Ev;0>
+  STATIC:Farm2.cpp                                                                                             _ZN6WorkerIiED1Ev
+<Farm2.cpp;-1:-1;PGO;_ZN6WorkerIiEC1Ejj;0>
+  STATIC:Farm2.cpp                                                                                             _ZN6WorkerIiEC1Ejj
+<Farm2.cpp;-1:-1;PGO;_ZN7EmitterIiE3svcEPv;0>
+  STATIC:Farm2.cpp                                                                                             _ZN7EmitterIiE3svcEPv
+<Farm2.cpp;-1:-1;PGO;_ZN7EmitterIiED0Ev;0>
+  STATIC:Farm2.cpp                                                                                             _ZN7EmitterIiED0Ev
+<Farm2.cpp;-1:-1;PGO;_ZN7EmitterIiED1Ev;0>
+  STATIC:Farm2.cpp                                                                                             _ZN7EmitterIiED1Ev
+<Farm2.cpp;-1:-1;PGO;_ZN7EmitterIiEC1Ejj;0>
+  STATIC:Farm2.cpp                                                                                             _ZN7EmitterIiEC1Ejj
+<Farm2.cpp;-1:-1;PGO;main;0>
+  STATIC:Farm2.cpp                                                                                             main
+<Farm2.cpp;-1:-1;PGO;_ZN26_INTERNAL_9_Farm2_cpp_main10printUsageEv;0>
+  STATIC:Farm2.cpp                                                                                             _ZN26_INTERNAL_9_Farm2_cpp_main10printUsageEv
+<../../mc-fastflow-code/ff/mapping_utils.hpp;-1:-1;PGO;_ZN26_INTERNAL_9_Farm2_cpp_main11ff_numCoresEv;0>
+  STATIC:../../mc-fastflow-code/ff/mapping_utils.hpp                                                           _ZN26_INTERNAL_9_Farm2_cpp_main11ff_numCoresEv
+<../../mc-fastflow-code/ff/atomic/atomic.h;-1:-1;PGO;_ZN26_INTERNAL_9_Farm2_cpp_main22atomic_long_inc_returnEP10atomic64_t;0>
+  STATIC:../../mc-fastflow-code/ff/atomic/atomic.h                                                             _ZN26_INTERNAL_9_Farm2_cpp_main22atomic_long_inc_returnEP10atomic64_t
+<../../mc-fastflow-code/ff/atomic/atomic.h;-1:-1;PGO;_ZN26_INTERNAL_9_Farm2_cpp_main15atomic_long_setEP10atomic64_tl;0>
+  STATIC:../../mc-fastflow-code/ff/atomic/atomic.h                                                             _ZN26_INTERNAL_9_Farm2_cpp_main15atomic_long_setEP10atomic64_tl
+<../../mc-fastflow-code/ff/atomic/atomic.h;-1:-1;PGO;_ZN26_INTERNAL_9_Farm2_cpp_main16atomic_long_readEP10atomic64_t;0>
+  STATIC:../../mc-fastflow-code/ff/atomic/atomic.h                                                             _ZN26_INTERNAL_9_Farm2_cpp_main16atomic_long_readEP10atomic64_t
+<../../mc-fastflow-code/ff/atomic/atomic-x86_64.h;-1:-1;PGO;_ZN26_INTERNAL_9_Farm2_cpp_main19atomic64_add_returnEmP10atomic64_t;0>
+  STATIC:../../mc-fastflow-code/ff/atomic/atomic-x86_64.h                                                      _ZN26_INTERNAL_9_Farm2_cpp_main19atomic64_add_returnEmP10atomic64_t
+<../../mc-fastflow-code/ff/sysdep.h;-1:-1;PGO;_ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv;0>
+  STATIC:../../mc-fastflow-code/ff/sysdep.h                                                                    _ZN26_INTERNAL_9_Farm2_cpp_main17freeAlignedMemoryEPv
+<../../mc-fastflow-code/ff/sysdep.h;-1:-1;PGO;_ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm;0>
+  STATIC:../../mc-fastflow-code/ff/sysdep.h                                                                    _ZN26_INTERNAL_9_Farm2_cpp_main16getAlignedMemoryEmm
+<../../mc-fastflow-code/ff/cycle.h;-1:-1;PGO;_ZN26_INTERNAL_9_Farm2_cpp_main8getticksEv;0>
+  STATIC:../../mc-fastflow-code/ff/cycle.h                                                                     _ZN26_INTERNAL_9_Farm2_cpp_main8getticksEv
