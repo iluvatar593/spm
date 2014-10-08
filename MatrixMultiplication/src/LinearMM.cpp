@@ -30,7 +30,7 @@ public:
 			}
 		}
 	static inline void matrixSum(NUM *restrict A, unsigned int offsetColA, NUM* restrict B, unsigned int offsetColB, NUM restrict C[], unsigned int size) {
-			
+			if(A == NULL || B == NULL || C == NULL) printf("Something is wrong\n");
 			for(int i = 0; i < size; i++){
 				//NUM *restrict rowA = A[i], *restrict rowB = B[i];
 				for(int j =0 ; j < size; j++) {
@@ -60,90 +60,111 @@ public:
 			}
 			
 			unsigned int newsize = size/2;
-			NUM S1[newsize];
-			NUM S2[newsize];
+			NUM S1[newsize*newsize];
+			NUM S2[newsize*newsize];
 //			for(int i = 0; i < newsize; i++) {
 //				S1[i] = new NUM[newsize]();
 //				S2[i] = new NUM[newsize]();
 //			}
 			//printf("------ Current size is %d, offsetA is %d, offsetB is %d-----\n", size, offsetA, offsetB);
-			printf("Entering sum A, %d, &A[newsize], %d, S1, %d\n", offsetA, offsetA+newsize, newsize);
+
 			matrixSum(A, offsetA, &A[newsize], offsetA+newsize, S1, newsize); //S1 has been calculated
 			matrixSum(B, offsetB, &B[newsize], offsetB+newsize, S2, newsize); //S2 has been calculated
-			printf("Already damaged\n");
+			//printf("Already damaged\n");
 			//printf("Until now it seems ok!\n");
-			NUM P1[newsize];
+			NUM P1[newsize*newsize];
 			//for(int i = 0; i < newsize; i++) P1[i] = new NUM[newsize]();
-printf("Entering sum\n");
-			strassenLinearMatrixMultiplication(S1, S2, P1, newsize); //P1 = S1*S2
+			//printf("Entering sum\n");
+			normalMatrixMultiplication(S1, S2, P1, newsize); //P1 = S1*S2
 			//printf("Until now it seems ok!\n");
 			//Fin qui tutto bene
 			matrixSum(&A[newsize], offsetA, &A[newsize], offsetA+newsize, S1, newsize); //S3
 
-			NUM P2[newsize];
+			NUM P2[newsize*newsize];
 			//for(int i = 0; i < newsize; i++) P2[i] = new NUM[newsize](); //Allocation of new space for s2, C can be reused but check.
 
-			strassenLinearMatrixMultiplication(B, S1, P2, newsize); //P2 calculated
+			normalMatrixMultiplication(B, S1, P2, newsize); //P2 calculated
 			//printf("Until now it seems ok!\n");
 			//printf("P2 calculated \n"); //fin qui tutto bene
 			matrixSub(B, offsetB+newsize, &B[newsize], offsetB+newsize, S2, newsize); //S4
 			//if(S2[0][0] >= 0) printf("Error in S4\n");
 			//printf("S4 calculated \n");
-			NUM P3[newsize];
+			NUM P3[newsize*newsize];
 			//for(int i = 0;i < newsize; i++) P3[i] = new NUM[newsize]();
 			//printf("Until now it seems ok!\n");
-			strassenLinearMatrixMultiplication(A, S2, P3, newsize); //P3 calculated, check fi space can be reused
+			normalMatrixMultiplication(A, S2, P3, newsize); //P3 calculated, check fi space can be reused
 			//printf("Until now it seems ok!\n");
 			//	printf("P3 calculated \n");
 			matrixSub(&B[newsize], offsetB, B, offsetB, S1, newsize); //S5
-
-			NUM P4[newsize];
+			printf("Ok until s5\n");
+			NUM P4[newsize*newsize];
 //			for(int i = 0;i < newsize; i++) P4[i] = new NUM[newsize]();
 			normalMatrixMultiplication(&A[newsize], S1, P4, newsize, newsize);
+			printf("Ok until p4\n");
 			//printf("Until now it seems ok!\n");
 			//if(P4[0][0] >= 0) printf("Error in P4 %d\n", P4[0][0]);
 			matrixSum(A, offsetA, A, offsetA+newsize, S2, newsize); //S6
+			printf("Ok until s6\n");
 			//printf("Until now it seems ok!\n");
 			//if(S2[0][0] != 1) printf("Error in S6 %d\n", S2[0][0]);
-			NUM P5[newsize];
+			NUM P5[newsize*newsize];
 //			for(int i = 0;i < newsize; i++) P5[i] = new NUM[newsize]();
 			normalMatrixMultiplication(S2, &B[newsize], P5, newsize, 0, newsize);
+			printf("Ok until p5\n");
 			//printf("Until now it seems ok!\n");
 			//if(P5[0][0] != 1) printf("Error in P5 %d\n", P5[0][0]);
 			matrixSub(&A[newsize], offsetA, A, offsetA, S1, newsize); //S7
+			printf("Ok until s7\n");
 			//if(S1[0][0] >= 0) printf("Error in S7 %d\n", S1[0][0]);
 			matrixSum(B, offsetB, B, offsetB+newsize, S2, newsize); //S8
 			//if(S2[0][0] != 1) printf("Error in S8 %d\n", S2[0][0]);
-			NUM P6[newsize];
+			printf("Ok until s8\n");
+			NUM P6[newsize*newsize];
+			printf("Can i perform my allocation?\n");
 //			for(int i = 0;i < newsize; i++) P6[i] = new NUM[newsize]();
-			strassenLinearMatrixMultiplication(S1, S2, P6, newsize);
+			for(int i = 0; i < newsize; i++) {
+				for(int k = 0; k < newsize; k++) {
+					for(int j = 0; j < newsize; j++){
+						P6[i*newsize+j] += S1[i*newsize+j]* S2[i*newsize+j];
+					}
+				}
+			}
+			//normalMatrixMultiplication(S1, S2, P6, newsize);
+			printf("Ok until p6\n");
 			//if(P6[0][0] >= 0) printf("Error in P6 %d\n", P6[0][0]);
 			matrixSub(A, offsetA+newsize, &A[newsize], offsetA+newsize, S1, newsize); //S9
+			printf("Ok until s9\n");
 			//if(S1[0][0] >= 0) printf("Error in S9%d\n", S1[0][0]);
 			matrixSum(&B[newsize], offsetB, &B[newsize], offsetB+newsize, S2, newsize); //S10
+			printf("Ok until s10\n");
 			//if(S2[0][0] != 1) printf("Error in s10 %d \n", S2[0][0]);
-			NUM P7[newsize];
+			NUM P7[newsize*newsize];
 //			for(int i = 0; i < newsize; i++) P7[i] = new NUM[newsize]();
-			strassenLinearMatrixMultiplication(S1, S2, P7,newsize);
+			normalMatrixMultiplication(S1, S2, P7,newsize);
+			printf("Ok until p7\n");
 			//if (P7[0][0] != -1) printf("Error in P7 %d\n", P7[0][0]);
 			//printf("Until now it seems ok!\n");
 			//Recombine all this stuff
 			//C11
+			printf("Starting recombining 1\n");
 			for(int i = 0; i < newsize; i++){
 				for(int j = 0; j < newsize; j++) {
-					C[i*newsize+j] = P1[i*newsize+j] + P4[i*newsize+j] - P5[i*newsize+j] + P7[i*newsize+j];
+					C[i*size+j] = P1[i*newsize+j] + P4[i*newsize+j] - P5[i*newsize+j] + P7[i*newsize+j];
 				}
 			}
+			printf("Starting recombining 1\n");
 			for(int i = 0; i < newsize; i++) {
 				for(int j = newsize; j < size; j++) {
 					C[i*size+j] = P3[i*newsize+j-newsize] + P5[i*newsize+j-newsize];
 				}
 			}
+			printf("Starting recombining 1\n");
 			for(int i = newsize; i < size; i++) {
 				for(int j = 0; j < newsize; j++) {
 					C[i*size+j] = P2[(i-newsize)*newsize+j] + P4[(i-newsize)*newsize+j];
 				}
 			}
+			printf("Starting recombining 1\n");
 			//printf("Last block...\n");
 			for(int i = newsize; i < size; i++) {
 				for(int j = newsize; j < size; j++) {
