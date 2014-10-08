@@ -1,0 +1,136 @@
+QtiPlot 0.9.8 project file
+<scripting-lang>	muParser
+<windows>	2
+<table>
+Tabella 1	30	7	07/10/14 22:27
+geometry	0	100	734	578	
+header	Workers[X]	64x64[Y]	128x128[Y]	256x256[Y]	512x512[Y]	1024x1024[Y]	2048x2048[Y]
+ColWidth	100	100	100	100	100	100	100	
+<com>
+</com>
+ColType	0;0/13	0;0/13	0;0/13	0;0/13	0;0/13	0;0/13	0;0/13
+ReadOnlyColumn	0	0	0	0	0	0	0
+HiddenColumn	0	0	0	0	0	0	0
+Comments								
+WindowLabel		2
+<data>
+0	1	1	1	1	1	1	1
+1	2	1.983304582	1.9822734039	2.0005655841	1.9904184239		
+2	4	3.8844329095	3.9165345413	3.9789235103	3.967245466		
+3	8	7.7361873981	7.2524189955	7.6851614634	7.8793793088		
+4	16	15.4338499122	15.0140486152	14.9934793403	15.535369417		
+5	32	29.8666181804	28.2604331167	29.3358273547	30.5987611851		
+6	40	35.0576449795	35.3448751191	36.8038191776	37.7599967838		
+7	50	43.6324927085	44.1055422352	44.7763354208	46.5699651875		
+8	60	50.1038482704	50.8133444321	50.0886042649			
+9	70	44.9581924924	53.1437716796	32.0582952664			
+10	80	50.1352297418	60.0199112217	35.5632646105			
+11	90	54.3045636333	63.9632385385	38.5584775798			
+12	100	58.491592311	70.1854226208	42.7574474097			
+13	120	66.6211966303	81.8657514722	48.9993343473			
+14	128	64.3267511437	78.7442400977	46.7055954451			
+15	150	70.6506646289	90.7903886458	54.233978531			
+16	200	80.460540052	84.8816612594	61.2324121083			
+17	230	91.8204525749	95.7352882871	66.619646375			
+18	238	94.1417885603	96.1480049082	67.7815324196			
+19	240	78.9109371669	93.4537713034	67.767055506			
+</data>
+</table>
+<multiLayer>
+Grafico 1	1	1	07/10/14 22:30
+geometry	18	0	1282	745	active
+WindowLabel		2
+Margins	5	5	5	5
+Spacing	5	5
+LayerCanvasSize	400	300
+Alignement	0	0
+<AlignPolicy>0</AlignPolicy>
+<CommonAxes>0</CommonAxes>
+<graph>
+ggeometry	8	6	1258	674
+<PageGeometry>0.00627943	0.00860832	0.987441	0.967001</PageGeometry>
+PlotTitle	Titolo	#000000	4228
+<Antialiasing>0</Antialiasing>
+<Autoscaling>1</Autoscaling>
+<ScaleFonts>1</ScaleFonts>
+<GridOnTop>0</GridOnTop>
+<MissingDataGap>1</MissingDataGap>
+Background	#ffffff	0
+Margin	0
+Border	0	#000000
+grid	0	0	0	0	#0000ff	0	0.5	#a0a0a4	2	0.4	#0000ff	0	0.5	#a0a0a4	2	0.4	0	0	2	0	0
+EnabledAxes	1	0	1	0	
+AxesTitles	Workers	Scalability		%(?Y)	
+AxesTitleColors	#000000	#000000	#000000	#000000	
+AxesTitleAlignment	5124	4	5124	4
+AxesTitleDistance	2	-1	2	-1
+InvertedTitle	0	0	0	0
+TitleFont	Sans	19	75	0	0	0
+ScaleFont0	Sans	15	75	0	0	0
+ScaleFont1	Sans	15	75	0	0	0
+ScaleFont2	Sans	15	75	0	0	0
+ScaleFont3	Sans	15	75	0	0	0
+AxisFont0	Sans	15	50	0	0	0
+AxisFont1	Sans	15	50	0	0	0
+AxisFont2	Sans	15	50	0	0	0
+AxisFont3	Sans	15	50	0	0	0
+AxesColors	#000000	#000000	#000000	#000000
+AxesNumberColors	#1a1a1a	#1a1a1a	#1a1a1a	#1a1a1a
+AxesBaseline	0	0	0	0	
+CanvasBackground	#ffffff	0
+curve	Tabella 1_Workers	Tabella 1_2048x2048	2	1	#000000	0	1	7	1	#000000	#000000	0	#000000	14	1	2	0	0	29	1
+curve	Tabella 1_Workers	Tabella 1_1024x1024	2	1	#ff0000	0	1	7	2	#ff0000	#ff0000	0	#000000	14	1	2	0	0	29	1
+curve	Tabella 1_Workers	Tabella 1_512x512	2	1	#00ff00	0	1	7	3	#00ff00	#00ff00	0	#000000	14	1	2	0	0	29	1
+curve	Tabella 1_Workers	Tabella 1_256x256	2	1	#0000ff	0	1	7	4	#0000ff	#0000ff	0	#000000	14	1	2	0	0	29	1
+curve	Tabella 1_Workers	Tabella 1_128x128	2	1	#00ffff	0	1	7	5	#00ffff	#00ffff	0	#000000	14	1	2	0	0	29	1
+curve	Tabella 1_Workers	Tabella 1_64x64	2	1	#ff00ff	0	1	7	6	#ff00ff	#ff00ff	0	#000000	14	1	2	0	0	29	1
+scale	0	0	100	4	26	5	0	0
+scale	1	0	100	4	26	5	0	0
+scale	2	0	240	10	25	5	0	0
+scale	3	0	240	10	25	5	0	0
+LabelsFormat	0	6	0	6	0	6	0	6
+AxisType	0	0	0	0	
+MajorTicks	1	1	1	1
+MinorTicks	1	1	1	1
+TicksLength	5	9
+DrawAxesBackbone	1	1	1	1	1
+AxesLineWidth	1
+LabelsRotation	0	0	0	0
+LabelsPrefix				
+LabelsSuffix				
+TickLabelsSpace	4	4	4	4
+ShowTicksPolicy	0	0	0	0
+EnabledTickLabels	1	1	1	1
+<Legend>
+<Frame>1</Frame>
+<Color>#000000</Color>
+<FrameWidth>1</FrameWidth>
+<LineStyle>0</LineStyle>
+<x>15.530629853322</x>
+<y>95.204262877442</y>
+<right>53.839516824849</right>
+<bottom>66.607460035524</bottom>
+<attachTo>1</attachTo>
+<onTop>1</onTop>
+<visible>1</visible>
+<Text>
+\l(1)%(1)
+\l(2)%(2)
+\l(3)%(3)
+\l(4)%(4)
+\l(5)%(5)
+\l(6)%(6)
+</Text>
+<Font>Sans	15	50	0	0	0</Font>
+<TextColor>#000000</TextColor>
+<Background>#ffffff</Background>
+<Alpha>0</Alpha>
+<Angle>0</Angle>
+<AutoUpdate>1</AutoUpdate>
+<TeXOutput>0</TeXOutput>
+</Legend>
+</graph>
+<LinkXAxes>0</LinkXAxes>
+<ScaleLayers>1</ScaleLayers>
+</multiLayer>
+<open>1</open>
