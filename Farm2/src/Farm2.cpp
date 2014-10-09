@@ -16,12 +16,6 @@
 #include "collector.hpp"
 using namespace ff;
 
-template <typename NUM>
-struct pointerTask {
-	NUM **restrict A;
-	NUM **restrict B;
-};
-
 int main(int argc, char* argv[]) {
 	/** Check parameters */
 	if(argc < 3) { printUsage(); return 1;};

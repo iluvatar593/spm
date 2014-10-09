@@ -1,15 +1,28 @@
 /*
  * utils.hpp
  *
- *  Created on: 07/ott/2014
+ *  Created on: 09/ott/2014
  *      Author: alessandro
  */
 
 #ifndef UTILS_HPP_
 #define UTILS_HPP_
 
+
 #include <chrono>
 #include <stdio.h>
+
+#if defined(__MIC__)
+#else
+#define restrict
+#endif
+
+template <typename NUM>
+struct pointerTask {
+	NUM **restrict A;
+	NUM **restrict B;
+};
+
 
 /** Timing macro (for now, one for scope). Call start_time() for initializing;
  * elapsed_time(STRING) prints the string with the time spent in the procedure (in uS).
@@ -34,21 +47,14 @@ unsigned inline int calculateBufferSize(size_t s, unsigned int numworkers, unsig
 }
 
 /** Show usage */
-static inline void printUsage() {
+inline void printUsage() {
 	std::cout << "MainFarm usage:\n";
 	std::cout << "./MainFarm lengthOfStream MatrixSize WorkerNumber\n";
 }
 
 
 
-/** Structure used to communicate tasks to the workers */
-typedef struct {
-	unsigned int a_index, b_index;
-} task_t;
 
-#if defined(__MIC__)
 
-#else
-#define restrict
-#endif
+
 #endif /* UTILS_HPP_ */

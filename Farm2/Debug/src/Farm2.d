@@ -19,7 +19,7 @@ src/Farm2.d: ../src/Farm2.cpp \
  /home/alessandro/git/spm/mc-fastflow-code/ff/mapping_utils.hpp \
  /home/alessandro/git/spm/mc-fastflow-code/ff/barrier.hpp \
  /home/alessandro/git/spm/mc-fastflow-code/ff/gt.hpp ../src/utils.hpp \
- ../src/emitter.hpp ../src/worker.hpp ../src/input_buffer.hpp \
+ ../src/emitter.hpp ../src/input_buffer.hpp ../src/worker.hpp \
  ../src/collector.hpp
 
 /home/alessandro/git/spm/mc-fastflow-code/ff/farm.hpp:
@@ -66,8 +66,8 @@ src/Farm2.d: ../src/Farm2.cpp \
 
 ../src/emitter.hpp:
 
-../src/worker.hpp:
-
 ../src/input_buffer.hpp:
+
+../src/worker.hpp:
 
 ../src/collector.hpp:

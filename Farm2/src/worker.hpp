@@ -80,9 +80,9 @@ public:
 private:
 	NUM **restrict C, **restrict first, **restrict second;
 	bool isFirst;
-	unsigned int treshold;
+	unsigned int treshold, size;
 	unsigned int nextPowerOfTwo(unsigned int size) {
-		 return pow(2, int(ceil(log2(n))));
+		 return pow(2, int(ceil(log2(size))));
 	}
 
 	//C must be initialized to 0 in all its elements
