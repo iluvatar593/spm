@@ -62,11 +62,14 @@ int main(int argc, char* argv[]) {
 	Collector<int> Coll(matrixSize);
 	farm->add_collector(&Coll);
 	std::vector<ff_node *> w;
-	for(unsigned int i=0;i<numWorkers;++i) w.push_back(new Worker<int>(matrixSize, i, C));
+	//for(unsigned int i=0;i<numWorkers;++i) w.push_back(new Worker<int>(matrixSize, i, C));
+	for(unsigned int i=0;i<numWorkers;++i) w.push_back(new StrassenWorker<int>(matrixSize, i, C, 64));
 
 	farm->add_workers(w);
+	start_time();
 	farm->run_and_wait_end();
-	std::cout << "Total time (with matrix): ";
+	elapsed_time(Old Total time);
+	std::cout << "Total ffTime (with matrix): ";
 	std::cout << farm->ffTime();
 	std::cout << "\n";
 	return 0;

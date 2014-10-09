@@ -52,6 +52,7 @@ inline void printUsage() {
 	std::cout << "./MainFarm lengthOfStream MatrixSize WorkerNumber\n";
 }
 
+auto totaltime = std::chrono::high_resolution_clock::now();
 
 
 

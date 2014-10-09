@@ -9,6 +9,7 @@
 #define COLLECTOR_HPP_
 
 #include <ff/node.hpp>
+#include "utils.hpp"
 
 using namespace ff;
 
@@ -26,6 +27,12 @@ public:
 		//for(unsigned int i = 0; i < size; i++)
 			//if (matrix[i][i] != 1) printf("Error\n");
 		return GO_ON;
+	}
+	void svc_end(){
+		auto gesu = std::chrono::high_resolution_clock::now() - totaltime;
+		std::cout << "New Total time";
+		std::cout << std::chrono::duration_cast<std::chrono::microseconds>(gesu).count();
+		std::cout << "\n";
 	}
 private:
 	unsigned int size;

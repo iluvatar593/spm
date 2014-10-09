@@ -25,6 +25,7 @@ public:
 	}
 	~Emitter(){};
 	void * svc(void*) {
+		totaltime = std::chrono::high_resolution_clock::now();
 		for(unsigned int i = 0; i < streamLength; i++) {
 			//task_t *t = (task_t *) malloc(sizeof(task_t));
 			//t->a_index = (i+offsetA)%bufferSize;

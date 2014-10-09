@@ -19,7 +19,10 @@ public:
 	}
 	~input_buffer(){}
 	void add(NUM**restrict matrix){
-		if(nextFree >= size) return; //has no effects. this is a buffer of fixed size in which nobody can write once is full
+		if(nextFree >= size) {
+
+			return; //has no effects. this is a buffer of fixed size in which nobody can write once is full
+		}
 		buffer[nextFree] = matrix;
 		nextFree++;
 	}
