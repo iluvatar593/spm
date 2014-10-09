@@ -195,9 +195,9 @@ public:
 //			delete[] P7;
 		}
 };
-
+/*
 int main() {
-	/** Matrix initialization */
+	/** Matrix initialization
 	int *A = new int[1024*1024]();
 	int *B = new int[1024*1024]();
 	int *C = new int[1024*1024]();
@@ -217,4 +217,4 @@ int main() {
 	}
 	std::cout<<"Everything is alright\n";
 
-}
+}*/
