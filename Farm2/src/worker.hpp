@@ -62,15 +62,16 @@ private:
 	NUM **restrict _C;
 	bool isFirst;
 };
-/** TODO: eliminate 4 Pi to optimize space */
+
 template <typename NUM>
 class StrassenWorker:public ff_node {
 public:
 	StrassenWorker(unsigned int size, unsigned int id, NUM*** outputBuffer):msize(size){
-		initializeStrassenMatrices(size);
+
 		first = outputBuffer[2*id];
 		second = outputBuffer[2*id+1];
 		_C = first;
+		initializeStrassenMatrices(size);
 	};
 	~StrassenWorker(){
 		for(int i = 0; i < msize; i++) {
@@ -79,12 +80,12 @@ public:
 		}
 		for(int i = 0; i < msize/2; i++) {
 			delete[] P1[i];
-			delete[] P2[i];
-			delete[] P3[i];
+//			delete[] P2[i];
+//			delete[] P3[i];
 			delete[] P4[i];
 			delete[] P5[i];
-			delete[] P6[i];
-			delete[] P7[i];
+//			delete[] P6[i];
+//			delete[] P7[i];
 			delete[] S1[i];
 			delete[] S2[i];
 		}
@@ -101,6 +102,7 @@ public:
 		delete[] S2;
 	}
 
+
 	void* svc(void * restrict task) {
 		//Clean up the matrix.
 		for(register int i = 0; i < msize; i++){
@@ -110,80 +112,17 @@ public:
 		NUM **restrict  A = t->A;
 		NUM **restrict  B = t->B;
 		unsigned int newsize = msize/2;
-		unsigned int offsetA = 0, offsetB = 0;
-		NUM** restrict C = _C;
-		//printf("------ Current size is %d, offsetA is %d, offsetB is %d-----\n", size, offsetA, offsetB);
-		matrixSum(A, offsetA, &A[newsize], offsetA+newsize, S1, newsize); //S1 has been calculated
-		matrixSum(B, offsetB, &B[newsize], offsetB+newsize, S2, newsize); //S2 has been calculated
-		//printf("Until now it seems ok!\n");
-		//NUM**P1 = new NUM*[newsize]();
-		//for(int i = 0; i < newsize; i++) P1[i] = new NUM[newsize]();
-		normalMatrixMultiplication(S1, S2, P1, newsize); //P1 = S1*S2
-		matrixSum(&A[newsize], offsetA, &A[newsize], offsetA+newsize, S1, newsize); //S3
-		//NUM **P2 = new NUM*[newsize]();
-		//for(int i = 0; i < newsize; i++) P2[i] = new NUM[newsize](); //Allocation of new space for s2, C can be reused but check.
-		//P2 = S3 * B11
-		normalMatrixMultiplication(S1, B, P2, newsize); //P2 calculated
-		matrixSub(B, offsetB+newsize, &B[newsize], offsetB+newsize, S2, newsize); //S4
+		NUM** restrict D = new NUM*[msize]();
+		for(int i=0; i<msize; i++) D[i]=new NUM[msize]();
+		normalMatrixMultiplication(A,B,D,msize);
 
-				//NUM**P3 = new NUM*[newsize]();
-				//for(int i = 0;i < newsize; i++) P3[i] = new NUM[newsize]();
-				//printf("Until now it seems ok!\n");
-		normalMatrixMultiplication(A, S2, P3, newsize); //P3 calculated, check fi space can be reused
-		matrixSub(&B[newsize], offsetB, B, offsetB, S1, newsize); //S5
-			//NUM**P4 = new NUM*[newsize]();
-			//for(int i = 0;i < newsize; i++) P4[i] = new NUM[newsize]();
-		normalMatrixMultiplication(&A[newsize], S1, P4, newsize, newsize);
-		matrixSum(A, offsetA, A, offsetA+newsize, S2, newsize); //S6
-	//			NUM**P5 = new NUM*[newsize]();
-	//			for(int i = 0;i < newsize; i++) P5[i] = new NUM[newsize]();
-		normalMatrixMultiplication(S2, &B[newsize], P5, newsize, 0, newsize);
-		matrixSub(&A[newsize], offsetA, A, offsetA, S1, newsize); //S7
-		matrixSum(B, offsetB, B, offsetB+newsize, S2, newsize); //S8
-		//			NUM**P6 = new NUM*[newsize]();
-		//			for(int i = 0;i < newsize; i++) P6[i] = new NUM[newsize]();
-		normalMatrixMultiplication(S1, S2, P6, newsize);
-		matrixSub(A, offsetA+newsize, &A[newsize], offsetA+newsize, S1, newsize); //S9
-		matrixSum(&B[newsize], offsetB, &B[newsize], offsetB+newsize, S2, newsize); //S10
-//			NUM**P7 = new NUM*[newsize]();
-		//			for(int i = 0; i < newsize; i++) P7[i] = new NUM[newsize]();
-		normalMatrixMultiplication(S1, S2, P7,newsize);
-				//C11
-		for(int i = 0; i < newsize; i++){
-			#pragma ivdep
-			for(int j = 0; j < newsize; j++) {
-				C[i][j] = P1[i][j] + P4[i][j] -P5[i][j] + P7[i][j];
-			}
-		}
-			//C12
-		for(int i = 0; i < newsize; i++) {
-			NUM*restrict Ccol = &C[i][newsize];
-			#pragma ivdep
-			for(int j = 0; j < newsize; j++) {
-				Ccol[j] = P3[i][j] + P5[i][j];
-			}
-		}
-				//C21 (some error in P2 or P4)
-		NUM **Ctmp = &C[newsize];
-		for(int i = 0; i < newsize; i++) {
-			#pragma ivdep
-			for(int j = 0; j < newsize; j++) {
-				C[i][j] = P2[i][j] + P4[i][j];
-			}
-		}
-				//C22
-				//printf("Last block...\n");
-		for(int i = 0; i < newsize; i++) {
-			NUM *Ccol = &C[i][newsize];
-			#pragma ivdep
-			for(int j = 0; j < newsize; j++) {
-				C[i][j] = P1[i][j] - P2[i][j] + P3[i][j] + P6[i][j];
-					//printf("C[%d][%d] = %d\n", i, j, C[i][j]);
-			}
-		}
-		cleanUp();
-		//this->strassenMatrixMultiplication(_A, _B, _C, msize);
+		this->strassenMatrixMultiplication(A, B, _C, msize);
 		//Changes _C and returns the correct matrix
+		for(int i=0; i<msize; i++){
+			for(int k=0; k<msize; k++){
+				if(_C[i][k] != D[i][k]) printf("Final check: %f should be %f\n", _C[i][k], D[i][k]);
+			}
+		}
 		_C = (_C == first) ? second : first;
 		return (_C == first) ? second : first;
 	}
@@ -192,36 +131,52 @@ private:
 	NUM **restrict S1, **restrict S2, **restrict P1, **restrict P2, **restrict P3, **restrict P4, **restrict P5, **restrict P6, **restrict P7, **restrict first, **restrict second, **_C;
 	unsigned int msize;
 	/** Cleans the temporary area used for strassen procedure */
-	inline void cleanUp(){
+	inline void cleanUp(){ //TODO specialize between optimized and not
 		for(int i = 0; i < msize/2; i++){
 			for(int j = 0; j < msize/2; j++) {
-				P1[i][j] = P2[i][j] = P3[i][j] = P4[i][j] = P5[i][j] = P6[i][j] = P7[i][j] = 0;
+				//P1[i][j] = P2[i][j] = P3[i][j] = P4[i][j] = P5[i][j] = P6[i][j] = P7[i][j] = 0;
+				P1[i][j] = P4[i][j] = P5[i][j] = 0;
 			}
 		}
 	}
 	/** Initializes the temporary areas used by strassen algorithm */
 	inline void initializeStrassenMatrices(unsigned int size) {
 		S1 = new NUM*[size/2]();
-				S2 = new NUM*[size/2]();
-				P1 = new NUM*[size/2]();
-				P2 = new NUM*[size/2]();
-				P3 = new NUM*[size/2]();
-				P4 = new NUM*[size/2]();
-				P5 = new NUM*[size/2]();
-				P6 = new NUM*[size/2]();
-				P7 = new NUM*[size/2]();
-				for(int i = 0; i < size/2; i++) {
-					S1[i] = new NUM[size/2]();
-					S2[i] = new NUM[size/2]();
-					P1[i] = new NUM[size/2]();
-					P1[i] = new NUM[size/2]();
-					P2[i] = new NUM[size/2]();
-					P3[i] = new NUM[size/2]();
-					P4[i] = new NUM[size/2]();
-					P5[i] = new NUM[size/2]();
-					P6[i] = new NUM[size/2]();
-					P7[i] = new NUM[size/2]();
-				}
+		S2 = new NUM*[size/2]();
+		P1 = new NUM*[size/2]();
+		P2 = new NUM*[size/2]();
+		P3 = new NUM*[size/2]();
+		P4 = new NUM*[size/2]();
+		P5 = new NUM*[size/2]();
+		P6 = new NUM*[size/2]();
+		P7 = new NUM*[size/2]();
+		for(int i = 0; i < size/2; i++) {
+			S1[i] = new NUM[size/2]();
+			S2[i] = new NUM[size/2]();
+			P1[i] = new NUM[size/2]();
+			P1[i] = new NUM[size/2]();
+			P2[i] = new NUM[size/2]();
+			P3[i] = new NUM[size/2]();
+			P4[i] = new NUM[size/2]();
+			P5[i] = new NUM[size/2]();
+			P6[i] = new NUM[size/2]();
+			P7[i] = new NUM[size/2]();
+		}
+	}
+	inline void initializeOptimizedStrassenMatrices(unsigned int size) {
+		S1 = new NUM*[size/2]();
+		S2 = new NUM*[size/2]();
+		P1 = new NUM*[size/2]();
+		P4 = new NUM*[size/2]();
+		P5 = new NUM*[size/2]();
+		for(int i = 0; i < size/2; i++) {
+			S1[i] = new NUM[size/2]();
+			S2[i] = new NUM[size/2]();
+			P1[i] = new NUM[size/2]();
+			P1[i] = new NUM[size/2]();
+			P4[i] = new NUM[size/2]();
+			P5[i] = new NUM[size/2]();
+		}
 	}
 	/** Performs the normal matrix multiplication on a subchunk */
 	inline void normalMatrixMultiplication(NUM **restrict A, NUM** restrict B, NUM** restrict C, unsigned int size, unsigned int offsetA=0, unsigned int offsetB=0, unsigned int offsetC=0) {
@@ -239,7 +194,7 @@ private:
 	}
 
 	/** Sum of two matrices */
-	inline void matrixSum(NUM **restrict A, unsigned int offsetColA, NUM** restrict B, unsigned int offsetColB, NUM**restrict C, unsigned int size) {
+	inline void matrixSum(NUM **restrict A, unsigned int offsetColA, NUM** restrict B, unsigned int offsetColB, NUM**restrict C, unsigned int size, unsigned int offsetColC=0) {
 		for(int i = 0; i < size; i++){
 			NUM *restrict rowA = &A[i][offsetColA], *restrict rowB = &B[i][offsetColB], *restrict rowC = C[i];
 			for(int j =0 ; j < size; j++) {
@@ -248,88 +203,166 @@ private:
 		}
 	}
 	/** Subtraction of two matrices */
-	inline void matrixSub(NUM **restrict A, unsigned int offsetColA, NUM** restrict B, unsigned int offsetColB, NUM**restrict C, unsigned int size) {
+	inline void matrixSub(NUM **restrict A, unsigned int offsetColA, NUM** restrict B, unsigned int offsetColB, NUM**restrict C, unsigned int size, unsigned int offsetColC=0) {
 		for(int i = 0; i < size; i++){
 			NUM *restrict rowA = &A[i][offsetColA], *restrict rowB = &B[i][offsetColB], *restrict rowC = C[i];
 			for(int j = 0; j < size; j++) {
-				//if(i == j) printf("%d, %d -- %d %d\n", i, j, rowA[j+offsetColA], rowB[j+offsetColB]);
 				rowC[j] = rowA[j] - rowB[j];
 			}
 		}
 	}
-	/** Strassen matrix multplication */
-	inline void strassenMatrixMultiplication(NUM **restrict A, NUM** restrict B, NUM**restrict C, unsigned int size, unsigned int offsetA = 0, unsigned int offsetB = 0) {
-		unsigned int newsize = size/2;
 
-		//printf("------ Current size is %d, offsetA is %d, offsetB is %d-----\n", size, offsetA, offsetB);
+	inline void strassenMatrixMultiplication(NUM **restrict A, NUM** restrict B, NUM**restrict C, unsigned int size, unsigned int offsetA = 0, unsigned int offsetB = 0) {
+
+		/*
+		 * Strassen algorithm:
+		 *
+		 *  S1  = A11 + A22
+		 *  S2  = B11 + B22
+		 *  P1  = S1 * S2
+		 *  S3  = A21 + A22
+		 *  P2  = S3 * B11
+		 *  S4  = B12 - B22
+		 *  P3  = A11 * S4
+		 *  S5  = B21 - B11
+		 *  P4  = A22 * S5
+		 *  S6  = A11 + A12
+		 *  P5  = S6 * B22
+		 *  S7  = A21 - A11
+		 *  S8  = B11 + B12
+		 *  P6  = S7 * S8
+		 *  S9  = A12 - A22
+		 *  S10 = B21 + B22
+		 *  P7  = S9*S10
+		 *  C11 = P1 + P4 - P5 + P7
+		 *  C12 = P3 + P5
+		 *  C21 = P2 + P4
+		 *  C22 = P1 - P2 + P3 + P6
+		 *
+		 */
+
+		unsigned int newsize = size/2;
 		matrixSum(A, offsetA, &A[newsize], offsetA+newsize, S1, newsize); //S1 has been calculated
 		matrixSum(B, offsetB, &B[newsize], offsetB+newsize, S2, newsize); //S2 has been calculated
-		//printf("Until now it seems ok!\n");
-		//NUM**P1 = new NUM*[newsize]();
-		//for(int i = 0; i < newsize; i++) P1[i] = new NUM[newsize]();
-
 		normalMatrixMultiplication(S1, S2, P1, newsize); //P1 = S1*S2
 		matrixSum(&A[newsize], offsetA, &A[newsize], offsetA+newsize, S1, newsize); //S3
-
-		//NUM **P2 = new NUM*[newsize]();
-		//for(int i = 0; i < newsize; i++) P2[i] = new NUM[newsize](); //Allocation of new space for s2, C can be reused but check.
-		//P2 = S3 * B11
-		normalMatrixMultiplication(S1, B, P2, newsize); //P2 calculated
+		normalMatrixMultiplication(S1, B, P2, newsize); //P2 = S3 * B11
 		matrixSub(B, offsetB+newsize, &B[newsize], offsetB+newsize, S2, newsize); //S4
-
-
-
-		//NUM**P3 = new NUM*[newsize]();
-		//for(int i = 0;i < newsize; i++) P3[i] = new NUM[newsize]();
-		//printf("Until now it seems ok!\n");
-		normalMatrixMultiplication(A, S2, P3, newsize); //P3 calculated, check fi space can be reused
+		normalMatrixMultiplication(A, S2, P3, newsize); //P3 = A11 * S4
 		matrixSub(&B[newsize], offsetB, B, offsetB, S1, newsize); //S5
-
-		//NUM**P4 = new NUM*[newsize]();
-		//for(int i = 0;i < newsize; i++) P4[i] = new NUM[newsize]();
-		normalMatrixMultiplication(&A[newsize], S1, P4, newsize, newsize);
+		normalMatrixMultiplication(&A[newsize], S1, P4, newsize, newsize);//P4  = A22 * S5
 		matrixSum(A, offsetA, A, offsetA+newsize, S2, newsize); //S6
-//			NUM**P5 = new NUM*[newsize]();
-//			for(int i = 0;i < newsize; i++) P5[i] = new NUM[newsize]();
-		normalMatrixMultiplication(S2, &B[newsize], P5, newsize, 0, newsize);
+		normalMatrixMultiplication(S2, &B[newsize], P5, newsize, 0, newsize);//P5  = S6 * B22
 		matrixSub(&A[newsize], offsetA, A, offsetA, S1, newsize); //S7
 		matrixSum(B, offsetB, B, offsetB+newsize, S2, newsize); //S8
-//			NUM**P6 = new NUM*[newsize]();
-//			for(int i = 0;i < newsize; i++) P6[i] = new NUM[newsize]();
-		normalMatrixMultiplication(S1, S2, P6, newsize);
+		normalMatrixMultiplication(S1, S2, P6, newsize);//P6  = S7 * S8
 		matrixSub(A, offsetA+newsize, &A[newsize], offsetA+newsize, S1, newsize); //S9
 		matrixSum(&B[newsize], offsetB, &B[newsize], offsetB+newsize, S2, newsize); //S10
-//			NUM**P7 = new NUM*[newsize]();
-//			for(int i = 0; i < newsize; i++) P7[i] = new NUM[newsize]();
-		normalMatrixMultiplication(S1, S2, P7,newsize);
+		normalMatrixMultiplication(S1, S2, P7,newsize);//P7  = S9*S10
+		NUM** Ctmp = &C[newsize];
 		//C11
 		for(int i = 0; i < newsize; i++){
+			#pragma ivdep //Check if useful
 			for(int j = 0; j < newsize; j++) {
 				C[i][j] = P1[i][j] + P4[i][j] - P5[i][j] + P7[i][j];
 			}
 		}
 		//C12
 		for(int i = 0; i < newsize; i++) {
-			for(int j = newsize; j < size; j++) {
-				C[i][j] = P3[i][j-newsize] + P5[i][j-newsize];
+			NUM* restrict Ccol2 = &C[i][newsize];
+			#pragma ivdep //Check if useful
+			for(int j = 0; j < newsize; j++) {
+				Ccol2[j] = P3[i][j] + P5[i][j];
 			}
 		}
-		//C21 (some error in P2 or P4)
-		for(int i = newsize; i < size; i++) {
+		//C21
+		for(int i = 0; i < newsize; i++) {
+			#pragma ivdep //Check if useful
 			for(int j = 0; j < newsize; j++) {
-				C[i][j] = P2[i-newsize][j] + P4[i-newsize][j];
+				Ctmp[i][j] = P2[i][j] + P4[i][j];
 			}
 		}
 		//C22
-		//printf("Last block...\n");
-		for(int i = newsize; i < size; i++) {
-			for(int j = newsize; j < size; j++) {
-				C[i][j] = P1[i-newsize][j-newsize] - P2[i-newsize][j-newsize] + P3[i-newsize][j-newsize] + P6[i-newsize][j-newsize];
-				//printf("C[%d][%d] = %d\n", i, j, C[i][j]);
+		for(int i = 0; i < newsize; i++) {
+			NUM* restrict Ccol = &Ctmp[i][newsize];
+			#pragma ivdep //Check if useful
+			for(int j = 0; j < newsize; j++) {
+				Ccol[j] = P1[i][j] - P2[i][j] + P3[i][j] + P6[i][j];
 			}
 		}
 		cleanUp();
 	}
+
+	void strassenOptimizedMatrixMultiplication(NUM **restrict A, NUM** restrict B, NUM**restrict C, unsigned int size, unsigned int offsetA = 0, unsigned int offsetB = 0) {
+		/*
+		 *
+		 * Memory usage optimizations:
+		 *
+		P2  = C21;
+		P3  = C12;
+		P6  = C22;
+		P7  = C11;
+		*
+		*/
+					unsigned int newsize = size/2;
+					matrixSum(A, offsetA, &A[newsize], offsetA+newsize, S1, newsize); //S1
+					matrixSum(B, offsetB, &B[newsize], offsetB+newsize, S2, newsize); //S2
+					normalMatrixMultiplication(S1, S2, P1, newsize);
+					matrixSum(&A[newsize], offsetA, &A[newsize], offsetA+newsize, S1, newsize); //S3
+					NUM** Ctmp = &C[newsize];
+					normalMatrixMultiplication(S1, B, Ctmp, newsize); //optimization P2 = C21
+					matrixSub(B, offsetB+newsize, &B[newsize], offsetB+newsize, S2, newsize); //S4
+					normalMatrixMultiplication(A, S2, C, newsize, 0, 0, newsize); //optimization P3 = C12
+					matrixSub(&B[newsize], offsetB, B, offsetB, S1, newsize); //S5
+					normalMatrixMultiplication(&A[newsize], S1, P4, newsize, newsize);
+					matrixSum(A, offsetA, A, offsetA+newsize, S2, newsize); //S6
+					normalMatrixMultiplication(S2, &B[newsize], P5, newsize, 0, newsize);
+					matrixSub(&A[newsize], offsetA, A, offsetA, S1, newsize); //S7
+					matrixSum(B, offsetB, B, offsetB+newsize, S2, newsize); //S8
+					normalMatrixMultiplication(S1, S2, Ctmp, newsize,0,0,newsize); //optimization P6=C22
+					matrixSub(A, offsetA+newsize, &A[newsize], offsetA+newsize, S1, newsize); //S9
+					matrixSum(&B[newsize], offsetB, &B[newsize], offsetB+newsize, S2, newsize); //S10
+					normalMatrixMultiplication(S1, S2, C, newsize); //optimization P7 = C11
+
+					//VEC Loops , reminder: NUM** Ctmp = &C[newsize];
+
+					//C22
+					for(int i = 0; i < newsize; i++) {
+						NUM* restrict Ccol = &Ctmp[i][newsize];
+						NUM* restrict Ccol2 = &C[i][newsize];
+						#pragma ivdep
+						for(int j = 0; j < newsize; j++) {
+							Ccol[j] += P1[i][j] - Ctmp[i][j] + Ccol2[j];
+						}
+					}
+
+					//C11
+					for(int i = 0; i < newsize; i++){
+						#pragma ivdep
+						for(int j = 0; j < newsize; j++) {
+							C[i][j] += P1[i][j] + P4[i][j] - P5[i][j];
+						}
+					}
+
+					//C12
+					for(int i = 0; i < newsize; i++) {
+						#pragma ivdep
+						NUM* restrict Ccol2 = &C[i][newsize];
+						for(int j = 0; j < newsize; j++) {
+							Ccol2[j] += P5[i][j];
+						}
+					}
+
+					//C21 (some error in P2 or P4)
+					for(int i = 0; i < newsize; i++) {
+						#pragma ivdep
+						for(int j = 0; j < newsize; j++) {
+							Ctmp[i][j] += P4[i][j];
+						}
+					}
+
+					cleanUp();
+				}
 };
 
 
