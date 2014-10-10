@@ -151,7 +151,8 @@ public:
 				//C11
 		for(int i = 0; i < newsize; i++){
 			for(int j = 0; j < newsize; j++) {
-				C[i][j] = P1[i][j] + P4[i][j] - P5[i][j] + P7[i][j];
+				C[i][j] = P1[i][j] + P4[i][j];
+				C[i][j] += (-P5[i][j] + P7[i][j]);
 			}
 		}
 			//C12
