@@ -9,12 +9,13 @@
 #include <iostream>
 #include <cmath>
 #include <stdio.h>
+#include <stdlib.h>
 #define restrict
-#define treshold 128
+#define treshold 64
 template <typename NUM>
 class MatMul {
 public:
-	MatMul(unsigned int size):size(size){
+	MatMul(unsigned int size):msize(size){
 		S1 = new NUM*[size/2]();
 		S2 = new NUM*[size/2]();
 		P1 = new NUM*[size/2]();
@@ -71,10 +72,6 @@ public:
 			}
 
 	void strassenMatrixMultiplication(NUM **restrict A, NUM** restrict B, NUM**restrict C, unsigned int size, unsigned int offsetA = 0, unsigned int offsetB = 0) {
-			if(size <= treshold){ //Stop recursion.
-				normalMatrixMultiplication(A, B, C, size, offsetA, offsetB);
-				return;
-			}
 			unsigned int newsize = size/2;
 
 			//printf("------ Current size is %d, offsetA is %d, offsetB is %d-----\n", size, offsetA, offsetB);
@@ -89,9 +86,12 @@ public:
 
 			//NUM **P2 = new NUM*[newsize]();
 			//for(int i = 0; i < newsize; i++) P2[i] = new NUM[newsize](); //Allocation of new space for s2, C can be reused but check.
-
-			normalMatrixMultiplication(B, S1, P2, newsize); //P2 calculated
+			//P2 = S3 * B11
+			normalMatrixMultiplication(S1, B, P2, newsize); //P2 calculated
 			matrixSub(B, offsetB+newsize, &B[newsize], offsetB+newsize, S2, newsize); //S4
+
+
+
 			//NUM**P3 = new NUM*[newsize]();
 			//for(int i = 0;i < newsize; i++) P3[i] = new NUM[newsize]();
 			//printf("Until now it seems ok!\n");
@@ -115,22 +115,25 @@ public:
 //			NUM**P7 = new NUM*[newsize]();
 //			for(int i = 0; i < newsize; i++) P7[i] = new NUM[newsize]();
 			normalMatrixMultiplication(S1, S2, P7,newsize);
-
+			//C11
 			for(int i = 0; i < newsize; i++){
 				for(int j = 0; j < newsize; j++) {
 					C[i][j] = P1[i][j] + P4[i][j] - P5[i][j] + P7[i][j];
 				}
 			}
+			//C12
 			for(int i = 0; i < newsize; i++) {
 				for(int j = newsize; j < size; j++) {
 					C[i][j] = P3[i][j-newsize] + P5[i][j-newsize];
 				}
 			}
+			//C21 (some error in P2 or P4)
 			for(int i = newsize; i < size; i++) {
 				for(int j = 0; j < newsize; j++) {
 					C[i][j] = P2[i-newsize][j] + P4[i-newsize][j];
 				}
 			}
+			//C22
 			//printf("Last block...\n");
 			for(int i = newsize; i < size; i++) {
 				for(int j = newsize; j < size; j++) {
@@ -142,48 +145,54 @@ public:
 		}
 private:
 	NUM **S1, **S2, **P1, **P2, **P3, **P4, **P5, **P6, **P7;
-	unsigned int size;
+	unsigned int msize;
 	void cleanUp(){
-		for(int i = 0; i < size/2; i++){
-			for(int j = 0; j < size/2; j++) {
+		for(int i = 0; i < msize/2; i++){
+			for(int j = 0; j < msize/2; j++) {
 				P1[i][j] = P2[i][j] = P3[i][j] = P4[i][j] = P5[i][j] = P6[i][j] = P7[i][j] = 0;
 			}
 		}
 	}
 };
-
+#define size 2048
 
 int main() {
 
-	int **A = new int*[1024]();
-	int **B = new int*[1024]();
-	int **C = new int*[1024]();
-	int **D = new int*[1024]();
-	for(int i = 0; i < 1024; i++) {
-		A[i] = new int[1024]();
-		B[i] = new int[1024]();
-		C[i] = new int[1024]();
-		D[i] = new int[1024]();
-		A[i][i] = 1; B[i][i] = 1;
+	int **A = new int*[size]();
+	int **B = new int*[size]();
+	int **C = new int*[size]();
+	int **D = new int*[size]();
+	for(int i = 0; i < size; i++) {
+		A[i] = new int[size]();
+		B[i] = new int[size]();
+		C[i] = new int[size]();
+		D[i] = new int[size]();
+		//A[i][i] = 1; B[i][i] = 1;
 	}
+	for(int i =0; i < size; i++)
+		for(int j = 0; j < size; j++) {
+			A[i][j] = rand()%100;
+			B[i][j] = rand()%100;
+		}
 
-	MatMul<int> *m = new MatMul<int>((unsigned int)1024);
-	m->strassenMatrixMultiplication(A, B, C, 1024);
+	MatMul<int> *m = new MatMul<int>((unsigned int)size);
+	m->strassenMatrixMultiplication(A, B, C, size);
 	//MatMul<int>::normalMatrixMultiplication(A, B, C, 1024);
 	printf("Ended calculation\n");
-	for(int i = 0; i < 1024; i++) {
+	/*for(int i = 0; i < 1024; i++) {
 		if(C[i][i] != 1) {
 			std::cout<<"Error\n";
 			std::cout<< "i is " << i << "value is " << C[i][i];
 			return -1;
 		}
-	}
-	std::cout<<"Everything is alright\n";
-	m->strassenMatrixMultiplication(A, B, D, 1024);
-	for(int i = 0; i < 1024; i++) {
-			if(D[i][i] != 1) {
+	}*/
+	std::cout<<"Verify\n";
+	m->normalMatrixMultiplication(A, B, D, size);
+	for(int i = 0; i < size; i++) {
+		for(int j = 0; j < size; j++)
+			if(D[i][j] != C[i][j]) {
 				std::cout<<"Error\n";
-				std::cout<< "i is " << i << "value is " << C[i][i];
+				std::cout<< "i is " << i<<","<<j << "value is " << C[i][j] << "it should be" << D[i][j];
 				return -1;
 			}
 		}
