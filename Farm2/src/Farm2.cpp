@@ -14,6 +14,10 @@
 #include "worker.hpp"
 #include "input_buffer.hpp"
 #include "collector.hpp"
+#include "parallel_initializer.hpp"
+//type to use for multiplication
+#define type double
+#define initializers 8
 using namespace ff;
 
 int main(int argc, char* argv[]) {
@@ -24,6 +28,7 @@ int main(int argc, char* argv[]) {
 	unsigned int numWorkers = atoi(argv[3]);
 	unsigned int streamLength = mxw*numWorkers;
 	unsigned int bufferSize = calculateBufferSize(sizeof(int), numWorkers, matrixSize, streamLength);
+	bool executeStrassen = (argc >= 4 && atoi(argv[4]) == 1);
 	for(int i = 0; i < argc; i++) {
 		printf("%d ------> %s\n",i, argv[i]);
 	}
@@ -31,24 +36,25 @@ int main(int argc, char* argv[]) {
 		printUsage();
 		return 1;
 	}
-	input_buffer<int> *A = new input_buffer<int>(bufferSize);
-	input_buffer<int> *B = new input_buffer<int>(bufferSize);
-	int ***C = new int**[numWorkers*2]();
+	input_buffer<type> *A = new input_buffer<type>(bufferSize);
+	input_buffer<type> *B = new input_buffer<type>(bufferSize);
+	type ***C = new type**[numWorkers*2]();
+	//initializeInParallel(A, B, matrixSize, bufferSize, initializers);
 	for(unsigned int m = 0; m < bufferSize; m++) {
-		int **matrixA, **matrixB;
-		matrixA = new int*[matrixSize]();
-		matrixB = new int*[matrixSize]();
+		type **matrixA, **matrixB;
+		matrixA = new type*[matrixSize]();
+		matrixB = new type*[matrixSize]();
 		for(unsigned int i = 0; i < matrixSize; i++){
-			matrixA[i] = new int[matrixSize]();
-			matrixB[i] = new int[matrixSize]();
+			matrixA[i] = new type[matrixSize]();
+			matrixB[i] = new type[matrixSize]();
 			matrixA[i][i] = matrixB[i][i] = 1;
 		}
 		A->add(matrixA);
 		B->add(matrixB);
 	}
 	for(unsigned int m = 0; m < numWorkers*2; m++) {
-		C[m] = new int*[matrixSize]();
-		for(unsigned int i = 0; i < matrixSize; i++) C[m][i] = new int[matrixSize]();
+		C[m] = new type*[matrixSize]();
+		for(unsigned int i = 0; i < matrixSize; i++) C[m][i] = new type[matrixSize]();
 	}
 
 	#if defined(__MIC__)
@@ -56,14 +62,18 @@ int main(int argc, char* argv[]) {
     	threadMapper::instance()->setMappingList(worker_mapping);
 	#endif
 
-	Emitter<int> E(A, B, bufferSize, streamLength, matrixSize);
+	Emitter<type> E(A, B, bufferSize, streamLength, matrixSize);
 	ff_farm<> * farm = new ff_farm<>();
 	farm->add_emitter(&E);
-	Collector<int> Coll(matrixSize);
+	Collector<type> Coll(matrixSize);
 	farm->add_collector(&Coll);
+	farm->set_scheduling_ondemand(0);
 	std::vector<ff_node *> w;
-	//for(unsigned int i=0;i<numWorkers;++i) w.push_back(new Worker<int>(matrixSize, i, C));
-	for(unsigned int i=0;i<numWorkers;++i) w.push_back(new StrassenWorker<int>(matrixSize, i, C, 64));
+	if (executeStrassen)
+		for(unsigned int i=0;i<numWorkers;++i) w.push_back(new StrassenWorker<type>(matrixSize, i, C));
+	else
+		for(unsigned int i=0;i<numWorkers;++i) w.push_back(new Worker<type>(matrixSize, i, C));
+
 
 	farm->add_workers(w);
 	start_time();

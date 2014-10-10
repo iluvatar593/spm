@@ -12,20 +12,25 @@ template <typename NUM>
 class input_buffer {
 public:
 	input_buffer(unsigned int size):size(size){
-		buffer = new int**[size]();
+		buffer = new NUM**[size]();
 		nextFree = 0;
 		offset = 0;
 		current = 0;
 	}
 	~input_buffer(){}
+	/** WARNING: don't mix with the other add with specified index!!!!*/
 	void add(NUM**restrict matrix){
-		if(nextFree >= size) {
-
-			return; //has no effects. this is a buffer of fixed size in which nobody can write once is full
-		}
+		if(nextFree >= size) return; //has no effects. this is a buffer of fixed size in which nobody can write once is full
 		buffer[nextFree] = matrix;
 		nextFree++;
 	}
+
+	void add(NUM** restrict matrix, unsigned int position) {
+		if(position >= size) return;
+		//printf("I buffer initialized %d\n", position);
+		buffer[position] = matrix;
+	}
+
 	/** This allows to generate, in combination with another buffer, all the possible couples of matrices to multiply*/
 	NUM **restrict getNext() {
 		NUM ** next = buffer[(current+offset)%size];
