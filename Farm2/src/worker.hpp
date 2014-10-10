@@ -150,28 +150,34 @@ public:
 		normalMatrixMultiplication(S1, S2, P7,newsize);
 				//C11
 		for(int i = 0; i < newsize; i++){
+			#pragma ivdep
 			for(int j = 0; j < newsize; j++) {
-				C[i][j] = P1[i][j] + P4[i][j];
-				C[i][j] += (-P5[i][j] + P7[i][j]);
+				C[i][j] = P1[i][j] + P4[i][j] -P5[i][j] + P7[i][j];
 			}
 		}
 			//C12
 		for(int i = 0; i < newsize; i++) {
-			for(int j = newsize; j < msize; j++) {
-				C[i][j] = P3[i][j-newsize] + P5[i][j-newsize];
+			NUM*restrict Ccol = &C[i][newsize];
+			#pragma ivdep
+			for(int j = 0; j < newsize; j++) {
+				Ccol[j] = P3[i][j] + P5[i][j];
 			}
 		}
 				//C21 (some error in P2 or P4)
-		for(int i = newsize; i < msize; i++) {
+		NUM **Ctmp = &C[newsize];
+		for(int i = 0; i < newsize; i++) {
+			#pragma ivdep
 			for(int j = 0; j < newsize; j++) {
-				C[i][j] = P2[i-newsize][j] + P4[i-newsize][j];
+				C[i][j] = P2[i][j] + P4[i][j];
 			}
 		}
 				//C22
 				//printf("Last block...\n");
-		for(int i = newsize; i < msize; i++) {
-			for(int j = newsize; j < msize; j++) {
-				C[i][j] = P1[i-newsize][j-newsize] - P2[i-newsize][j-newsize] + P3[i-newsize][j-newsize] + P6[i-newsize][j-newsize];
+		for(int i = 0; i < newsize; i++) {
+			NUM *Ccol = &C[i][newsize];
+			#pragma ivdep
+			for(int j = 0; j < newsize; j++) {
+				C[i][j] = P1[i][j] - P2[i][j] + P3[i][j] + P6[i][j];
 					//printf("C[%d][%d] = %d\n", i, j, C[i][j]);
 			}
 		}
