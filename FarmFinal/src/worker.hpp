@@ -39,7 +39,7 @@ public:
 protected:
 	NUM **first, ** second, ** _C;
 	unsigned int size;
-	virtual inline void matrixMultiplication(NUM ** A, NUM**B, NUM**C);
+	virtual inline void matrixMultiplication(NUM **restrict A, NUM**restrict B, NUM**restrict C);
 private:
 	void cleanC() {
 		for(unsigned int i = 0; i < size; i++)
