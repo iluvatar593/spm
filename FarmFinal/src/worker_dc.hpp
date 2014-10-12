@@ -9,17 +9,19 @@
 #define WORKER_DC_HPP_
 
 #include <ff/node.hpp>
-#include "worker.hpp"
+#include "worker_ikj.hpp"
 
 #define treshold 256
 
 template <typename NUM>
-class DCWorker: public Worker {
+class DCWorker: public Worker<NUM> {
 public:
-	DCWorker(unsigned int size, unsigned int id, NUM*** outputBuffer):size(size),Worker<NUM>(size,id, outputBuffer){}
+	DCWorker(unsigned int size, unsigned int id, NUM*** outputBuffer):Worker<NUM>(size,id, outputBuffer){}
 	~DCWorker(){}
 protected:
-	no
+	inline void matrixMultiplication(NUM **restrict A, NUM**restrict B, NUM** restrict C) {
+		dcMatrixMultiplication(A, B, C, this->size);
+	}
 private:
 	void dcMatrixMultiplication(NUM **restrict A, NUM** restrict B, NUM** restrict C, unsigned int size, unsigned int offsetA = 0, unsigned int offsetB = 0, unsigned int offsetC = 0) {
 		if (size <= treshold) {
@@ -39,6 +41,7 @@ private:
 		 //C22 = A22*B22
 
 	}
+	/*
 	inline void normalMatrixMultiplication(NUM **restrict A, NUM** restrict B, NUM** restrict C, unsigned int size, unsigned int offsetA=0, unsigned int offsetB=0, unsigned int offsetC=0) {
 			NUM *restrict Bvector;
 			NUM *restrict Cvector;
@@ -51,9 +54,7 @@ private:
 							Cvector[j] += aik* Bvector[j];
 				}
 			}
-	}
+	}*/
 };
-
-
 
 #endif /* WORKER_DC_HPP_ */

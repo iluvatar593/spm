@@ -40,6 +40,19 @@ protected:
 	NUM **first, ** second, ** _C;
 	unsigned int size;
 	virtual inline void matrixMultiplication(NUM **restrict A, NUM**restrict B, NUM**restrict C);
+	inline void normalMatrixMultiplication(NUM **restrict A, NUM** restrict B, NUM** restrict C, unsigned int size, unsigned int offsetA=0, unsigned int offsetB=0, unsigned int offsetC=0) {
+		NUM *restrict Bvector;
+		NUM *restrict Cvector;
+		for(unsigned int i = 0; i < size; i++) {
+			Cvector = &C[i][offsetC];
+			for(unsigned int k = 0; k < size; k++) {
+				Bvector = &B[k][offsetB];
+				register int aik = A[i][k+offsetA];
+				for (unsigned int j = 0; j < size; j++)
+						Cvector[j] += aik* Bvector[j];
+			}
+		}
+	}
 private:
 	void cleanC() {
 		for(unsigned int i = 0; i < size; i++)

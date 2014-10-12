@@ -7,9 +7,8 @@
 //============================================================================
 
 #include <iostream>
-using namespace std;
-
+#include "worker_dc.hpp"
 int main() {
-	cout << "" << endl; // prints 
+	std::cout << ""; // prints
 	return 0;
 }
