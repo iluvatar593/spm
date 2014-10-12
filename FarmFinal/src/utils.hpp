@@ -23,6 +23,11 @@ struct pointerTask {
 	NUM **restrict B;
 };
 
+template <typename NUM>
+struct LpointerTask {
+	NUM *restrict A;
+	NUM *restrict B;
+};
 
 /** Timing macro (for now, one for scope). Call start_time() for initializing;
  * elapsed_time(STRING) prints the string with the time spent in the procedure (in uS).
