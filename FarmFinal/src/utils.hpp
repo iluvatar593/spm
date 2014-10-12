@@ -49,13 +49,11 @@ unsigned inline int calculateBufferSize(size_t s, unsigned int numworkers, unsig
 /** Show usage */
 inline void printUsage() {
 	std::cout << "MainFarm usage:\n";
-	std::cout << "./MainFarm lengthOfStream MatrixSize WorkerNumber\n";
+	std::cout << "./MainFarm lengthOfStream MatrixSize WorkerNumber [-Aalgorithm] -S[scheduling]\n";
+	std::cout << "algorithm is one between IKJ, Strassen and DC (divide and conquer). If not specified IKJ is used.\n";
+	std::cout << "scheduling works only on the mic; -Smic or blank is the default which schedules on the cores" <<
+			" in a round robin fashion. \n -Ssystem relies on the OS scheduling\n";
+
 }
-
-auto totaltime = std::chrono::high_resolution_clock::now();
-
-
-
-
 
 #endif /* UTILS_HPP_ */

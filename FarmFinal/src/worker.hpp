@@ -32,14 +32,14 @@ public:
 		pointerTask<NUM> *restrict t = (pointerTask<NUM>*restrict) task;
 		NUM **restrict  A = t->A;
 		NUM **restrict  B = t->B;
-		matrixMultiplication(A, B, _C);
+		this->matrixMultiplication(A, B, _C);
 		_C = (_C == first) ? second : first;
 		return (_C == first) ? second : first;
 	}
 protected:
 	NUM **first, ** second, ** _C;
 	unsigned int size;
-	virtual inline void matrixMultiplication(NUM **restrict A, NUM**restrict B, NUM**restrict C);
+	virtual inline void matrixMultiplication(NUM **restrict A, NUM**restrict B, NUM**restrict C)=0;
 	inline void normalMatrixMultiplication(NUM **restrict A, NUM** restrict B, NUM** restrict C, unsigned int size, unsigned int offsetA=0, unsigned int offsetB=0, unsigned int offsetC=0) {
 		NUM *restrict Bvector;
 		NUM *restrict Cvector;

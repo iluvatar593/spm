@@ -33,6 +33,7 @@ public:
 	}
 protected:
 	inline void matrixMultiplication(NUM **restrict A, NUM**restrict B, NUM** restrict C) {
+		printf("Eseguo S\n");
 		strassenOptimizedMatrixMultiplication(A, B, C, this->size);
 	}
 private:
@@ -120,22 +121,22 @@ private:
 						unsigned int newsize = size/2;
 						matrixSum(A, offsetA, &A[newsize], offsetA+newsize, S1, newsize); //S1
 						matrixSum(B, offsetB, &B[newsize], offsetB+newsize, S2, newsize); //S2
-						normalMatrixMultiplication(S1, S2, P1, newsize);
+						this->normalMatrixMultiplication(S1, S2, P1, newsize);
 						matrixSum(&A[newsize], offsetA, &A[newsize], offsetA+newsize, S1, newsize); //S3
 						NUM** Ctmp = &C[newsize];
-						normalMatrixMultiplication(S1, B, Ctmp, newsize); //optimization P2 = C21
+						this->normalMatrixMultiplication(S1, B, Ctmp, newsize); //optimization P2 = C21
 						matrixSub(B, offsetB+newsize, &B[newsize], offsetB+newsize, S2, newsize); //S4
-						normalMatrixMultiplication(A, S2, C, newsize, 0, 0, newsize); //optimization P3 = C12
+						this->normalMatrixMultiplication(A, S2, C, newsize, 0, 0, newsize); //optimization P3 = C12
 						matrixSub(&B[newsize], offsetB, B, offsetB, S1, newsize); //S5
-						normalMatrixMultiplication(&A[newsize], S1, P4, newsize, newsize);
+						this->normalMatrixMultiplication(&A[newsize], S1, P4, newsize, newsize);
 						matrixSum(A, offsetA, A, offsetA+newsize, S2, newsize); //S6
-						normalMatrixMultiplication(S2, &B[newsize], P5, newsize, 0, newsize);
+						this->normalMatrixMultiplication(S2, &B[newsize], P5, newsize, 0, newsize);
 						matrixSub(&A[newsize], offsetA, A, offsetA, S1, newsize); //S7
 						matrixSum(B, offsetB, B, offsetB+newsize, S2, newsize); //S8
-						normalMatrixMultiplication(S1, S2, Ctmp, newsize,0,0,newsize); //optimization P6=C22
+						this->normalMatrixMultiplication(S1, S2, Ctmp, newsize,0,0,newsize); //optimization P6=C22
 						matrixSub(A, offsetA+newsize, &A[newsize], offsetA+newsize, S1, newsize); //S9
 						matrixSum(&B[newsize], offsetB, &B[newsize], offsetB+newsize, S2, newsize); //S10
-						normalMatrixMultiplication(S1, S2, C, newsize); //optimization P7 = C11
+						this->normalMatrixMultiplication(S1, S2, C, newsize); //optimization P7 = C11
 
 						//VEC Loops , reminder: NUM** Ctmp = &C[newsize];
 

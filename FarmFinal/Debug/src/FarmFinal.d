@@ -1,12 +1,14 @@
-src/FarmFinal.d: ../src/FarmFinal.cpp ../src/worker_dc.hpp \
- /home/alessandro/git/spm/mc-fastflow-code/ff/node.hpp \
+src/FarmFinal.d: ../src/FarmFinal.cpp \
+ /home/alessandro/git/spm/mc-fastflow-code/ff/farm.hpp \
  /home/alessandro/git/spm/mc-fastflow-code/ff/platforms/platform.h \
- /home/alessandro/git/spm/mc-fastflow-code/ff/cycle.h \
+ /home/alessandro/git/spm/mc-fastflow-code/ff/lb.hpp \
  /home/alessandro/git/spm/mc-fastflow-code/ff/utils.hpp \
+ /home/alessandro/git/spm/mc-fastflow-code/ff/cycle.h \
  /home/alessandro/git/spm/mc-fastflow-code/ff/spin-lock.hpp \
  /home/alessandro/git/spm/mc-fastflow-code/ff/sysdep.h \
  /home/alessandro/git/spm/mc-fastflow-code/ff/config.hpp \
  /home/alessandro/git/spm/mc-fastflow-code/ff/atomic/abstraction_dcas.h \
+ /home/alessandro/git/spm/mc-fastflow-code/ff/node.hpp \
  /home/alessandro/git/spm/mc-fastflow-code/ff/buffer.hpp \
  /home/alessandro/git/spm/mc-fastflow-code/ff/ubuffer.hpp \
  /home/alessandro/git/spm/mc-fastflow-code/ff/dynqueue.hpp \
@@ -16,17 +18,20 @@ src/FarmFinal.d: ../src/FarmFinal.cpp ../src/worker_dc.hpp \
  /home/alessandro/git/spm/mc-fastflow-code/ff/svector.hpp \
  /home/alessandro/git/spm/mc-fastflow-code/ff/mapping_utils.hpp \
  /home/alessandro/git/spm/mc-fastflow-code/ff/barrier.hpp \
- ../src/worker_ikj.hpp ../src/worker.hpp ../src/utils.hpp
+ /home/alessandro/git/spm/mc-fastflow-code/ff/gt.hpp ../src/emitter.hpp \
+ ../src/input_buffer.hpp ../src/utils.hpp ../src/parallel_initializer.hpp \
+ ../src/worker_dc.hpp ../src/worker.hpp ../src/worker_ikj.hpp \
+ ../src/worker_s.hpp
 
-../src/worker_dc.hpp:
-
-/home/alessandro/git/spm/mc-fastflow-code/ff/node.hpp:
+/home/alessandro/git/spm/mc-fastflow-code/ff/farm.hpp:
 
 /home/alessandro/git/spm/mc-fastflow-code/ff/platforms/platform.h:
 
-/home/alessandro/git/spm/mc-fastflow-code/ff/cycle.h:
+/home/alessandro/git/spm/mc-fastflow-code/ff/lb.hpp:
 
 /home/alessandro/git/spm/mc-fastflow-code/ff/utils.hpp:
+
+/home/alessandro/git/spm/mc-fastflow-code/ff/cycle.h:
 
 /home/alessandro/git/spm/mc-fastflow-code/ff/spin-lock.hpp:
 
@@ -35,6 +40,8 @@ src/FarmFinal.d: ../src/FarmFinal.cpp ../src/worker_dc.hpp \
 /home/alessandro/git/spm/mc-fastflow-code/ff/config.hpp:
 
 /home/alessandro/git/spm/mc-fastflow-code/ff/atomic/abstraction_dcas.h:
+
+/home/alessandro/git/spm/mc-fastflow-code/ff/node.hpp:
 
 /home/alessandro/git/spm/mc-fastflow-code/ff/buffer.hpp:
 
@@ -54,8 +61,20 @@ src/FarmFinal.d: ../src/FarmFinal.cpp ../src/worker_dc.hpp \
 
 /home/alessandro/git/spm/mc-fastflow-code/ff/barrier.hpp:
 
-../src/worker_ikj.hpp:
+/home/alessandro/git/spm/mc-fastflow-code/ff/gt.hpp:
+
+../src/emitter.hpp:
+
+../src/input_buffer.hpp:
+
+../src/utils.hpp:
+
+../src/parallel_initializer.hpp:
+
+../src/worker_dc.hpp:
 
 ../src/worker.hpp:
 
-../src/utils.hpp:
+../src/worker_ikj.hpp:
+
+../src/worker_s.hpp:

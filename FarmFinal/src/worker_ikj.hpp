@@ -17,7 +17,8 @@ public:
 	~IKJWorker(){}
 protected:
 	inline void matrixMultiplication(NUM **restrict A, NUM**restrict B, NUM** restrict C) {
-		normalMultiplication(A, B, C, this->size);
+		printf("Eseguo ikj\n");
+		this->normalMatrixMultiplication(A, B, C, this->size);
 	}
 };
 

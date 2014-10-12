@@ -93,7 +93,6 @@ void initializeInParallel(input_buffer<NUM> *a, input_buffer<NUM>*b, unsigned in
 	farm->add_workers(w);
 	farm->add_emitter(new InitializerEmitter<NUM>(bufferSize, 20));
 	farm->run_and_wait_end();
-	printf("Ended initialization: %d", farm->ffTime());
 }
 
 

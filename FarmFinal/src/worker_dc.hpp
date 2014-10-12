@@ -9,23 +9,23 @@
 #define WORKER_DC_HPP_
 
 #include <ff/node.hpp>
-#include "worker_ikj.hpp"
-
-#define treshold 256
+#include "worker.hpp"
 
 template <typename NUM>
 class DCWorker: public Worker<NUM> {
 public:
-	DCWorker(unsigned int size, unsigned int id, NUM*** outputBuffer):Worker<NUM>(size,id, outputBuffer){}
+	DCWorker(unsigned int size, unsigned int id, NUM*** outputBuffer, unsigned int treshold=256):Worker<NUM>(size,id, outputBuffer),treshold(treshold){}
 	~DCWorker(){}
 protected:
 	inline void matrixMultiplication(NUM **restrict A, NUM**restrict B, NUM** restrict C) {
+		printf("Eseguo DC\n");
 		dcMatrixMultiplication(A, B, C, this->size);
 	}
 private:
+	unsigned int treshold;
 	void dcMatrixMultiplication(NUM **restrict A, NUM** restrict B, NUM** restrict C, unsigned int size, unsigned int offsetA = 0, unsigned int offsetB = 0, unsigned int offsetC = 0) {
 		if (size <= treshold) {
-			normalMatrixMultiplication(A, B, C, size, offsetA, offsetB, offsetC);
+			this->normalMatrixMultiplication(A, B, C, size, offsetA, offsetB, offsetC);
 			return;
 		}
 		//printf("First decomposition.\n");
@@ -41,20 +41,6 @@ private:
 		 //C22 = A22*B22
 
 	}
-	/*
-	inline void normalMatrixMultiplication(NUM **restrict A, NUM** restrict B, NUM** restrict C, unsigned int size, unsigned int offsetA=0, unsigned int offsetB=0, unsigned int offsetC=0) {
-			NUM *restrict Bvector;
-			NUM *restrict Cvector;
-			for(unsigned int i = 0; i < size; i++) {
-				Cvector = &C[i][offsetC];
-				for(unsigned int k = 0; k < size; k++) {
-					Bvector = &B[k][offsetB];
-					register int aik = A[i][k+offsetA];
-					for (unsigned int j = 0; j < size; j++)
-							Cvector[j] += aik* Bvector[j];
-				}
-			}
-	}*/
 };
 
 #endif /* WORKER_DC_HPP_ */
