@@ -18,7 +18,6 @@ public:
 	~DCWorker(){}
 protected:
 	inline void matrixMultiplication(NUM **restrict A, NUM**restrict B, NUM** restrict C) {
-		printf("Eseguo DC\n");
 		dcMatrixMultiplication(A, B, C, this->size);
 	}
 private:

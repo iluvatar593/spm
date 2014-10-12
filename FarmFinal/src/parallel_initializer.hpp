@@ -15,14 +15,22 @@
 using namespace ff;
 
 typedef struct {
-	unsigned int number;
 	int *seeds;
 } initialization_task_t;
+
+template <typename NUM>
+class initialization_output {
+public:
+	initialization_output(NUM**A, NUM**B):A(A),B(B){}
+	~initialization_output() {}
+	NUM** A;
+	NUM** B;
+};
 
 template<typename NUM>
 class InitializerEmitter: public ff_node {
 public:
-	InitializerEmitter(unsigned int bufferSize, unsigned int seedSize = 10): bufferSize(bufferSize), seedSize(seedSize){
+	InitializerEmitter(unsigned int bufferSize, unsigned int seedSize = 10): bufferSize(bufferSize), seedSize(seedSize), ff_node(){
 
 	}
 	~InitializerEmitter(){};
@@ -35,7 +43,6 @@ public:
 			for(register unsigned int j = 0; j < seedSize; j++) {
 				seeds[j] = rand();
 			}
-			t->number = i;
 			t->seeds = seeds;
 			//send to worker a task in the form: index for the couples of matrices to generate + some random seeds to produce the matrix
 			ff_send_out((void*)t);
@@ -49,8 +56,8 @@ private:
 template<typename NUM>
 class InitializerWorker: public ff_node {
 public:
-	InitializerWorker(input_buffer<NUM> *A, input_buffer<NUM> *B,unsigned int size, unsigned int randMax = INT_MAX,unsigned int seedSize = 10):
-							A(A), B(B), size(size), randMax(randMax), seedSize(seedSize){
+	InitializerWorker(unsigned int size, unsigned int randMax = INT_MAX,unsigned int seedSize = 10):
+							size(size), randMax(randMax), seedSize(seedSize), ff_node(){
 
 	}
 	void *svc(void *restrict task) {
@@ -70,15 +77,31 @@ public:
 				matrixB[i][j] = ((NUM) ((t->seeds[(i+j)%seedSize] % randMax)*(t->seeds[(i+2*j)%seedSize] % seedSize)))/(t->seeds[(2*(i+j)) %seedSize]);
 			}
 		}
-		A->add(matrixA,t->number);
-		B->add(matrixB,t->number);
+		initialization_output<NUM> *output = new initialization_output<NUM>(matrixA, matrixB);
 		delete[] t->seeds;
 		delete t;
+		return output;
+	}
+private:
+	unsigned int size, randMax, seedSize;
+};
+
+template <typename NUM>
+class InitializerCollector: public ff_node {
+public:
+	InitializerCollector(input_buffer<NUM> *A, input_buffer<NUM> *B):ff_node(),A(A),B(B){
+	}
+	~InitializerCollector(){}
+	void *svc (void * t) {
+		if(t == NULL) return NULL;
+		initialization_output<NUM> *matrices = (initialization_output<NUM> *) t;
+		A->add(matrices->A);
+		B->add(matrices->B);
 		return GO_ON;
 	}
 private:
-	input_buffer<NUM> *A, *B;
-	unsigned int size, randMax, seedSize;
+	input_buffer<NUM> * A;
+	input_buffer<NUM> * B;
 };
 
 /**
@@ -86,13 +109,18 @@ private:
  */
 template<typename NUM>
 void initializeInParallel(input_buffer<NUM> *a, input_buffer<NUM>*b, unsigned int matrixSize, unsigned int bufferSize, unsigned int numWorkers) {
-	ff_farm<> *farm = new ff_farm<>();
+	ff_farm<> * farm = new ff_farm<>(false, 10, 10, true,240,true);
 	farm->set_scheduling_ondemand(0);
 	std::vector<ff_node *> w;
-	for(unsigned int i=0;i<numWorkers;++i) w.push_back(new InitializerWorker<NUM>(a, b, matrixSize, 5470128, 20));
+	for(unsigned int i=0;i<numWorkers;++i) w.push_back(new InitializerWorker<NUM>(matrixSize, 5470128, 20));
 	farm->add_workers(w);
 	farm->add_emitter(new InitializerEmitter<NUM>(bufferSize, 20));
+	farm->add_collector(new InitializerCollector<NUM>(a, b));
 	farm->run_and_wait_end();
+}
+
+void initializeInParallelLinear(linear_buffer<NUM> *a, linear_buffer<NUM> *b, unsigned int matrixSize, unsigned int bufferSize, unsigned int numWorkers) {
+
 }
 
 

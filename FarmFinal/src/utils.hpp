@@ -35,7 +35,7 @@ struct pointerTask {
 	long long microseconds = std::chrono::duration_cast<std::chrono::microseconds>(elapsed).count(); \
 	printf(#STRING":%lld\n", microseconds);
 
-#define SPARE_MEMORY 2*1024*1024*1024 //4gb
+#define SPARE_MEMORY 4*1024*1024*1024 //4gb
 /** Buffer size */
 unsigned inline int calculateBufferSize(size_t s, unsigned int numworkers, unsigned int msize, unsigned int slength) {
 	unsigned long squaresize = msize*msize*s;
@@ -43,7 +43,8 @@ unsigned inline int calculateBufferSize(size_t s, unsigned int numworkers, unsig
 	long totM = (long) SPARE_MEMORY;
 	long spareMemory = (totM - workersMemory);
 	unsigned long buffSize = spareMemory/(squaresize*2);
-	return (slength < (unsigned int)buffSize) ? slength : (unsigned int) buffSize;
+	printf("Buffer size is %ld\n", buffSize);
+	return (slength < ((unsigned int) buffSize)) ? slength : (unsigned int)buffSize;
 }
 
 /** Show usage */

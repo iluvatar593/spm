@@ -8,6 +8,12 @@
 #ifndef INPUT_BUFFER_HPP_
 #define INPUT_BUFFER_HPP_
 #include "utils.hpp"
+#if defined(__INTEL_COMPILER)
+#include <malloc.h>
+#else
+#include <mm_malloc.h>
+#endif
+
 template <typename NUM>
 class input_buffer {
 public:
@@ -47,6 +53,42 @@ private:
 	unsigned int size;
 };
 
+
+template<typename NUM>
+class linear_buffer {
+public:
+	linear_buffer(unsigned int size):size(size){
+		nextFree = current = offset = 0;
+		buffer = _mm_malloc(size*sizeof(NUM*), 64);
+	}
+	~linear_buffer() {
+		for(unsigned int i = 0; i < nextFree; i++)
+			_mm_free(buffer[i]);
+		_mm_free(buffer);
+	}
+
+	NUM *restrict getNext() {
+		NUM * next = buffer[(current+offset)%size];
+		current = (current+1)%size;
+		return next;
+	}
+
+	void add(NUM*restrict matrix){
+		if(nextFree >= size) return; //has no effects. this is a buffer of fixed size in which nobody can write once is full
+		buffer[nextFree] = matrix;
+		nextFree++;
+	}
+
+
+	void setOffset(unsigned int num) {
+			offset = num;
+	}
+
+
+private:
+	NUM**buffer;
+	unsigned int nextFree, current, offset, size;
+};
 
 
 

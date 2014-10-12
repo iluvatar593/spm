@@ -47,7 +47,7 @@ protected:
 			Cvector = &C[i][offsetC];
 			for(unsigned int k = 0; k < size; k++) {
 				Bvector = &B[k][offsetB];
-				register int aik = A[i][k+offsetA];
+				register NUM aik = A[i][k+offsetA];
 				for (unsigned int j = 0; j < size; j++)
 						Cvector[j] += aik* Bvector[j];
 			}

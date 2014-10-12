@@ -33,8 +33,70 @@ public:
 	}
 protected:
 	inline void matrixMultiplication(NUM **restrict A, NUM**restrict B, NUM** restrict C) {
-		printf("Eseguo S\n");
-		strassenOptimizedMatrixMultiplication(A, B, C, this->size);
+		//strassenOptimizedMatrixMultiplication(A, B, C, this->size);
+		unsigned int offsetA = 0;
+		unsigned int offsetB = 0;
+		unsigned int offsetC = 0;
+		unsigned int newsize = this->size/2;
+		matrixSum(A, offsetA, &A[newsize], offsetA+newsize, S1, newsize); //S1
+		matrixSum(B, offsetB, &B[newsize], offsetB+newsize, S2, newsize); //S2
+		this->normalMatrixMultiplication(S1, S2, P1, newsize);
+		matrixSum(&A[newsize], offsetA, &A[newsize], offsetA+newsize, S1, newsize); //S3
+		NUM** Ctmp = &C[newsize];
+		this->normalMatrixMultiplication(S1, B, Ctmp, newsize); //optimization P2 = C21
+		matrixSub(B, offsetB+newsize, &B[newsize], offsetB+newsize, S2, newsize); //S4
+		this->normalMatrixMultiplication(A, S2, C, newsize, 0, 0, newsize); //optimization P3 = C12
+		matrixSub(&B[newsize], offsetB, B, offsetB, S1, newsize); //S5
+		this->normalMatrixMultiplication(&A[newsize], S1, P4, newsize, newsize);
+		matrixSum(A, offsetA, A, offsetA+newsize, S2, newsize); //S6
+		this->normalMatrixMultiplication(S2, &B[newsize], P5, newsize, 0, newsize);
+		matrixSub(&A[newsize], offsetA, A, offsetA, S1, newsize); //S7
+		matrixSum(B, offsetB, B, offsetB+newsize, S2, newsize); //S8
+		this->normalMatrixMultiplication(S1, S2, Ctmp, newsize,0,0,newsize); //optimization P6=C22
+		matrixSub(A, offsetA+newsize, &A[newsize], offsetA+newsize, S1, newsize); //S9
+		matrixSum(&B[newsize], offsetB, &B[newsize], offsetB+newsize, S2, newsize); //S10
+		this->normalMatrixMultiplication(S1, S2, C, newsize); //optimization P7 = C11
+
+					//VEC Loops , reminder: NUM** Ctmp = &C[newsize];
+
+					//C22
+					for(int i = 0; i < newsize; i++) {
+						NUM* restrict Ccol = &Ctmp[i][newsize];
+						NUM* restrict Ccol2 = &C[i][newsize];
+						#pragma ivdep
+						for(int j = 0; j < newsize; j++) {
+							Ccol[j] += P1[i][j] - Ctmp[i][j] + Ccol2[j];
+						}
+					}
+
+					//C11
+					for(int i = 0; i < newsize; i++){
+						#pragma ivdep
+						for(int j = 0; j < newsize; j++) {
+							C[i][j] += P1[i][j] + P4[i][j] - P5[i][j];
+						}
+					}
+
+					//C12
+					for(int i = 0; i < newsize; i++) {
+						NUM* restrict Ccol2 = &C[i][newsize];
+						#pragma ivdep
+						for(int j = 0; j < newsize; j++) {
+							Ccol2[j] += P5[i][j];
+						}
+					}
+
+					//C21 (some error in P2 or P4)
+					for(int i = 0; i < newsize; i++) {
+						NUM *restrict Ccol = Ctmp[i];
+						#pragma ivdep
+						#pragma vector always
+						for(int j = 0; j < newsize; j++) {
+							Ccol[j] += P4[i][j];
+						}
+					}
+
+					cleanUp();
 	}
 private:
 	NUM **restrict S1, **restrict S2, **restrict P1, **restrict P4, **restrict P5;
@@ -160,8 +222,8 @@ private:
 
 						//C12
 						for(int i = 0; i < newsize; i++) {
-							#pragma ivdep
 							NUM* restrict Ccol2 = &C[i][newsize];
+							#pragma ivdep
 							for(int j = 0; j < newsize; j++) {
 								Ccol2[j] += P5[i][j];
 							}
