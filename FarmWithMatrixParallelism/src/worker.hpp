@@ -18,15 +18,20 @@ public:
 	}
 	~Worker(){}
 
-	void*svc(void * task) {
-		task_t * t = (task_t *) task;
+	void*svc(void *restrict task) {
+		task_t<NUM> * t = (task_t<NUM> *) task;
+		NUM **restrict C = t->C;
+		NUM **restrict A = t->A;
+		NUM **restrict B = t->B;
 		for(unsigned int i = 0; i < chunkSize; i++) {
 			for(unsigned int k = 0; k < size; k++) {
 				for(unsigned int j = 0; j < size; j++) {
-					t->C[i][j] += t->A[i][j] * t->B[i][j];
+					C[i][j] += A[i][k] * B[k][j];
 				}
 			}
 		}
+		delete t;
+		return GO_ON;
 	}
 private:
 	unsigned int chunkSize;

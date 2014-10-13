@@ -30,6 +30,7 @@ class task_t {
 	NUM** restrict C;
 	unsigned int start;
 	unsigned int end;
+	unsigned int matrixId;
 };
 
 
