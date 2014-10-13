@@ -11,6 +11,12 @@
 
 #include <chrono>
 #include <stdio.h>
+#include <assert.h>
+#include <stdlib.h>
+#include <sys/mman.h>
+#define HUGE_PAGE_SIZE (2*1024*1024)
+#define ALIGN_TO_PAGE_SIZE(x) \
+		(((x) + HUGE_PAGE_SIZE - 1) / HUGE_PAGE_SIZE * HUGE_PAGE_SIZE)
 
 #if defined(__MIC__)
 #else
@@ -48,7 +54,7 @@ unsigned inline int calculateBufferSize(size_t s, unsigned int numworkers, unsig
 	long totM = (long) SPARE_MEMORY;
 	long spareMemory = (totM - workersMemory);
 	unsigned long buffSize = spareMemory/(squaresize*2);
-	printf("Buffer size is %ld\n", buffSize);
+	//printf("Buffer size is %ld\n", buffSize);
 	return (slength < ((unsigned int) buffSize)) ? slength : (unsigned int)buffSize;
 }
 
@@ -61,5 +67,61 @@ inline void printUsage() {
 			" in a round robin fashion. \n -Ssystem relies on the OS scheduling\n";
 
 }
+
+inline void *malloc_huge_pages(size_t size)
+{
+	if (size < HUGE_PAGE_SIZE) {
+		return malloc(size);
+	}
+	// Use 1 extra page to store allocation metadata
+	// (libhugetlbfs is more efficient in this regard)
+	size_t real_size = ALIGN_TO_PAGE_SIZE(size + HUGE_PAGE_SIZE);
+
+	char *ptr = (char *)mmap(NULL, real_size, PROT_READ | PROT_WRITE,
+	MAP_PRIVATE | MAP_ANONYMOUS |
+	MAP_POPULATE | MAP_HUGETLB, -1, 0);
+	if (ptr == MAP_FAILED) {
+	// The mmap() call failed. Try to malloc instead
+	ptr = (char *)malloc(real_size);
+	if (ptr == NULL) return NULL;
+	real_size = 0;
+	}
+	// Save real_size since mmunmap() requires a size parameter
+	*((size_t *)ptr) = real_size;
+	// Skip the page with metadata
+	return ptr + HUGE_PAGE_SIZE;
+}
+inline void free_huge_pages(void *ptr)
+{
+	if (ptr == NULL) return;
+	// Jump back to the page with metadata
+	void *real_ptr = (char *)ptr - HUGE_PAGE_SIZE;
+	// Read the original allocation size
+	size_t real_size = *((size_t *)real_ptr);
+	assert(real_size % HUGE_PAGE_SIZE == 0);
+	if (real_size != 0)
+	// The memory was allocated via mmap()
+	// and must be deallocated via munmap()
+	munmap(real_ptr, real_size);
+	else
+	// The memory was allocated via malloc()
+	// and must be deallocated via free()
+	free(real_ptr);
+}
+
+
+unsigned int roundUp(int numToRound, int multiple)
+{
+ if(multiple == 0)
+ {
+  return numToRound;
+ }
+
+ int remainder = numToRound % multiple;
+ if (remainder == 0)
+  return numToRound;
+ return numToRound + multiple - remainder;
+}
+
 
 #endif /* UTILS_HPP_ */

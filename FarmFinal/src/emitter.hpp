@@ -29,7 +29,9 @@ public:
 		for(unsigned int i = 0; i < streamLength; i++) {
 			LpointerTask<NUM> *t = new LpointerTask<NUM>();
 			t->A = a->getNext();
-			t->B = a->getNext();
+			t->B = b->getNext();
+			if(t->A == NULL) printf("Something is null A [Emitter]\n");
+			if(t->B == NULL) printf("Something is null B [Emitter]\n");
 			ff_send_out((void*) t);
 			if(offsetA % bufferSize == 0 && offsetA > 0) {
 				offsetB = offsetB +1;

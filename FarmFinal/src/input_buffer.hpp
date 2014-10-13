@@ -59,7 +59,7 @@ class linear_buffer {
 public:
 	linear_buffer(unsigned int size):size(size){
 		nextFree = current = offset = 0;
-		buffer = _mm_malloc(size*sizeof(NUM*), 64);
+		buffer = (NUM**) _mm_malloc(size*sizeof(NUM*), 64);
 	}
 	~linear_buffer() {
 		for(unsigned int i = 0; i < nextFree; i++)

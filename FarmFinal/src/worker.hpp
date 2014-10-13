@@ -35,14 +35,16 @@ public:
 protected:
 	NUM *first, * second, * _C;
 	unsigned int size;
-	inline void matrixMultiplication(NUM *restrict A, NUM* restrict B, NUM* restrict C, unsigned int size, unsigned int offsetA=0, unsigned int offsetB=0, unsigned int offsetC=0) {
+	inline void matrixMultiplication(NUM *restrict A, NUM* restrict B, NUM* restrict C, unsigned int size) {
+
 		NUM *restrict Bvector;
 		NUM *restrict Cvector;
 		for(unsigned int i = 0; i < size; i++) {
-			Cvector = &C[i][offsetC];
+			Cvector = &C[i*size];
 			for(unsigned int k = 0; k < size; k++) {
-				Bvector = &B[k][offsetB];
-				register NUM aik = A[i][k+offsetA];
+				Bvector = &B[k*size];
+				register NUM aik = A[i*size+k];
+				#pragma ivdep
 				for (unsigned int j = 0; j < size; j++)
 						Cvector[j] += aik* Bvector[j];
 			}
@@ -51,7 +53,7 @@ protected:
 
 private:
 	void cleanC() {
-		for(unsigned int i = 0; i < size; i++)
+		for(unsigned int i = 0; i < size*size; i++)
 			_C[i] = 0;
 		}
 };
