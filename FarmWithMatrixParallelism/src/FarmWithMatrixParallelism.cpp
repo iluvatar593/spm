@@ -7,6 +7,7 @@
 //============================================================================
 
 #include <iostream>
+#include "worker.hpp"
 using namespace std;
 
 int main() {

@@ -24,10 +24,10 @@
 #endif
 
 template<typename NUM>
-class task {
-	NUM**A;
-	NUM**B;
-	NUM**C;
+class task_t {
+	NUM** restrict A;
+	NUM** restrict B;
+	NUM** restrict C;
 	unsigned int start;
 	unsigned int end;
 };
