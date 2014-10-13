@@ -14,7 +14,7 @@ using namespace ff;
 template <typename NUM>
 class Worker: public ff_node {
 public:
-	Worker(unsigned int chunkSize, unsigned int size):chunkSize(chunkSize),size(size) {
+	Worker(unsigned int size):size(size) {
 	}
 	~Worker(){}
 
@@ -23,18 +23,19 @@ public:
 		NUM **restrict C = t->C;
 		NUM **restrict A = t->A;
 		NUM **restrict B = t->B;
-		for(unsigned int i = 0; i < chunkSize; i++) {
+		printf("Received??\n");
+		for(unsigned int i = 0; i < t->chunkSize; i++) {
 			for(unsigned int k = 0; k < size; k++) {
 				for(unsigned int j = 0; j < size; j++) {
 					C[i][j] += A[i][k] * B[k][j];
 				}
 			}
 		}
+		printf("Calculated\n");
 		delete t;
 		return GO_ON;
 	}
 private:
-	unsigned int chunkSize;
 	unsigned int size;
 };
 

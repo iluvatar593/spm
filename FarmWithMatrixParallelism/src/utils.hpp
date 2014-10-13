@@ -25,12 +25,14 @@
 
 template<typename NUM>
 class task_t {
+public:
 	NUM** restrict A;
 	NUM** restrict B;
 	NUM** restrict C;
-	unsigned int start;
-	unsigned int end;
+	unsigned int chunkSize;
 	unsigned int matrixId;
+	bool isFirst = false;
+
 };
 
 
@@ -59,12 +61,8 @@ unsigned inline int calculateBufferSize(size_t s, unsigned int numworkers, unsig
 
 /** Show usage */
 inline void printUsage() {
-	std::cout << "MainFarm usage:\n";
-	std::cout << "./MainFarm lengthOfStream MatrixSize WorkerNumber [-Aalgorithm] -S[scheduling]\n";
-	std::cout << "algorithm is one between IKJ, Strassen and DC (divide and conquer). If not specified IKJ is used.\n";
-	std::cout << "scheduling works only on the mic; -Smic or blank is the default which schedules on the cores" <<
-			" in a round robin fashion. \n -Ssystem relies on the OS scheduling\n";
-
+	std::cout << "FarmMap usage:\n";
+	std::cout << "./FarmMap streamElements matrixSize chunkSize numWorkers\n";
 }
 
 inline void *malloc_huge_pages(size_t size)
