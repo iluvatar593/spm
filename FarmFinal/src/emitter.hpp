@@ -64,9 +64,10 @@ public:
 	void * svc(void*) {
 		//totaltime = std::chrono::high_resolution_clock::now();
 		for(unsigned int i = 0; i < streamLength; i++) {
+			start_time();
 			pointerTask<NUM> *t = new pointerTask<NUM>();
 			t->A = a->getNext();
-			t->B = a->getNext();
+			t->B = b->getNext();
 			ff_send_out((void*) t);
 			if(offsetA % bufferSize == 0 && offsetA > 0) {
 				offsetB = offsetB +1;
@@ -76,7 +77,7 @@ public:
 				offsetA = offsetA+1;
 				a->setOffset(offsetA);
 			}
-
+			elapsed_time(EMITTER);
 		}
 		return NULL;
 	}

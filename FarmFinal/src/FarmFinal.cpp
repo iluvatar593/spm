@@ -18,7 +18,7 @@
 #include "worker_s.hpp"
 #include "utils.hpp"
 
-#define TYPE float
+#define TYPE int
 
 template<typename NUM>
 inline void cleanUp(input_buffer<NUM> *A, input_buffer<NUM>*B, NUM*** C) {
