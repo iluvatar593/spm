@@ -61,31 +61,28 @@ private:
 template <typename NUM>
 class Worker: public ff_node {
 public:
-	Worker(unsigned int size, unsigned int id, NUM*** outputBuffer):size(size) {
-		first = _C = outputBuffer[2*id];
-		second = outputBuffer[2*id+1];
+	Worker(unsigned int size, unsigned int id, NUM*** outputBuffer):size(size),id(id) {
+		_C = outputBuffer[id];
 	}
 	~Worker() {
 		for(int i = 0; i < size; i++) {
-			delete[] first[i];
-			delete[] second[i];
+			delete[] _C[i];
+			//delete[] second[i];
 		}
-		delete[] first;
-		delete[] second;
+		delete[] _C;
+		//delete[] second;
 	}
 	void *svc(void*restrict task) {
 		cleanC();
 		pointerTask<NUM> *restrict t = (pointerTask<NUM>*restrict) task;
 		NUM **restrict  A = t->A;
 		NUM **restrict  B = t->B;
-		this->matrixMultiplication(A, B, _C);
-		_C = (_C == first) ? second : first;
-		return (_C == first) ? second : first;
+		return this->matrixMultiplication(A, B, _C);
 	}
 protected:
-	NUM **first, ** second, ** _C;
-	unsigned int size;
-	virtual inline void matrixMultiplication(NUM **restrict A, NUM**restrict B, NUM**restrict C)=0;
+	NUM ** _C;
+	unsigned int size, id;
+	virtual inline void* matrixMultiplication(NUM **restrict A, NUM**restrict B, NUM**restrict C)=0;
 	inline void normalMatrixMultiplication(NUM **restrict A, NUM** restrict B, NUM** restrict C, unsigned int size, unsigned int offsetA=0, unsigned int offsetB=0, unsigned int offsetC=0) {
 		NUM *restrict Bvector;
 		NUM *restrict Cvector;
