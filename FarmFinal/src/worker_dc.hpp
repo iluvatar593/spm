@@ -20,8 +20,22 @@ public:
 protected:
 	inline void* matrixMultiplication(NUM **restrict A, NUM**restrict B, NUM** restrict C) {
 		if (this->size <= treshold) {
-			this->normalMatrixMultiplication(A, B, C, this->size);
-			//return C;
+			NUM *restrict Bvector;
+			NUM *restrict Cvector;
+			for(unsigned int i = 0; i < this->size; i++) {
+				Cvector = C[i];
+				for(unsigned int k = 0; k < this->size; k++) {
+					Bvector = B[k];
+					register NUM aik = A[i][k];
+					for (unsigned int j = 0; j < this->size; j++)
+							Cvector[j] += aik* Bvector[j];
+				}
+				if(i == this->size/2) {
+					this->ff_send_out((void*) new workerOutput<NUM>(C, this->id));
+				}
+			}
+
+			return new workerOutput<NUM>(&C[this->size/2], this->id);
 		}
 		unsigned int size = this->size;
 				//printf("First decomposition.\n");

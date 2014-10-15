@@ -17,8 +17,8 @@
 #include "worker_ikj.hpp"
 #include "worker_s.hpp"
 #include "utils.hpp"
-
-#define TYPE int
+#include "collector.hpp"
+#define TYPE double
 
 template<typename NUM>
 inline void cleanUp(input_buffer<NUM> *A, input_buffer<NUM>*B, NUM*** C) {
@@ -103,7 +103,8 @@ inline int mainNormal(int argc, char** argv) {
 	//unsigned int mxw = atoi(argv[1]);
 	unsigned int matrixSize = atoi(argv[2]);
 	unsigned int numWorkers = atoi(argv[3]);
-	unsigned int streamLength = roundUp(atoi(argv[1]), numWorkers);
+	unsigned int mxw = atoi(argv[1]);
+	unsigned int streamLength = mxw*numWorkers;//roundUp(atoi(argv[1]), numWorkers);
 	//printf("Stream length proposed is %d\n", streamLength);
 	unsigned int bufferSize = calculateBufferSize(sizeof(TYPE), numWorkers, matrixSize, streamLength);
 	if(streamLength <= 0 || matrixSize <= 0 || numWorkers <= 0) {
@@ -137,12 +138,15 @@ inline int mainNormal(int argc, char** argv) {
 	std::vector<ff_node *> w;
 	if(argc <= 4 || (argc >= 5 && std::string(argv[4]) == "-AIKJ")) {
 		for(unsigned register int i = 0; i < numWorkers; i++) w.push_back(new IKJWorker<TYPE>(matrixSize, i, C));
+		farm->add_collector(new Collector<TYPE>(numWorkers, matrixSize, C));
 	} else
 	if(argc >= 5 && std::string(argv[4]) == "-AStrassen") {
 		for(unsigned register int i = 0; i < numWorkers; i++) w.push_back(new SWorker<TYPE>(matrixSize, i, C));
+		farm->add_collector(new Collector<TYPE>(numWorkers, matrixSize, C, true));
 	} else
 	if(argc >= 5 && std::string(argv[4]) == "-ADC") {
 		for(unsigned register int i = 0; i < numWorkers; i++) w.push_back(new DCWorker<TYPE>(matrixSize, i, C));
+		farm->add_collector(new Collector<TYPE>(numWorkers, matrixSize, C));
 	} else {
 		cleanUp(A, B, C);
 		std::cout << "Invalid parameter" << argv[4] << "\n";

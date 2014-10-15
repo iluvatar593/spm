@@ -20,8 +20,8 @@ src/FarmFinal.d: ../src/FarmFinal.cpp \
  /home/alessandro/git/spm/mc-fastflow-code/ff/barrier.hpp \
  /home/alessandro/git/spm/mc-fastflow-code/ff/gt.hpp ../src/emitter.hpp \
  ../src/input_buffer.hpp ../src/utils.hpp ../src/parallel_initializer.hpp \
- ../src/worker_dc.hpp ../src/worker.hpp ../src/worker_ikj.hpp \
- ../src/worker_s.hpp
+ ../src/worker_dc.hpp ../src/worker.hpp ../src/workerOutput.hpp \
+ ../src/worker_ikj.hpp ../src/worker_s.hpp ../src/collector.hpp
 
 /home/alessandro/git/spm/mc-fastflow-code/ff/farm.hpp:
 
@@ -75,6 +75,10 @@ src/FarmFinal.d: ../src/FarmFinal.cpp \
 
 ../src/worker.hpp:
 
+../src/workerOutput.hpp:
+
 ../src/worker_ikj.hpp:
 
 ../src/worker_s.hpp:
+
+../src/collector.hpp:

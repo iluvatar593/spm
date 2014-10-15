@@ -75,8 +75,8 @@ public:
 	void *svc(void*restrict task) {
 		cleanC();
 		pointerTask<NUM> *restrict t = (pointerTask<NUM>*restrict) task;
-		NUM **restrict  A = t->A;
-		NUM **restrict  B = t->B;
+		NUM **restrict A = t->A;
+		NUM **restrict B = t->B;
 		return this->matrixMultiplication(A, B, _C);
 	}
 protected:
@@ -97,7 +97,7 @@ protected:
 		}
 	}
 private:
-	void cleanC() {
+	inline void cleanC() {
 		for(unsigned int i = 0; i < size; i++)
 			for(unsigned int j = 0; j < size; j++)
 				_C[i][j] = 0;

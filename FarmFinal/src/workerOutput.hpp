@@ -11,7 +11,7 @@
 template <typename NUM>
 class workerOutput {
 public:
-	workerOutput(NUM ** ouptput, unsigned int id): output(output), id(id) {}
+	workerOutput(NUM **restrict output, unsigned int id): output(output), id(id) {}
 	~workerOutput(){}
 	NUM** output;
 	unsigned int id;

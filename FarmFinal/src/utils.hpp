@@ -46,7 +46,7 @@ struct LpointerTask {
 	long long microseconds = std::chrono::duration_cast<std::chrono::microseconds>(elapsed).count(); \
 	printf(#STRING":%lld\n", microseconds);
 
-#define SPARE_MEMORY 4*1024*1024*1024 //4gb
+#define SPARE_MEMORY 5*1024*1024*1024 //4gb
 /** Buffer size */
 unsigned inline int calculateBufferSize(size_t s, unsigned int numworkers, unsigned int msize, unsigned int slength) {
 	unsigned long squaresize = msize*msize*s;
