@@ -8,6 +8,11 @@
 #ifndef UTILS_HPP_
 #define UTILS_HPP_
 
+#ifndef MCOUPLES
+	#define MCOUPLES 8
+#endif
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #define start_time() \
@@ -20,7 +25,11 @@
 #define SPARE_MEMORY 3*1024*1024*1024 //6 gb
 
 #ifndef ALIGNMENT
-	#define ALIGNMENT 64
+	#if defined(__MIC__)
+		#define ALIGNMENT 64
+	#else
+		#define ALIGNMENT 32
+	#endif
 #endif
 #define _MM_MALLOC(dst, type, size) \
 	{(dst) = (type) _mm_malloc((size), ALIGNMENT); \
@@ -47,7 +56,7 @@ inline int calculateBufferSize(size_t s, int n, int k, int m, int numWorkers, in
 	long outputSize = (long) m*k*s*numWorkers;
 	if(outputSize > ((long)SPARE_MEMORY)) {
 		if(tryanyway){
-			if(isatty(fileno(stdout))) printf("I will go with 6 matrices, but a SEGFAULT is likely\n");
+			if(isatty(fileno(stdout))) printf("I will go with %d matrices, but a SEGFAULT is likely\n", MCOUPLES);
 			return 0;
 		}
 		if(isatty(fileno(stdout))) printf("Sorry, but it is not possible to allocate a %d x %d matrix for every worker, thus the job cannot start. \n Please try again decreasing the number of workers or the dimensions.\n", n, m);

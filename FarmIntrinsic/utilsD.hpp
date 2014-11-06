@@ -10,11 +10,14 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "utils.hpp"
 
 
 #ifndef TILE
 	#if defined(__MIC__)
 		#define TILE 120
+	#else
+		#define TILE 128
 	#endif
 #endif
 
