@@ -15,6 +15,8 @@
 #ifndef TILE
 	#if defined(__MIC__)
 		#define TILE 240
+	#else
+		#define TILE 128
 	#endif
 #endif
 

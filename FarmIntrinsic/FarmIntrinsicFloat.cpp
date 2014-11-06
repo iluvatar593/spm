@@ -46,8 +46,8 @@ int main(int argc, const char** argv) {
 		printUsage();
 		return -1;
 	}
-	if (k > TILE*32) {
-		if(isatty(fileno(stdout)))printf("Sorry, k is too large! Try again with a value smaller than %d\n", TILE*320);
+	if (k > TILE*31) {
+		if(isatty(fileno(stdout)))printf("Sorry, k is too large! Try again with a value smaller or equal than %d\n", TILE*31);
 		printUsage();
 		return -1;
 	}
@@ -100,13 +100,16 @@ int main(int argc, const char** argv) {
 	if(isatty(fileno(stdout)))printf("Starting\n");
 
 	EmitterFloat E(aBuffer, bBuffer, streamLength, bufferSize);
-	ff_farm<> * farm = new ff_farm<>(false, 0, 0, true,240,true);
+	#if define(__MIC__)
+		#define MAXWORKERS 240
+	#else
+		#define MAXWORKERS 16
+	#endif
+	ff_farm<> * farm = new ff_farm<>(false, 0, 0, true,MAXWORKERS,true);
 	farm->add_emitter(&E);
 	farm->set_scheduling_ondemand(0);
 	std::vector<ff_node *> w;
-	#if defined(__MIC__)
-		for(int i = 0; i < numWorkers; i++) w.push_back(new WorkerFloatMic(n, oldn, k, oldk, m, oldm));
-	#endif
+	for(int i = 0; i < numWorkers; i++) w.push_back(new WorkerFloat(n, oldn, k, oldk, m, oldm));
 	farm->add_workers(w);
 	farm->run_and_wait_end();
 	printf("Farm\t Float \t %d \t %d \t %d \t %d \t %d \t %f\n", streamLength, numWorkers, n, k, m, farm->ffTime());
