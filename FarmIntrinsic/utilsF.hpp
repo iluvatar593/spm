@@ -39,5 +39,4 @@ typedef struct __attribute__((align(ALIGNMENT))) {
 } taskFloat_t;
 
 
-
 #endif /* UTILSF_HPP_ */

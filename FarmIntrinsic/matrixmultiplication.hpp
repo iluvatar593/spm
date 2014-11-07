@@ -1,12 +1,12 @@
 /*
- * matrixmultiplication_double.hpp
+ * matrixmultiplication_float.hpp
  *
  *  Created on: 05/nov/2014
- *      Author: alessandro
+ *      Author: atzoril
  */
 
-#ifndef MATRIXMULTIPLICATION_MIC_HPP_
-#define MATRIXMULTIPLICATION_MIC_HPP_
+#ifndef MATRIXMULTIPLICATION_FLOAT_HPP_
+#define MATRIXMULTIPLICATION_FLOAT_HPP_
 
 #include <mmintrin.h>   // MMX?
 #include <xmmintrin.h>  // SSE
@@ -14,16 +14,18 @@
 #include <emmintrin.h>  // SSE3
 #include <immintrin.h>  // AVX
 
-/** Xeon Phi specific matrix multiplication Kernel */
+#include "utils.hpp"
 
 #if defined(__MIC__)
+	#include "kernel_mic_float.hpp"
 	#include "kernel_mic_double.hpp"
-#else /** end xeon phi specific matrix multiplication kernel */
-/* Intel Xeon E5 specific matrix multiplication kernel */
+#else
+	#include "kernel_host_float.hpp"
 	#include "kernel_host_double.hpp"
-#endif /** end Xeon E5 specific matrix multiplication kernel */
+#endif
 
-void MMKernel(double *__restrict__ a, double *__restrict__ b, double *__restrict__ c, int m, int sz, int ldc=0) {
+template<typename NUM>
+void Kernel(NUM *__restrict__ a, NUM *__restrict__ b, NUM *__restrict__ c, NUM m, int sz, const int ldc=0) {
 	if(sz < 16)
 	switch(sz) {
 		case 0: printf("This size is unsupported \n"); exit(-1);
@@ -39,7 +41,7 @@ void MMKernel(double *__restrict__ a, double *__restrict__ b, double *__restrict
 		case 10: MMKernel<10>(a, b, c, m, ldc); break;
 		case 11: MMKernel<11>(a, b, c, m, ldc); break;
 		case 12: MMKernel<12>(a, b, c, m, ldc); break;
-		case 13: MMKernel<13>(a, b, c, m), ldc; break;
+		case 13: MMKernel<13>(a, b, c, m, ldc); break;
 		case 14: MMKernel<14>(a, b, c, m, ldc); break;
 		case 15: MMKernel<15>(a, b, c, m, ldc); break;
 		default: break;
@@ -66,4 +68,4 @@ void MMKernel(double *__restrict__ a, double *__restrict__ b, double *__restrict
 	}
 }
 
-#endif /* MATRIXMULTIPLICATION_MIC_HPP_ */
+#endif /* MATRIXMULTIPLICATION_FLOAT_HPP_ */

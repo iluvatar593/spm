@@ -13,6 +13,9 @@
 #include "utilsF.hpp"
 #include "emitters.hpp"
 #include "worker_float.hpp"
+#include "collectors.hpp"
+
+
 using namespace ff;
 
 int main(int argc, const char** argv) {
@@ -67,8 +70,8 @@ int main(int argc, const char** argv) {
 		if(isatty(fileno(stdout))) printf("Sorry, there's not enough memory for the specified stream length. There's space for %d couples of matrices\n", bufferSize);
 	}
 	if(bufferSize == 0) {
-		if(isatty(fileno(stdout))) printf("I will try to allocate 6 couples of matrices\n");
-		bufferSize = 6;
+		if(isatty(fileno(stdout))) printf("I will try to allocate 8 couples of matrices\n");
+		bufferSize = 8;
 	}
 	bufferSize = (bufferSize < 240) ? bufferSize: 240;
 	float **aBuffer, **bBuffer;
@@ -100,16 +103,25 @@ int main(int argc, const char** argv) {
 	if(isatty(fileno(stdout)))printf("Starting\n");
 
 	EmitterFloat E(aBuffer, bBuffer, streamLength, bufferSize);
-	#if define(__MIC__)
-		#define MAXWORKERS 240
-	#else
-		#define MAXWORKERS 16
-	#endif
+
+	ff_node * C;
+	if (argc >= 8 && std::string(argv[7]) == "sampler") {
+			if(isatty(fileno(stdout))) printf("Sampler collector selected\n");
+			C = new SamplerCollector<float>(numWorkers, n, oldn, k, oldk, m, oldm, streamLength);
+	} else if(argc >= 8 && std::string(argv[7]) == "pedantic") {
+		if(isatty(fileno(stdout))) printf("Pedantic collector selected\n");
+		C = new PedanticCollector<float>(numWorkers, n, oldn, k, oldk, m, oldm, streamLength);
+	} else { //default
+		if(isatty(fileno(stdout))) printf("Dummy collector selected\n");
+		C = new DummyCollector<float>(numWorkers, n, oldn, k, oldk, m, oldm, streamLength);
+	}
+
 	ff_farm<> * farm = new ff_farm<>(false, 0, 0, true,MAXWORKERS,true);
 	farm->add_emitter(&E);
 	farm->set_scheduling_ondemand(0);
+	farm->add_collector(C);
 	std::vector<ff_node *> w;
-	for(int i = 0; i < numWorkers; i++) w.push_back(new WorkerFloat(n, oldn, k, oldk, m, oldm));
+	for(int i = 0; i < numWorkers; i++) w.push_back(new WorkerFloat(n, oldn, k, oldk, m, oldm, i));
 	farm->add_workers(w);
 	farm->run_and_wait_end();
 	printf("Farm\t Float \t %d \t %d \t %d \t %d \t %d \t %f\n", streamLength, numWorkers, n, k, m, farm->ffTime());

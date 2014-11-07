@@ -8,9 +8,6 @@
 #ifndef UTILS_HPP_
 #define UTILS_HPP_
 
-#ifndef MCOUPLES
-	#define MCOUPLES 8
-#endif
 
 
 #include <stdio.h>
@@ -31,6 +28,12 @@
 		#define ALIGNMENT 32
 	#endif
 #endif
+#ifndef MCOUPLES
+	#define MCOUPLES 8
+#endif
+
+#define MIN(a, b) (((a) < (b)) ? a : b)
+
 #define _MM_MALLOC(dst, type, size) \
 	{(dst) = (type) _mm_malloc((size), ALIGNMENT); \
 		if((dst) == nullptr) { \
@@ -103,12 +106,28 @@ inline void recTranspose(NUM *__restrict__ a, NUM *__restrict__ aT, const int n,
  * Shows usage
  */
 void printUsage() {
-	printf("Usage: ./FarmIntrinsicDouble.o mxw numWorkers n k m [tryanyway]\n");
+	printf("Usage: ./FarmIntrinsic.o mxw numWorkers n k m [tryanyway]\n");
 	printf("Where:\n");
 	printf("mxw is the number of matrices for each worker\n");
-	printf("numWorkers is the number of threads allocated to the stream\n");
+	printf("numWorkers is the number of threads allocated to the stream [1 .. 238]\n");
 	printf("n k and m are the three dimensions of the matrix \n");
 	printf("Optional tryanyway can be used (if equal to 1) to start the computation even at risk of insufficient memory\n");
 }
+
+#if defined(__MIC__)
+	#define MAXWORKERS 238
+#else
+	#define MAXWORKERS 14
+#endif
+
+template<typename NUM>
+class workerOutput_t{
+public:
+	workerOutput_t(NUM* matrixChunk, int worker, int id):matrixChunk(matrixChunk),worker(worker),id(id){}
+	~workerOutput_t(){}
+	NUM* matrixChunk;
+	int worker;
+	int id;
+};
 
 #endif /* UTILS_HPP_ */

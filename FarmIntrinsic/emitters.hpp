@@ -62,7 +62,7 @@ private:
 class EmitterFloat : public ff_node {
 public:
 	EmitterFloat(float **__restrict__ aBuff, float **__restrict__ bBuff, int streamLength, int bufferSize):
-		aBuff(aBuff), bBuff(bBuff), streamLength(streamLength), bufferSize(bufferSize), aOffset(0), bOffset(0){
+		aBuff(aBuff), bBuff(bBuff), streamLength(streamLength), bufferSize(bufferSize), aOffset(0), bOffset(0), ff_node(){
 	}
 
 	~EmitterFloat() {
