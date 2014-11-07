@@ -56,7 +56,7 @@
 *	returns: number of input couples that can be allocated.
  * */
 inline int calculateBufferSize(size_t s, int n, int k, int m, int numWorkers, int streamLength, bool tryanyway) {
-	long outputSize = (long) m*k*s*numWorkers;
+	long outputSize = (long) n*m*s*numWorkers;
 	if(outputSize > ((long)SPARE_MEMORY)) {
 		if(tryanyway){
 			if(isatty(fileno(stdout))) printf("I will go with %d matrices, but a SEGFAULT is likely\n", MCOUPLES);
@@ -114,10 +114,23 @@ void printUsage() {
 	printf("Optional tryanyway can be used (if equal to 1) to start the computation even at risk of insufficient memory\n");
 }
 
+/**
+ * Shows usage (Strassen Algorithm)
+ */
+void printUsage_S() {
+	printf("Usage: ./FarmIntrinsic.o mxw numWorkers size [tryanyway] [collector]\n");
+	printf("Where:\n");
+	printf("mxw is the number of matrices for each worker\n");
+	printf("numWorkers is the number of threads allocated to the stream [1 .. 238]\n");
+	printf("size is the dimension of the matrix \n");
+	printf("Optional tryanyway can be used (if equal to 1) to start the computation even at risk of insufficient memory\n");
+	printf("Optional collector can be dummy (default), sampler or pedantic\n");
+}
+
 #if defined(__MIC__)
-	#define MAXWORKERS 238
+	#define MAXWORKERS 238 //240 - emitter - collector
 #else
-	#define MAXWORKERS 14
+	#define MAXWORKERS 14 //16 - emitter - collector
 #endif
 
 template<typename NUM>
@@ -128,6 +141,21 @@ public:
 	NUM* matrixChunk;
 	int worker;
 	int id;
+};
+
+template<typename NUM>
+class task_t{
+public:
+	task_t(NUM* __restrict__ a, NUM* __restrict__ b, int num):a(a),b(b),num(num){}
+	~task_t(){}
+	NUM* __restrict__ a;
+	NUM* __restrict__ b;
+	int num;
+//	typedef struct __attribute__((align(ALIGNMENT))) {
+//		double *__restrict__ a;
+//		double *__restrict__ b;
+//		int num;
+//	} taskDouble_t;
 };
 
 #endif /* UTILS_HPP_ */

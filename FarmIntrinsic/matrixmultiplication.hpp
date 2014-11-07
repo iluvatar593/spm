@@ -25,7 +25,8 @@
 #endif
 
 template<typename NUM>
-void Kernel(NUM *__restrict__ a, NUM *__restrict__ b, NUM *__restrict__ c, NUM m, int sz, const int ldc=0) {
+void Kernel(NUM *__restrict__ a, NUM *__restrict__ b, NUM *__restrict__ c, int m, int sz, const int ldc=0) {
+	printf("sz is %d\n",sz);
 	if(sz < 16)
 	switch(sz) {
 		case 0: printf("This size is unsupported \n"); exit(-1);

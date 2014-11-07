@@ -12,14 +12,26 @@
 #include <stdlib.h>
 #include "utils.hpp"
 
-
-#ifndef TILE
-	#if defined(__MIC__)
+#if defined(__MIC__)
+	#ifndef TILE
 		#define TILE 120
 	#else
+		#if (TILE%120) != 0
+			#error TILE must be multiple of 120
+		#endif
+	#endif
+#else
+	#ifndef TILE
 		#define TILE 128
+	#else
+		#if (TILE%32) != 0
+			#error TILE must be multiple of 32
+		#endif
 	#endif
 #endif
+
+
+
 
 /** (Random) initialization of double matrix "matrix" with rows rows and columns cols.
  *

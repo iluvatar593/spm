@@ -39,6 +39,7 @@ public:
 	}
 
 	void *svc(void *mt) {
+		printf("Collecting?\n");
 		/** Contains id of the sender, id of the matrix and the elements*/
 		if(mt == NULL) return NULL;
 		workerOutput_t<NUM> *matrix = (workerOutput_t<NUM>*) mt;
