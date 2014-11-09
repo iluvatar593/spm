@@ -9,7 +9,7 @@
 #include <ff/farm.hpp>
 #include <stdlib.h>
 #include "utils.hpp"
-#include "emitters.hpp"
+#include "emitter_strassen.hpp"
 #include "worker_strassen.hpp"
 #include "collectors.hpp"
 
@@ -105,16 +105,14 @@ int main(int argc, const char** argv) {
 
 	if (argc >= 6 && std::string(argv[5]) == "sampler") {
 		if(isatty(fileno(stdout))) printf("Sampler collector selected\n");
-		C = new SamplerCollector<double>(numWorkers, size, size, size, size, size, size, streamLength);
+		C = new SamplerCollector<double>(numWorkers, size, size, size, size, size, size, streamLength, true);
 	} else if(argc >= 6 && std::string(argv[5]) == "pedantic") {
 		if(isatty(fileno(stdout))) printf("Pedantic collector selected\n");
-		C = new PedanticCollector<double>(numWorkers, size, size, size, size, size, size, streamLength);
+		C = new PedanticCollector<double>(numWorkers, size, size, size, size, size, size, streamLength, true);
 	} else { //default
 		if(isatty(fileno(stdout))) printf("Dummy collector selected\n");
 		C = new DummyCollector<double>(numWorkers, size, size, size, size, size, size, streamLength);
 	}
-	printf("TILE IS %d\n", TILE);
-	printf("ALIGNMENT IS %d\n", ALIGNMENT);
 	ff_farm<> * farm = new ff_farm<>(false, 0, 0, true, MAXWORKERS, true);
 	farm->add_emitter(&E);
 	farm->set_scheduling_ondemand(0);

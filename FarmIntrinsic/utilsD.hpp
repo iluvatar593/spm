@@ -10,7 +10,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "utils.hpp"
 
 #if defined(__MIC__)
 	#ifndef TILE
@@ -24,8 +23,8 @@
 	#ifndef TILE
 		#define TILE 128
 	#else
-		#if (TILE%32) != 0
-			#error TILE must be multiple of 32
+		#if (TILE%64) != 0
+			#error TILE must be multiple of 64
 		#endif
 	#endif
 #endif

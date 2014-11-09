@@ -39,7 +39,6 @@ public:
 	}
 
 	void *svc(void *mt) {
-		printf("Collecting?\n");
 		/** Contains id of the sender, id of the matrix and the elements*/
 		if(mt == NULL) return NULL;
 		workerOutput_t<NUM> *matrix = (workerOutput_t<NUM>*) mt;
@@ -65,9 +64,12 @@ private:
 template<typename NUM>
 class SamplerCollector : public ff_node {
 public:
-	SamplerCollector(int numWorkers, int n, int oldn, int k, int oldk, int m, int oldm, int streamLength) : ff_node(),
+	SamplerCollector(int numWorkers, int n, int oldn, int k, int oldk, int m, int oldm, int streamLength, bool strass=false) : ff_node(),
 	numWorkers(numWorkers), n(n), oldn(oldn), k(k), oldk(k), m(m), oldm(oldm), streamLength(streamLength){
 			received = new bool[numWorkers]();
+			if(strass)
+				for(int i = 0; i < numWorkers; i++)
+					received[i] = true;
 			randomWorker = rand()%numWorkers;
 			_MM_MALLOC(matrixSample, NUM*, sizeof(NUM)*oldn*oldm);
 	}
@@ -114,9 +116,12 @@ private:
 template<typename NUM>
 class PedanticCollector : public ff_node {
 public:
-	PedanticCollector(int numWorkers, int n, int oldn, int k, int oldk, int m, int oldm, int streamLength) : ff_node(),
+	PedanticCollector(int numWorkers, int n, int oldn, int k, int oldk, int m, int oldm, int streamLength, bool strass=false) : ff_node(),
 	numWorkers(numWorkers), n(n), oldn(oldn), k(k), oldk(k), m(m), oldm(oldm), streamLength(streamLength){
 			received = new bool[numWorkers]();
+			if(strass)
+				for(int i = 0; i < numWorkers; i++)
+					received[i] = true;
 			_MM_MALLOC(matrixSample, NUM**, sizeof(NUM*)*numWorkers);
 			for(int i = 0; i < numWorkers; i++) _MM_MALLOC(matrixSample[i], NUM*, sizeof(NUM)*oldn*oldm);
 	}

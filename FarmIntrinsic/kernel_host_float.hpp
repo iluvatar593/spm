@@ -14,12 +14,10 @@
 
 template<int sz>
 void MMKernel(float *__restrict__ a, float *__restrict__ b, float *__restrict__ c, const int m, const int ldc=0) {
-	printf("CENTER\n");
 	__m256 c0, c1, c2, c3, c4, c5, c6, c7;
 	__m256 temp0, temp1, temp2, temp3, temp4, temp5, temp6;
 
 	const int offC = (ldc > 0) ? ldc : m;
-	printf("offC %d\n", offC);
 	vZeroPS(c0);
 	vZeroPS(c1);
 	vZeroPS(c2);
@@ -31,10 +29,7 @@ void MMKernel(float *__restrict__ a, float *__restrict__ b, float *__restrict__ 
 
 	const int offA=8;
 	for(int i = 0; i < sz*TILE; i++) {
-		//printf("%d is the most inner i\n",i);
-		//printf("b %d\n", i*m);
 		const __m256 bv = _mm256_load_ps(b+i*m);
-		//printf("loaded b\n");
 		temp0 = _mm256_set1_ps(a[i*offA+0]);
 		temp1 = _mm256_set1_ps(a[i*offA+1]);
 		temp2 = _mm256_set1_ps(a[i*offA+2]);

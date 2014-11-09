@@ -10,26 +10,12 @@
 
 #include <ff/node.hpp>
 #include "utils.hpp"
-#include "matrixmultiplication.hpp"
+
 
 using namespace ff;
 
-//Double is the default type
-#ifndef TYPE
-#define TYPE double
-#include "utilsD.hpp"
-#endif
-
-#if TYPE == double
-	#include "utilsD.hpp"
-	#if defined(__MIC__)
-		#define OFFSET_ROW 30
-		#define OFFSET_COL 8
-	#else
-		#define OFFSET_ROW 8
-		#define OFFSET_COL 4
-	#endif
-#elif TYPE == float
+#ifdef FLOAT
+	#define TYPE float
 	#include "utilsF.hpp"
 	#if defined(__MIC__)
 		#define OFFSET_ROW 30
@@ -38,13 +24,22 @@ using namespace ff;
 		#define OFFSET_ROW 8
 		#define OFFSET_COL 8
 	#endif
+#else //default = double
+	#define TYPE double
+	#include "utilsD.hpp"
+	#if defined(__MIC__)
+		#define OFFSET_ROW 30
+		#define OFFSET_COL 8
+	#else
+		#define OFFSET_ROW 8
+		#define OFFSET_COL 4
+	#endif
 #endif
 
+#include "matrixmultiplication.hpp"
 
 template<typename NUM>
 class WorkerStrassen : public ff_node {
-
-
 public:
 	WorkerStrassen(int size, int oldsize, int id):
 		size(size), oldsize(oldsize), ff_node(){
@@ -118,10 +113,9 @@ private:
 		NUM aT[size*OFFSET_ROW] __attribute__ ((aligned(ALIGNMENT)));
 		for(int i=0; i <size; i+=OFFSET_ROW){
 			recTranspose<NUM>(&a[i*lda], aT, OFFSET_ROW, size, lda, OFFSET_ROW); //a, aT, n, k, lda, ldat
-			printf("transposed?\n");
 			for(int j=0; j< size; j+=OFFSET_COL){
 				Kernel<NUM>(aT, &b[j], &c[i*ldc+j], ldb, size/TILE, ldc);
-				printf("%d\n",j);
+
 			}
 		}
 	}
@@ -177,15 +171,10 @@ private:
 		 *
 		 *
 		 */
-		printf("WE!\n");
 		unsigned int newsize = size/2;
-		printf("sum or not sum?\n");
 		matrixSum(A, &A[newsize*size+newsize], S1, newsize, size, size, newsize); //A11 + A22
-		printf("sum!\n");
 		matrixSum(B, &B[newsize*size+newsize], S2, newsize, size, size, newsize); //B11 + B22
-		printf("sumsum!\n");
 		coreMult(S1, S2, P1, newsize, newsize, newsize, newsize); //P1  = A11 + A22 * B11 + B22
-		printf("no mult?\n");
 		matrixSub(&B[newsize*size], B, S1, newsize, size, size, newsize); //B21 - B11
 		coreMult(&A[newsize*size+newsize], S1, P4, newsize, size, newsize, newsize); //P4 = A22 * B21 - B11
 		matrixSum(&A[newsize*size], &A[newsize*size+newsize], S1, newsize, size, size, newsize); //A21 + A22
