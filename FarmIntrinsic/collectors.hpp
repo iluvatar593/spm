@@ -117,9 +117,10 @@ private:
 template<typename NUM>
 class PedanticCollector : public ff_node {
 public:
-	PedanticCollector(int numWorkers, int n, int oldn, int k, int oldk, int m, int oldm, int streamLength) : ff_node(),
-	numWorkers(numWorkers), n(n), oldn(oldn), k(k), oldk(k), m(m), oldm(oldm), streamLength(streamLength){
-			_MM_MALLOC(offset, char*, sizeof(char)*numWorkers);
+	PedanticCollector(int numWorkers, int n, int oldn, int m, int oldm) : ff_node(),
+	numWorkers(numWorkers), n(n), oldn(oldn), k(k), oldk(k), m(m), oldm(oldm){
+			_MM_MALLOC(m1, NUM*, sizeof(NUM)*n*m);
+			_MM_MALLOC(m2, NUM*, sizeof(NUM)*n*m);
 			_MM_MALLOC(matrixSample, NUM**, sizeof(NUM*)*numWorkers*2);
 			for(int i = 0; i < 2*numWorkers; i++) _MM_MALLOC(matrixSample[i], NUM*, sizeof(NUM)*oldn*oldm);
 			for(int i = 0; i < numWorkers; i++) offset[i] = 0;
@@ -135,6 +136,15 @@ public:
 		workerOutput_t<NUM> *matrix = (workerOutput_t<NUM>*) mt;
 		int wId = matrix->worker;
 		int elementId = matrix->id;
+
+		NUM* m;
+		if first
+			m = m1;
+		else
+			m = m2;
+
+		m = memcpy(matrix->matrixChunk);
+
 		NUM *__restrict__ rcvd = matrix->matrixChunk;
 		if( oldn <= n/2) { //copy in first chunk!
 			for(int i = 0; i < MIN(oldn, n/2); i++) {
@@ -143,7 +153,6 @@ public:
 					}
 			}
 			if(oldn<=n/2) {
-				offset[wId] = (offset[wId]+1)%2;
 				return new FarmOutput<NUM>(matrixSample[wId], elementId);
 			}
 		} else {
@@ -152,16 +161,16 @@ public:
 					matrixSample[wId][i*oldm+j] = rcvd[i*m+j];
 				}
 			}
-			offset[wId] = (offset[wId]+1)%2;
 			return new FarmOutput<NUM>(matrixSample[wId], elementId);
 		}
+
+
 		return GO_ON;
 	}
 private:
-	int numWorkers, n, oldn, k, oldk, m, oldm;
-	int streamLength;
+	int numWorkers, n, oldn, m, oldm;
 	NUM **matrixSample;
-	char* offset;
+	NUM * m1, *m2;
 };
 
 #endif /* COLLECTORS_HPP_ */
