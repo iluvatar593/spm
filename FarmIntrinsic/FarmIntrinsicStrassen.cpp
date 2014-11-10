@@ -108,7 +108,7 @@ int main(int argc, const char** argv) {
 		C = new SamplerCollector<double>(numWorkers, size, size, size, size, size, size, streamLength, true);
 	} else if(argc >= 6 && std::string(argv[5]) == "pedantic") {
 		if(isatty(fileno(stdout))) printf("Pedantic collector selected\n");
-		C = new PedanticCollector<double>(numWorkers, size, size, size, size, size, size, streamLength, true);
+		C = new PedanticCollector<double>(numWorkers, size, size, size, size, size, size, streamLength);
 	} else { //default
 		if(isatty(fileno(stdout))) printf("Dummy collector selected\n");
 		C = new DummyCollector<double>(numWorkers, size, size, size, size, size, size, streamLength);

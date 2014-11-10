@@ -11,23 +11,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#if defined(__MIC__)
-	#ifndef TILE
-		#define TILE 120
-	#else
-		#if (TILE%120) != 0
-			#error TILE must be multiple of 120
-		#endif
-	#endif
-#else
-	#ifndef TILE
-		#define TILE 128
-	#else
-		#if (TILE%64) != 0
-			#error TILE must be multiple of 64
-		#endif
-	#endif
-#endif
 
 
 

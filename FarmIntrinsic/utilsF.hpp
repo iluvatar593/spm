@@ -12,23 +12,6 @@
 #include <stdlib.h>
 
 
-#if defined(__MIC__)
-	#ifndef TILE
-		#define TILE 240
-	#else
-		#if (TILE%240) != 0
-			#error TILE must be multiple of 240
-		#endif
-	#endif
-#else
-	#ifndef TILE
-		#define TILE 128
-	#else
-		#if (TILE%128) != 0
-			#error TILE must be multiple of 128
-		#endif
-	#endif
-#endif
 
 /** (Random) initialization of float matrix "matrix" with rows rows and columns cols.
  *

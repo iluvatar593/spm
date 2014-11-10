@@ -12,7 +12,6 @@
 #include <ff/node.hpp>
 #include <stdio.h>
 #include <stdlib.h>
-#include "utils.hpp"
 
 using namespace ff;
 
@@ -39,12 +38,14 @@ public:
 	}
 
 	void *svc(void *mt) {
+		start_time()
 		/** Contains id of the sender, id of the matrix and the elements*/
 		if(mt == NULL) return NULL;
 		workerOutput_t<NUM> *matrix = (workerOutput_t<NUM>*) mt;
 		//count how many chunks have been received successfulyy
 		if(oldn > n/2) received[matrix->worker] = !received[matrix->worker];
 		if(!received[matrix->worker]) count++;
+		elapsed_time(Collector);
 		return GO_ON;
 	}
 	/** On end, check that all matrix chunks have been received correctly. */
@@ -116,14 +117,12 @@ private:
 template<typename NUM>
 class PedanticCollector : public ff_node {
 public:
-	PedanticCollector(int numWorkers, int n, int oldn, int k, int oldk, int m, int oldm, int streamLength, bool strass=false) : ff_node(),
+	PedanticCollector(int numWorkers, int n, int oldn, int k, int oldk, int m, int oldm, int streamLength) : ff_node(),
 	numWorkers(numWorkers), n(n), oldn(oldn), k(k), oldk(k), m(m), oldm(oldm), streamLength(streamLength){
-			received = new bool[numWorkers]();
-			if(strass)
-				for(int i = 0; i < numWorkers; i++)
-					received[i] = true;
-			_MM_MALLOC(matrixSample, NUM**, sizeof(NUM*)*numWorkers);
-			for(int i = 0; i < numWorkers; i++) _MM_MALLOC(matrixSample[i], NUM*, sizeof(NUM)*oldn*oldm);
+			_MM_MALLOC(offset, char*, sizeof(char)*numWorkers);
+			_MM_MALLOC(matrixSample, NUM**, sizeof(NUM*)*numWorkers*2);
+			for(int i = 0; i < 2*numWorkers; i++) _MM_MALLOC(matrixSample[i], NUM*, sizeof(NUM)*oldn*oldm);
+			for(int i = 0; i < numWorkers; i++) offset[i] = 0;
 	}
 	~PedanticCollector() {
 		delete[] received;
@@ -136,31 +135,33 @@ public:
 		workerOutput_t<NUM> *matrix = (workerOutput_t<NUM>*) mt;
 		int wId = matrix->worker;
 		int elementId = matrix->id;
-		//count how many chunks have been received successfulyy
-		received[wId] = !received[wId];
 		NUM *__restrict__ rcvd = matrix->matrixChunk;
-		if(!received[wId] || oldn <= n/2) { //copy in first chunk!
+		if( oldn <= n/2) { //copy in first chunk!
 			for(int i = 0; i < MIN(oldn, n/2); i++) {
 					for(int j = 0; j < oldm; j++) {
-						matrixSample[wId][i*oldm+j] = rcvd[i*m+j];
+						matrixSample[2*wId+offset[wId]][i*oldm+j] = rcvd[i*m+j];
 					}
 			}
-			if(oldn<=n/2) return new FarmOutput<NUM>(matrixSample[wId], elementId);
+			if(oldn<=n/2) {
+				offset[wId] = (offset[wId]+1)%2;
+				return new FarmOutput<NUM>(matrixSample[wId], elementId);
+			}
 		} else {
 			for(int i = n/2; i < oldn; i++) {
 				for(int j = 0; j < oldm; j++) {
 					matrixSample[wId][i*oldm+j] = rcvd[i*m+j];
 				}
 			}
+			offset[wId] = (offset[wId]+1)%2;
 			return new FarmOutput<NUM>(matrixSample[wId], elementId);
 		}
 		return GO_ON;
 	}
 private:
-	bool *received;
 	int numWorkers, n, oldn, k, oldk, m, oldm;
 	int streamLength;
 	NUM **matrixSample;
+	char* offset;
 };
 
 #endif /* COLLECTORS_HPP_ */

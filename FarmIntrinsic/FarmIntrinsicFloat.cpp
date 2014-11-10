@@ -57,11 +57,11 @@ int main(int argc, const char** argv) {
 	if(k%TILE > 0) {
 		k+=TILE-k%TILE;
 	}
-	if(n%TILE>0) {
-		n+=TILE-n%TILE;
+	if(n%OFFSET_ROW>0) {
+		n+=OFFSET_ROW-n%OFFSET_ROW;
 	}
-	if(m%TILE>0) {
-		m+=TILE-m%TILE;
+	if(m%OFFSET_COL>0) {
+		m+=OFFSET_COL-m%OFFSET_COL;
 	}
 
 	int bufferSize = calculateBufferSize(sizeof(float), n, k, m, numWorkers, streamLength, tryanyway);

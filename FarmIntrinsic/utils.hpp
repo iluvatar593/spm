@@ -9,9 +9,27 @@
 #define UTILS_HPP_
 
 
+#if defined(__MIC__)
+	#ifndef TILE
+		#define TILE 120
+	#else
+		#if (TILE%120) != 0
+			#error TILE must be multiple of 120
+		#endif
+	#endif
+#else
+	#ifndef TILE
+		#define TILE 128
+	#else
+		#if (TILE%128) != 0
+			#error TILE must be multiple of 128
+		#endif
+	#endif
+#endif
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <chrono>
 #define start_time() \
 	auto start = std::chrono::high_resolution_clock::now();
 /** Shows the elapsed time. See start_time for usage*/
