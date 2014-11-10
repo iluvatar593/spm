@@ -117,60 +117,42 @@ private:
 template<typename NUM>
 class PedanticCollector : public ff_node {
 public:
-	PedanticCollector(int numWorkers, int n, int oldn, int m, int oldm) : ff_node(),
-	numWorkers(numWorkers), n(n), oldn(oldn), k(k), oldk(k), m(m), oldm(oldm){
-			_MM_MALLOC(m1, NUM*, sizeof(NUM)*n*m);
-			_MM_MALLOC(m2, NUM*, sizeof(NUM)*n*m);
-			_MM_MALLOC(matrixSample, NUM**, sizeof(NUM*)*numWorkers*2);
-			for(int i = 0; i < 2*numWorkers; i++) _MM_MALLOC(matrixSample[i], NUM*, sizeof(NUM)*oldn*oldm);
-			for(int i = 0; i < numWorkers; i++) offset[i] = 0;
+	PedanticCollector(int n, int oldn, int m, int oldm) : ff_node(),
+	n(n), oldn(oldn), m(m), oldm(oldm){
+			_MM_MALLOC(m1, NUM*, sizeof(NUM)*oldn*oldm);
+			_MM_MALLOC(m2, NUM*, sizeof(NUM)*oldn*oldm);
 	}
 	~PedanticCollector() {
-		delete[] received;
-		for(int i = 0; i < numWorkers; i++) _MM_FREE(matrixSample[i]);
-		_MM_FREE(matrixSample);
+		_MM_FREE(m1);
+		_MM_FREE(m2);
 	}
 
 	void *svc(void * mt) {
 		if(mt == NULL) return NULL;
 		workerOutput_t<NUM> *matrix = (workerOutput_t<NUM>*) mt;
-		int wId = matrix->worker;
+		NUM *__restrict__ tmp = matrix->matrixChunk;
+		//int wId = matrix->worker; //useless?
 		int elementId = matrix->id;
 
-		NUM* m;
-		if first
-			m = m1;
+		NUM* __restrict__ outm;
+		if (first)
+			outm = m1;
 		else
-			m = m2;
+			outm = m2;
 
-		m = memcpy(matrix->matrixChunk);
-
-		NUM *__restrict__ rcvd = matrix->matrixChunk;
-		if( oldn <= n/2) { //copy in first chunk!
-			for(int i = 0; i < MIN(oldn, n/2); i++) {
-					for(int j = 0; j < oldm; j++) {
-						matrixSample[2*wId+offset[wId]][i*oldm+j] = rcvd[i*m+j];
-					}
+		for(int i=0; i<oldn; i++){
+			for(int j=0; j<oldm; j++){
+				outm[i*oldm+j] = tmp[i*m+j];
 			}
-			if(oldn<=n/2) {
-				return new FarmOutput<NUM>(matrixSample[wId], elementId);
-			}
-		} else {
-			for(int i = n/2; i < oldn; i++) {
-				for(int j = 0; j < oldm; j++) {
-					matrixSample[wId][i*oldm+j] = rcvd[i*m+j];
-				}
-			}
-			return new FarmOutput<NUM>(matrixSample[wId], elementId);
 		}
 
-
-		return GO_ON;
+		first = !first;
+		return new FarmOutput<NUM>(outm, elementId);
 	}
 private:
-	int numWorkers, n, oldn, m, oldm;
-	NUM **matrixSample;
+	int n, oldn, m, oldm;
 	NUM * m1, *m2;
+	bool first = true;
 };
 
 #endif /* COLLECTORS_HPP_ */

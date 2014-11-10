@@ -102,22 +102,26 @@ int main(int argc, const char** argv) {
 
 	Emitter<TYPE> E(aBuffer, bBuffer, streamLength, bufferSize);
 	ff_node * C;
-
-	if (argc >= 6 && std::string(argv[5]) == "sampler") {
-		if(isatty(fileno(stdout))) printf("Sampler collector selected\n");
-		C = new SamplerCollector<double>(numWorkers, size, size, size, size, size, size, streamLength, true);
-	} else if(argc >= 6 && std::string(argv[5]) == "pedantic") {
-		if(isatty(fileno(stdout))) printf("Pedantic collector selected\n");
-		C = new PedanticCollector<double>(numWorkers, size, size, size, size, size, size, streamLength);
-	} else { //default
-		if(isatty(fileno(stdout))) printf("Dummy collector selected\n");
-		C = new DummyCollector<double>(numWorkers, size, size, size, size, size, size, streamLength);
-	}
 	ff_farm<> * farm = new ff_farm<>(false, 0, 0, true, MAXWORKERS, true);
 	farm->add_emitter(&E);
 	farm->set_scheduling_ondemand(0);
 	std::vector<ff_node *> w;
-	for(int i = 0; i < numWorkers; i++) w.push_back(new WorkerStrassen<TYPE>(size, oldsize, i));
+
+	if(argc >= 6 && std::string(argv[5]) == "pedantic") {
+		if(isatty(fileno(stdout))) printf("Pedantic collector selected\n");
+		C = new PedanticCollector<double>(size, size, size, size);
+		for(int i=0; i<numWorkers; i++) w.push_back(new WorkerStrassenPedantic<TYPE>(size, oldsize, i));
+	} else {
+		if (argc >= 6 && std::string(argv[5]) == "sampler") {
+			if(isatty(fileno(stdout))) printf("Sampler collector selected\n");
+			C = new SamplerCollector<double>(numWorkers, size, size, size, size, size, size, streamLength, true);
+		} else { //default
+			if(isatty(fileno(stdout))) printf("Dummy collector selected\n");
+			C = new DummyCollector<double>(numWorkers, size, size, size, size, size, size, streamLength);
+		}
+		for(int i = 0; i < numWorkers; i++) w.push_back(new WorkerStrassen<TYPE>(size, oldsize, i));
+	}
+
 	farm->add_workers(w);
 	farm->add_collector(C);
 	farm->run_and_wait_end();
