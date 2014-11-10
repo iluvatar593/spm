@@ -60,4 +60,43 @@ private:
 	workerOutput_t<float> * output;
 };
 
+class WorkerFloatPedantic : public ff_node {
+public:
+	WorkerFloatPedantic(int n, int oldn, int k, int oldk, int m, int oldm, int id):
+		n(n), oldn(oldn), k(k), oldk(oldk), m(m), oldm(oldm), ff_node(){
+		_MM_MALLOC(C1, float*, sizeof(float)*n*m);
+		_MM_MALLOC(C2, float*, sizeof(float)*n*m);
+		//_MM_MALLOC(output, workerOutput_t*, sizeof(workerOutput_t));
+		output = new workerOutput_t<float>(C1, id, -1);
+	}
+	~WorkerFloatPedantic() {_MM_FREE(C1); _MM_FREE(C2);}
+
+	void *svc(void *__restrict__ task) {
+		float *__restrict__ C;
+		C = (first) ? C1 : C2;
+		taskFloat_t *t = (taskFloat_t *) task;
+		float *__restrict__ a = t->a;
+		float *__restrict__ b = t->b;
+		output->id = t->num;
+		float aT[k*OFFSET_ROW] __attribute__ ((aligned(64)));
+
+		for(int i = 0; i < oldn; i+=OFFSET_ROW) {
+			recTranspose<float>(&a[i*k], aT, OFFSET_ROW, k, k, OFFSET_ROW);
+			for(int j = 0; j < oldm; j+=OFFSET_COL) {
+				Kernel<float>(aT, &b[j], &C[i*m+j], m, k/TILE);
+			}
+		}
+		output->matrixChunk = C;
+		first = !first;
+		return output;
+	}
+private:
+	int n, oldn, k, oldk, m, oldm;
+	float *__restrict__ C1;
+	float *__restrict__ C2;
+	workerOutput_t<float>* output;
+	bool first = true;
+};
+
+
 #endif /* WORKER_FLOAT_HPP_ */

@@ -146,9 +146,9 @@ void printUsage_S() {
 }
 
 #if defined(__MIC__)
-	#define MAXWORKERS 238 //240 - emitter - collector
+	#define MAXWORKERS 240 //240 - emitter - collector
 #else
-	#define MAXWORKERS 14 //16 - emitter - collector
+	#define MAXWORKERS 16 //16 - emitter - collector
 #endif
 
 template<typename NUM>

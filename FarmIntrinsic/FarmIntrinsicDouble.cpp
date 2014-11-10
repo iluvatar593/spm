@@ -103,22 +103,24 @@ int main(int argc, const char** argv) {
 
 	EmitterDouble E(aBuffer, bBuffer, streamLength, bufferSize);
 	ff_node * C;
-
-	if (argc >= 8 && std::string(argv[7]) == "sampler") {
-		if(isatty(fileno(stdout))) printf("Sampler collector selected\n");
-		C = new SamplerCollector<double>(numWorkers, n, oldn, k, oldk, m, oldm, streamLength);
-	} else if(argc >= 8 && std::string(argv[7]) == "pedantic") {
+	std::vector<ff_node *> w;
+	if(argc >= 8 && std::string(argv[7]) == "pedantic") {
 		if(isatty(fileno(stdout))) printf("Pedantic collector selected\n");
-		C = new PedanticCollector<double>(numWorkers, n, oldn, k, oldk, m, oldm, streamLength);
-	} else { //default
-		if(isatty(fileno(stdout))) printf("Dummy collector selected\n");
-		C = new DummyCollector<double>(numWorkers, n, oldn, k, oldk, m, oldm, streamLength);
+		C = new PedanticCollector<double>(n, oldn, m, oldm); //Initialize collector
+		for(int i = 0; i < numWorkers; i++) w.push_back(new WorkerDoublePedantic(n, oldn, k, oldk, m, oldm, i));
+	} else {
+		if (argc >= 8 && std::string(argv[7]) == "sampler") {
+			if(isatty(fileno(stdout))) printf("Sampler collector selected\n");
+			C = new SamplerCollector<double>(numWorkers, n, oldn, k, oldk, m, oldm, streamLength):
+		} else { //default
+			if(isatty(fileno(stdout))) printf("Dummy collector selected\n");
+			C = new DummyCollector<double>(numWorkers, n, oldn, k, oldk, m, oldm, streamLength);
+		}
+		for(int i = 0; i < numWorkers; i++) w.push_back(new WorkerDouble(n, oldn, k, oldk, m, oldm, i));
 	}
 	ff_farm<> * farm = new ff_farm<>(false, 0, 0, true,MAXWORKERS,true);
 	farm->add_emitter(&E);
 	farm->set_scheduling_ondemand(0);
-	std::vector<ff_node *> w;
-	for(int i = 0; i < numWorkers; i++) w.push_back(new WorkerDouble(n, oldn, k, oldk, m, oldm, i));
 	farm->add_workers(w);
 	farm->add_collector(C);
 	farm->run_and_wait_end();
