@@ -4,7 +4,7 @@
 // Version     :
 // Copyright   : Your copyright notice
 // Description : Parallel implementation of a farm for the multiplication of a stream of matrices.
-//				Uses floats inside.
+//				Uses float values inside.
 //============================================================================
 
 #include <ff/farm.hpp>
@@ -67,7 +67,7 @@ int main(int argc, const char** argv) {
 	int bufferSize = calculateBufferSize(sizeof(float), n, k, m, numWorkers, streamLength, tryanyway);
 	/** Initialize input buffers */
 	if (bufferSize < streamLength) {
-		if(isatty(fileno(stdout))) printf("Sorry, there's not enough memory for the specified stream length. There's space for %d couples of matrices\n", bufferSize);
+		if(isatty(fileno(stdout))) printf("Sorry, not enough memory for the specified stream length. There's space for %d couples of matrices\n", bufferSize);
 	}
 	if(bufferSize == 0) {
 		if(isatty(fileno(stdout))) printf("I will try to allocate 8 couples of matrices\n");

@@ -3,6 +3,9 @@
  *
  *  Created on: 07/nov/2014
  *      Author: alessandro
+ *
+ *  Description: very core of the matrix multiplication.
+ *  Registers can contain 8 double precision values.
  */
 
 #ifndef KERNEL_MIC_DOUBLE_HPP_

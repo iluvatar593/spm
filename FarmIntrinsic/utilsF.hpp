@@ -3,6 +3,8 @@
  *
  *  Created on: 05/nov/2014
  *      Author: atzoril
+ *
+ *      Specific utilities for the float values.
  */
 
 #ifndef UTILSF_HPP_

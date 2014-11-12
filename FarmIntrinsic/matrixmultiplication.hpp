@@ -1,12 +1,16 @@
 /*
- * matrixmultiplication_float.hpp
+ * matrixmultiplication.hpp
  *
  *  Created on: 05/nov/2014
  *      Author: atzoril
+ *
+ *  Description: using another level of indirection, we can choose a limited number of supported sizes.
+ *  The advantage is that we know them in advance (compile time) so the compiler can fully optimize.
+ *  Please modify carefully.
  */
 
-#ifndef MATRIXMULTIPLICATION_FLOAT_HPP_
-#define MATRIXMULTIPLICATION_FLOAT_HPP_
+#ifndef MATRIXMULTIPLICATION_HPP_
+#define MATRIXMULTIPLICATION_HPP_
 
 #include <mmintrin.h>   // MMX?
 #include <xmmintrin.h>  // SSE
@@ -68,4 +72,4 @@ void Kernel(NUM *__restrict__ a, NUM *__restrict__ b, NUM *__restrict__ c, int m
 	}
 }
 
-#endif /* MATRIXMULTIPLICATION_FLOAT_HPP_ */
+#endif /* MATRIXMULTIPLICATION_HPP_ */

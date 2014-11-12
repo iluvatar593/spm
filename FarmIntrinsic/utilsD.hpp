@@ -3,6 +3,9 @@
  *
  *  Created on: 05/nov/2014
  *      Author: atzoril
+ *
+ *  Specific utilities for the double values.
+ *
  */
 
 #ifndef UTILSD_HPP_

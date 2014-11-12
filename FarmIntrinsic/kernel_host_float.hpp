@@ -2,7 +2,10 @@
  * kernel_host_float.hpp
  *
  *  Created on: 07/nov/2014
- *      Author: alessandro
+ *      Author: atzoril
+ *
+ *  Description: very core of the matrix multiplication.
+ *  We use AVX instructions. No FMA support. Registers can contain only 8 single precision elements.
  */
 
 #ifndef KERNEL_HOST_FLOAT_HPP_

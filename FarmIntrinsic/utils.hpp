@@ -3,6 +3,8 @@
  *
  *  Created on: 05/nov/2014
  *      Author: alessandro
+ *
+ *  Description: various utilities.
  */
 
 #ifndef UTILS_HPP_
@@ -29,16 +31,21 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+
+//Chronometer macros. Not used anymore, use ffTime instead.
 #include <chrono>
 #define start_time() \
 	auto start = std::chrono::high_resolution_clock::now();
-/** Shows the elapsed time. See start_time for usage*/
+
 #define elapsed_time(STRING) \
 	auto elapsed = std::chrono::high_resolution_clock::now() - start; \
 	long long microseconds = std::chrono::duration_cast<std::chrono::microseconds>(elapsed).count(); \
 	printf(#STRING":%lld\n", microseconds);
+
+//Used for the memory usage heuristics.
 #define SPARE_MEMORY 3*1024*1024*1024 //6 gb
 
+//Memory alignment
 #ifndef ALIGNMENT
 	#if defined(__MIC__)
 		#define ALIGNMENT 64
@@ -46,6 +53,9 @@
 		#define ALIGNMENT 32
 	#endif
 #endif
+
+//Number of matrix couples generated when it seems that not enough space is available
+// but the tryanyway option is ON.
 #ifndef MCOUPLES
 	#define MCOUPLES 8
 #endif
@@ -124,11 +134,11 @@ inline void recTranspose(NUM *__restrict__ a, NUM *__restrict__ aT, const int n,
  * Shows usage
  */
 void printUsage() {
-	printf("Usage: ./FarmIntrinsic.o mxw numWorkers n k m [tryanyway]\n");
+	printf("Usage: ./FarmIntrinsic.o mxw numWorkers n k m [tryanyway] [collector]\n");
 	printf("Where:\n");
 	printf("mxw is the number of matrices for each worker\n");
 	printf("numWorkers is the number of threads allocated to the stream [1 .. 238]\n");
-	printf("n k and m are the three dimensions of the matrix \n");
+	printf("n k and m are the three dimensions of the input matrices \n");
 	printf("Optional tryanyway can be used (if equal to 1) to start the computation even at risk of insufficient memory\n");
 }
 
@@ -151,6 +161,8 @@ void printUsage_S() {
 	#define MAXWORKERS 16 //16 - emitter - collector
 #endif
 
+//Generic workerOutput with templates used in Strassen version.
+//Future work: extend to all versions (seems to be inefficient??)
 template<typename NUM>
 class workerOutput_t{
 public:
@@ -161,6 +173,7 @@ public:
 	int id;
 };
 
+//Generic task with templates used in Strassen version.
 template<typename NUM>
 class task_t{
 public:
@@ -169,11 +182,6 @@ public:
 	NUM* __restrict__ a;
 	NUM* __restrict__ b;
 	int num;
-//	typedef struct __attribute__((align(ALIGNMENT))) {
-//		double *__restrict__ a;
-//		double *__restrict__ b;
-//		int num;
-//	} taskDouble_t;
 };
 
 #endif /* UTILS_HPP_ */

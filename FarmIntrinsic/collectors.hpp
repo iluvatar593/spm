@@ -15,6 +15,7 @@
 
 using namespace ff;
 
+//This class represents what the collector sends in output.
 template<typename NUM>
 class FarmOutput {
 public:
@@ -24,7 +25,14 @@ public:
 	int num;
 };
 
-
+/*
+ * DummyCollector (used as default)
+ *
+ *  - counts how many matrix-halves were received
+ *  - checks if every matrix is received
+ *  - checks if every stream element is received
+ *
+ */
 template<typename NUM>
 class DummyCollector : public ff_node {
 public:
@@ -38,14 +46,12 @@ public:
 	}
 
 	void *svc(void *mt) {
-		start_time()
 		/** Contains id of the sender, id of the matrix and the elements*/
 		if(mt == NULL) return NULL;
 		workerOutput_t<NUM> *matrix = (workerOutput_t<NUM>*) mt;
-		//count how many chunks have been received successfulyy
+		//count how many chunks have been received successfully
 		if(oldn > n/2) received[matrix->worker] = !received[matrix->worker];
 		if(!received[matrix->worker]) count++;
-		elapsed_time(Collector);
 		return GO_ON;
 	}
 	/** On end, check that all matrix chunks have been received correctly. */
@@ -61,7 +67,13 @@ private:
 	int count;
 };
 
-
+/*
+ * SamplerCollector
+ *
+ *  - randomly selects the id of a worker
+ *  - locally copy (and send out) the matrices calculated by the selected worker
+ *
+ */
 template<typename NUM>
 class SamplerCollector : public ff_node {
 public:
@@ -84,7 +96,7 @@ public:
 		workerOutput_t<NUM> *matrix = (workerOutput_t<NUM>*) mt;
 		int wId = matrix->worker;
 		int elementId = matrix->id;
-		//count how many chunks have been received successfulyy
+		//count how many chunks have been received successfully
 		received[wId] = !received[wId];
 		NUM *__restrict__ rcvd = matrix->matrixChunk;
 		if(wId == randomWorker) { //Sampling process!
@@ -113,7 +125,12 @@ private:
 	NUM *matrixSample;
 };
 
-
+/*
+ * PedanticCollector (slows down the entire farm! => better if used only in debugging mode)
+ *
+ *  - copies every matrix received!
+ *
+ */
 template<typename NUM>
 class PedanticCollector : public ff_node {
 public:
@@ -131,7 +148,6 @@ public:
 		if(mt == NULL) return NULL;
 		workerOutput_t<NUM> *matrix = (workerOutput_t<NUM>*) mt;
 		NUM *__restrict__ tmp = matrix->matrixChunk;
-		//int wId = matrix->worker; //useless?
 		int elementId = matrix->id;
 
 		NUM* __restrict__ outm;

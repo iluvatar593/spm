@@ -2,7 +2,10 @@
  * kernel_host_double.hpp
  *
  *  Created on: 07/nov/2014
- *      Author: alessandro
+ *      Author: atzoril
+ *
+ *  Description: very core of the matrix multiplication.
+ *  We use AVX instructions. No FMA support. Registers can contain only 4 double precision elements.
  */
 
 #ifndef KERNEL_HOST_DOUBLE_HPP_

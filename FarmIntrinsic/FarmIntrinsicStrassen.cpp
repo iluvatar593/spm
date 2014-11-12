@@ -1,8 +1,6 @@
 //============================================================================
 // Name        : FarmIntrinsicStrassen.cpp
 // Author      : atzoril
-// Version     :
-// Copyright   : Your copyright notice
 // Description : Parallel implementation of a farm for the multiplication of a stream of matrices using the Strassen decomposition.
 //============================================================================
 
@@ -58,14 +56,14 @@ int main(int argc, const char** argv) {
 		printUsage_S();
 		return -1;
 	}
-	if(size%(2*TILE) > 0) {
+	if(size%(2*TILE) > 0) { //Padding to 240
 		size+=(2*TILE)-size%(2*TILE);
 	}
 
-	int bufferSize = calculateBufferSize(sizeof(double), size, size, size, numWorkers, streamLength, tryanyway);
+	int bufferSize = calculateBufferSize(sizeof(TYPE), size, size, size, numWorkers, streamLength, tryanyway);
 	/** Initialize input buffers */
 	if (bufferSize < streamLength) {
-		if(isatty(fileno(stdout))) printf("Sorry, there's not enough memory for the specified stream length. There's space for %d couples of matrices\n", bufferSize);
+		if(isatty(fileno(stdout))) printf("Sorry, not enough memory for the specified stream length. There's space for %d couples of matrices\n", bufferSize);
 	}
 	if(bufferSize == 0) {
 		if(isatty(fileno(stdout))) printf("I will try to allocate %d couples of matrices\n", MCOUPLES);
@@ -109,15 +107,21 @@ int main(int argc, const char** argv) {
 
 	if(argc >= 6 && std::string(argv[5]) == "pedantic") {
 		if(isatty(fileno(stdout))) printf("Pedantic collector selected\n");
-		C = new PedanticCollector<double>(size, size, size, size);
+		C = new PedanticCollector<TYPE>(size, size, size, size);
+		/*
+		 * If Pedantic collector is chosen, the Strassen workers have to send the output in different way.
+		 */
 		for(int i=0; i<numWorkers; i++) w.push_back(new WorkerStrassenPedantic<TYPE>(size, oldsize, i));
 	} else {
 		if (argc >= 6 && std::string(argv[5]) == "sampler") {
 			if(isatty(fileno(stdout))) printf("Sampler collector selected\n");
-			C = new SamplerCollector<double>(numWorkers, size, size, size, size, size, size, streamLength, true);
+			/* SamplerCollector requires last parameter set to true, because Strassen workers send out
+			*  half-matrices in a different representation!
+			*/
+			C = new SamplerCollector<TYPE>(numWorkers, size, size, size, size, size, size, streamLength, true);
 		} else { //default
 			if(isatty(fileno(stdout))) printf("Dummy collector selected\n");
-			C = new DummyCollector<double>(numWorkers, size, size, size, size, size, size, streamLength);
+			C = new DummyCollector<TYPE>(numWorkers, size, size, size, size, size, size, streamLength);
 		}
 		for(int i = 0; i < numWorkers; i++) w.push_back(new WorkerStrassen<TYPE>(size, oldsize, i));
 	}

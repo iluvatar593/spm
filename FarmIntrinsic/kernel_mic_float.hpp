@@ -1,9 +1,13 @@
 /*
- * kernel_mic_float.hpp
+ * kernel_mic_double.hpp
  *
  *  Created on: 07/nov/2014
  *      Author: alessandro
+ *
+ *  Description: very core of the matrix multiplication.
+ *  Registers can contain 16 single precision values.
  */
+
 
 #ifndef KERNEL_MIC_FLOAT_HPP_
 #define KERNEL_MIC_FLOAT_HPP_
@@ -12,7 +16,7 @@
 #define vZeroPS(c) {(c) = _mm512_setzero_ps();}
 
 template<int sz>
-void MMKernel(float *__restrict__ a, float *__restrict__ b, float *__restrict__ c, const int m, const int ldc) {
+void MMKernel(float *__restrict__ a, float *__restrict__ b, float *__restrict__ c, const int m, const int ldc=0) {
 	__m512 c0, c1, c2, c3, c4, c5, c6, c7, c8, c9;
 	__m512 c10, c11, c12, c13, c14, c15, c16, c17, c18, c19;
 	__m512 c20, c21, c22, c23, c24, c25, c26, c27, c28, c29;

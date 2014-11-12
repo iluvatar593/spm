@@ -4,7 +4,7 @@
 // Version     :
 // Copyright   : Your copyright notice
 // Description : Parallel implementation of a farm for the multiplication of a stream of matrices.
-//				Uses doubles inside.
+//				Uses double values inside.
 //============================================================================
 
 #include <ff/farm.hpp>
@@ -53,6 +53,7 @@ int main(int argc, const char** argv) {
 		printUsage();
 		return -1;
 	}
+	//Padding...
 	if(k%TILE > 0) {
 		k+=TILE-k%TILE;
 	}
@@ -62,11 +63,12 @@ int main(int argc, const char** argv) {
 	if(m%OFFSET_COL>0) {
 		m+=OFFSET_COL-m%OFFSET_COL;
 	}
+	//...padded.
 
 	int bufferSize = calculateBufferSize(sizeof(double), n, k, m, numWorkers, streamLength, tryanyway);
 	/** Initialize input buffers */
 	if (bufferSize < streamLength) {
-		if(isatty(fileno(stdout))) printf("Sorry, there's not enough memory for the specified stream length. There's space for %d couples of matrices\n", bufferSize);
+		if(isatty(fileno(stdout))) printf("Sorry, not enough memory for the specified stream length. There's space for %d couples of matrices\n", bufferSize);
 	}
 	if(bufferSize == 0) {
 		if(isatty(fileno(stdout))) printf("I will try to allocate %d couples of matrices\n", MCOUPLES);
@@ -111,7 +113,7 @@ int main(int argc, const char** argv) {
 	} else {
 		if (argc >= 8 && std::string(argv[7]) == "sampler") {
 			if(isatty(fileno(stdout))) printf("Sampler collector selected\n");
-			C = new SamplerCollector<double>(numWorkers, n, oldn, k, oldk, m, oldm, streamLength):
+			C = new SamplerCollector<double>(numWorkers, n, oldn, k, oldk, m, oldm, streamLength);
 		} else { //default
 			if(isatty(fileno(stdout))) printf("Dummy collector selected\n");
 			C = new DummyCollector<double>(numWorkers, n, oldn, k, oldk, m, oldm, streamLength);

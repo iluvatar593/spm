@@ -11,12 +11,24 @@
 #include <ff/node.hpp>
 #include "utils.hpp"
 
+/* Undefining TILE
+*  Strassen splits the matrix in four submatrices
+*  =>
+*  we need 2*TILE on Xeon Phi with float values because of the 30x16 core (120%16 != 0)
+*/
+#ifdef FLOAT
+#undef TILE
+	#if defined(__MIC__)
+		#define TILE 240
+	#else
+		#define TILE 128
+	#endif
+#endif
 
 using namespace ff;
 
 #ifdef FLOAT
 	#define TYPE float
-	#include "utilsF.hpp"
 	#if defined(__MIC__)
 		#define OFFSET_ROW 30
 		#define OFFSET_COL 16
@@ -26,7 +38,6 @@ using namespace ff;
 	#endif
 #else //default = double
 	#define TYPE double
-	#include "utilsD.hpp"
 	#if defined(__MIC__)
 		#define OFFSET_ROW 30
 		#define OFFSET_COL 8
@@ -38,14 +49,16 @@ using namespace ff;
 
 #include "matrixmultiplication.hpp"
 
-
+/*
+ * Farm worker used in Strassen algorithm for both value types.
+ * Foreach task received calls the strassenMatrixMultiplication function. See inside for the details.
+ */
 template<typename NUM>
 class WorkerStrassen : public ff_node {
 public:
 	WorkerStrassen(int size, int oldsize, int id):
 		size(size), oldsize(oldsize), ff_node(){
 		_MM_MALLOC(C, NUM*, sizeof(NUM)*size*size);
-		//_MM_MALLOC(output, workerOutput_t*, sizeof(workerOutput_t));
 		output = new workerOutput_t<NUM>(C, id, -1);
 		int newsize=size/2;
 		S1 = (NUM*)_mm_malloc(sizeof(NUM)*newsize*newsize, ALIGNMENT);
@@ -65,7 +78,6 @@ public:
 
 	void *svc(void *__restrict__ task) {
 		task_t<NUM> * t = (task_t<NUM> *) task;
-		//taskDouble_t *t = (taskDouble_t *) task;
 		NUM *__restrict__ a = t->a;
 		NUM *__restrict__ b = t->b;
 		output->id = t->num;
@@ -88,7 +100,6 @@ private:
 		__assume_aligned(C, ALIGNMENT);
 		for(int i = 0; i < size; i++){
 			NUM* restrict rowA = &A[i*ldA], *restrict rowB = &B[i*ldB], *restrict rowC = &C[i*ldC];
-			//#pragma ivdep
 			for(int j =0 ; j < size; j++) {
 				rowC[j] = rowA[j] + rowB[j];
 			}
@@ -102,7 +113,6 @@ private:
 		__assume_aligned(C, ALIGNMENT);
 		for(int i = 0; i < size; i++){
 			NUM* restrict rowA = &A[i*ldA], *restrict rowB = &B[i*ldB], *restrict rowC = &C[i*ldC];
-			//#pragma ivdep
 			for(int j =0 ; j < size; j++) {
 				rowC[j] = rowA[j] - rowB[j];
 			}
@@ -201,11 +211,9 @@ private:
 				Ccol[j] += P4[i*newsize+j];
 			}
 		}
-
+		//Lower half of the matrix is ready so we can send out.
 		output->matrixChunk = Ctmp;
 		ff_send_out(output);
-		//FIRST ff_send_out(); (lower half of matrix c)
-		//ff_send_out(new workerOutput<NUM>(Ctmp, this->id));
 
 		matrixSum(A, &A[newsize], S2, newsize, size, size, newsize); //A11+A12
 		coreMult(S2, &B[newsize+newsize*size], P5, newsize, newsize, size, newsize); //P5  = A11 + A12 * B22
@@ -225,22 +233,24 @@ private:
 				Ccol2[j] += P5[i*newsize+j];
 			}
 		}
+		//Sending out upper half of C.
 		output->matrixChunk = C;
 		return output;
-		//SECOND ff_send_out(); (upper half of matrix c)
-		//return new workerOutput<NUM>(C, this->id);
 	}
 };
 
-
+/*
+ * Farm worker used in Strassen algorithm for both value types. Used in pedantic-mode debugging.
+ * Foreach task received calls the strassenMatrixMultiplication function. See inside for the details.
+ */
 template<typename NUM>
 class WorkerStrassenPedantic : public ff_node {
 public:
 	WorkerStrassenPedantic(int size, int oldsize, int id):
 		size(size), oldsize(oldsize), ff_node(){
+		printf("Worker constructor\n");
 		_MM_MALLOC(C1, NUM*, sizeof(NUM)*size*size);
 		_MM_MALLOC(C2, NUM*, sizeof(NUM)*size*size);
-		//_MM_MALLOC(output, workerOutput_t*, sizeof(workerOutput_t));
 		output = new workerOutput_t<NUM>(C1, id, -1);
 		int newsize=size/2;
 		S1 = (NUM*)_mm_malloc(sizeof(NUM)*newsize*newsize, ALIGNMENT);
@@ -250,7 +260,8 @@ public:
 		P5 = (NUM*)_mm_malloc(sizeof(NUM)*newsize*newsize, ALIGNMENT);
 	}
 	~WorkerStrassenPedantic() {
-		_MM_FREE(C);
+		_MM_FREE(C1);
+		_MM_FREE(C2);
 		_MM_FREE(S1);
 		_MM_FREE(S2);
 		_MM_FREE(P1);
@@ -260,7 +271,6 @@ public:
 
 	void *svc(void *__restrict__ task) {
 		task_t<NUM> * t = (task_t<NUM> *) task;
-		//taskDouble_t *t = (taskDouble_t *) task;
 		NUM *__restrict__ a = t->a;
 		NUM *__restrict__ b = t->b;
 		output->id = t->num;
@@ -284,7 +294,6 @@ private:
 		__assume_aligned(C, ALIGNMENT);
 		for(int i = 0; i < size; i++){
 			NUM* restrict rowA = &A[i*ldA], *restrict rowB = &B[i*ldB], *restrict rowC = &C[i*ldC];
-			//#pragma ivdep
 			for(int j =0 ; j < size; j++) {
 				rowC[j] = rowA[j] + rowB[j];
 			}
@@ -298,7 +307,6 @@ private:
 		__assume_aligned(C, ALIGNMENT);
 		for(int i = 0; i < size; i++){
 			NUM* restrict rowA = &A[i*ldA], *restrict rowB = &B[i*ldB], *restrict rowC = &C[i*ldC];
-			//#pragma ivdep
 			for(int j =0 ; j < size; j++) {
 				rowC[j] = rowA[j] - rowB[j];
 			}
@@ -386,7 +394,6 @@ private:
 		for(int i = 0; i < newsize; i++) { //C22 += P1 - C21 + C12
 			NUM* restrict Ccol = &Ctmp[i*size+newsize]; //Ctmp is C21, so we offset it to obtain Ccol, a row of C22
 			NUM* restrict Ccol2 = &C[i*size+newsize]; //Row of C12
-			#pragma ivdep
 			for(int j = 0; j < newsize; j++) {
 				Ccol[j] += P1[i*newsize+j] - Ctmp[i*size+j] + Ccol2[j];
 			}
@@ -416,6 +423,8 @@ private:
 				Ccol2[j] += P5[i*newsize+j];
 			}
 		}
+
+		//Pedantic mode: we need to send the full matrix.
 		output->matrixChunk = C;
 		return output;
 	}

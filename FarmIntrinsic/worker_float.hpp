@@ -23,6 +23,13 @@ using namespace ff;
 #define OFFSET_COL 8
 #endif
 
+/*
+ * Farm worker for double values.
+ *  - foreach task received:
+ *  	-- transpose
+ *  	-- call kernel matmul
+ *  - send out every half
+ */
 class WorkerFloat : public ff_node {
 public:
 	WorkerFloat(int n, int oldn, int k, int oldk, int m, int oldm, int id):
@@ -45,7 +52,7 @@ public:
 
 			}
 			/** n/2 can always be divided by 30*/
-			if(i == n/2) {
+			if(i >= n/2 && i < n/2+OFFSET_ROW) {
 				output->matrixChunk = C;
 				ff_send_out(output);
 			}
@@ -60,6 +67,13 @@ private:
 	workerOutput_t<float> * output;
 };
 
+/*
+ * Farm worker for float values. Used in pedantic-mode debugging.
+ *  - foreach task received:
+ *  	-- transpose
+ *  	-- call kernel matmul
+ *  - send out only when output matrix is fully completed
+ */
 class WorkerFloatPedantic : public ff_node {
 public:
 	WorkerFloatPedantic(int n, int oldn, int k, int oldk, int m, int oldm, int id):

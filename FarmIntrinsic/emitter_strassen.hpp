@@ -37,16 +37,12 @@ public:
 	void * svc(void *) {
 		for(int s = 0; s < streamLength; s++) {
 			task_t<NUM> * __restrict__ t = new task_t<NUM>(aBuff[(s+aOffset)%bufferSize], bBuff[(s+bOffset)%bufferSize], s);
-			//taskFloat_t *t;
-			//_MM_MALLOC(t, taskFloat_t *, sizeof(taskFloat_t));
-			//t->a = aBuff[(s+aOffset)%bufferSize];
-			//t->b = bBuff[(s+bOffset)%bufferSize];
-			/** Generates all combinations of matrices in the buffer size */
+			/** Generates combinations of matrices in the buffer size */
 			if(s > 0 && s % bufferSize == 0) {
 				aOffset++;
 				if (aOffset%bufferSize == 0) bOffset++;
 			}
-			ff_send_out(t); //Is it correct?
+			ff_send_out(t);
 		}
 		return NULL;
 	}
